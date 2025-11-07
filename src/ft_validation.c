@@ -1,5 +1,27 @@
 #include "cub3D.h"
 
+
+int ft_chek_file(int fd, char *line)
+{
+    if (fd == -1)
+	{
+		printf("Error\n");
+		printf("Permission denied file dont have Permission for reding\n");
+		return (-1);
+	}
+	else
+		line = get_next_line(fd);
+	if (!line)
+	{
+		printf("Error\n");
+		printf("Empty file\n");
+		return (-1);
+	}
+    return (0);
+}
+
+
+
 int ft_strncmp(char *str, char *str1, int n)
 {
     int i;

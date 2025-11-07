@@ -1,33 +1,70 @@
 #include "cub3D.h"
 
-void  ft_start_work(char *str)
+void	ft_start_work(char *str)
 {
-    int r;
-    int fd;
-    char *line;
+	int		fd;
+	char	*line;
+	t_cube *st;
+	int i;
 
-    r = 0;
-    fd = 0;
+	line = NULL;
+	i = 0;
+	fd = 0;
+	fd = open(str, O_RDONLY);
+	if (ft_chek_file(fd,line) == -1)
+		return ;
+	st = ft_create_struct(fd, line);
+	if (st == NULL)
+		return ;
+	fd = open(str, O_RDONLY);
+	st = ft_create_map(st,line,fd);
+	while (st->c_map[i])
+	{
+		printf("%s\n",st->c_map[i]);
+		i++;
+	}
+}
 
-    fd = open(str,O_RDONLY);
-    if (fd == -1)
+t_cube *ft_create_struct(int fd,char *line)
+{
+	int i;
+	t_cube *st;
+
+	st = NULL;
+	i = 1;
+	while(line)
     {
-        printf("Error\n");
-        printf("Permission denied file dont have Permission for reding\n");
-        return ;
-    }
-    else
+        //printf("%s",line);
+		free(line);
+		write(1,"1\n",2);
         line = get_next_line(fd);
-    if (!line)
-    {
-        printf("Error\n");
-        printf("Empty file\n");
-        return ;
+		i++;
     }
-    while(line)
-    {
-        printf("%s",line);
-        line = get_next_line(fd);
-    }
+	st = malloc(sizeof(t_cube));
+	//// stil riheybol get_next_line -> (1)
+	st->c_map = malloc(sizeof(char *) * i);
+	if (!st->c_map)
+	{
+		printf("malloc problem");
+		return (NULL);
+	}
+	close(fd);
+	return (st);
+}
 
+t_cube *ft_create_map(t_cube *st, char *line, int fd)
+{
+	int i;
+
+	i = 0;
+	line = get_next_line(fd);
+	st->c_map[i] = line;
+	while(line)
+	{
+		free(line);
+		line = get_next_line(fd);
+		st->c_map[i] = line;
+		i++;
+	}
+	return (st);
 }

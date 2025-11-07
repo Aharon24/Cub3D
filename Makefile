@@ -1,6 +1,7 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -Iinclude
-#MLXFLAGS = -lmlx -framework OpenGL -framework AppKit   # macOS
+MLXFLAGS = -Lminilibx-linux -lmlx -lXext -lX11 -lm -lbsd
+
 
 
 
@@ -9,31 +10,26 @@ SRCS = src/main.c src/ft_validation.c   get_next_line/get_next_line.c get_next_l
 src/ft_start_work.c
 
 OBJDIR = obj
-OBJS = $(SRCS:src/%.c=$(OBJDIR)/%.o)
-
+OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 
 
 NAME = cub3D
 
- 
- 
 all: $(NAME)
 
-# $(MLXFLAGS) ->  -o $(NAME) # $(MLXFLAGS)
 $(NAME): $(OBJS)  
-	$(CC) $(CFLAGS) $(OBJS)   -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS)   -o $(NAME) $(MLXFLAGS)
 
-$(OBJDIR)/%.o: src/%.c | $(OBJDIR)
+$(OBJDIR)/%.o: %.c | $(OBJDIR)
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
+
 
  
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
 
-
-
- 
 clean:
 	rm -rf $(OBJDIR)
 	$(MAKE) -C   clean
