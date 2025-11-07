@@ -13,5 +13,6 @@ int main (int ac, char *argv[])
 		if (ft_validation(argv[1]) != 0)
 		return (1);
 	}
+	ft_start_work(argv[1]);
 	return (0);
 }

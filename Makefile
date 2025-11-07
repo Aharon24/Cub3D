@@ -5,7 +5,9 @@ CFLAGS = -Wall -Wextra -Werror -Iinclude
 
 
 
-SRCS = src/main.c src/ft_validation.c  
+SRCS = src/main.c src/ft_validation.c   get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
+src/ft_start_work.c
+
 OBJDIR = obj
 OBJS = $(SRCS:src/%.c=$(OBJDIR)/%.o)
 
