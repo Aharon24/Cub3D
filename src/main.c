@@ -5,11 +5,13 @@ int main (int ac, char *argv[])
 	if (ac != 2)
 	{
 		printf("Error\n");
-		printf("Problem with argument\n");
+		printf("Problem with argument we need file\n");
 		return (1);
 	}
 	else
-		ft_validation(argv[1]);
-	
+	{
+		if (ft_validation(argv[1]) != 0)
+		return (1);
+	}
 	return (0);
 }
