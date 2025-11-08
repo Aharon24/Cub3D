@@ -27,11 +27,11 @@ typedef struct cub3D
 
 int ft_strncmp(char *str, char *str1, int n);
 int ft_validation(char *argv);
-int ft_chek_file(int fd,char *line);
+int ft_chek_file(int fd);
 
 //ft_start_work.c
 void    ft_start_work(char *str);
-t_cube *ft_create_struct(int fd,char *line);
+t_cube *ft_create_struct(int fd, t_cube *st);
 t_cube  *ft_create_map(t_cube *st, char *line, int fd);
 
 #endif

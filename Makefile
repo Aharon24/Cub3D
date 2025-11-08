@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iinclude
+CFLAGS = -g3 -Wall -Wextra -Werror -Iinclude
 MLXFLAGS = -Lminilibx-linux -lmlx -lXext -lX11 -lm -lbsd
 
 

@@ -8,49 +8,67 @@ void	ft_start_work(char *str)
 	int i;
 
 	line = NULL;
+	st = NULL;
 	i = 0;
 	fd = 0;
 	fd = open(str, O_RDONLY);
-	if (ft_chek_file(fd,line) == -1)
-		return ;
-	st = ft_create_struct(fd, line);
-	if (st == NULL)
-		return ;
-	fd = open(str, O_RDONLY);
-	st = ft_create_map(st,line,fd);
-	while (st->c_map[i])
+	if (ft_chek_file(fd) == -1)
 	{
-		printf("%s\n",st->c_map[i]);
-		i++;
+		close(fd);
+		return ;
 	}
+	st = ft_create_struct(fd, st);
+	close(fd);
+	// if (st == NULL)
+	// 	return ;
+	// else
+	// 	printf("st\n");
+	// fd = open(str, O_RDONLY);
+	// st = ft_create_map(st,line,fd);
+	// while (st->c_map[i])
+	// {
+	// 	printf("%s\n",st->c_map[i]);
+	// 	i++;
+	// }
 }
 
-t_cube *ft_create_struct(int fd,char *line)
+t_cube *ft_create_struct(int fd, t_cube *st)
 {
 	int i;
-	t_cube *st;
+	char *line; 
 
-	st = NULL;
 	i = 1;
+	line = get_next_line(fd);
+	if (!line)
+	{
+		printf("Error\n");
+		printf("Empty file\n");
+		return (NULL);
+	}
 	while(line)
     {
-        //printf("%s",line);
 		free(line);
-		write(1,"1\n",2);
         line = get_next_line(fd);
 		i++;
     }
-	st = malloc(sizeof(t_cube));
-	//// stil riheybol get_next_line -> (1)
-	st->c_map = malloc(sizeof(char *) * i);
+	if (i > 0)
+	{
+		st = malloc(sizeof(t_cube));
+		//// stil riheybol get_next_line -> (1)
+		st->c_map = malloc(sizeof(char *));
+		st->c_map = malloc(sizeof(char) * (i + 1));
+	}
 	if (!st->c_map)
 	{
 		printf("malloc problem");
 		return (NULL);
 	}
-	close(fd);
+	//close(fd);
 	return (st);
 }
+
+////	| ft_strdub();
+////	|
 
 t_cube *ft_create_map(t_cube *st, char *line, int fd)
 {
@@ -61,10 +79,13 @@ t_cube *ft_create_map(t_cube *st, char *line, int fd)
 	st->c_map[i] = line;
 	while(line)
 	{
-		free(line);
+		//free(line);
 		line = get_next_line(fd);
-		st->c_map[i] = line;
+		if(line) 
+			st->c_map[i] = line;
 		i++;
 	}
+	st->c_map[i] = NULL;
+
 	return (st);
 }
