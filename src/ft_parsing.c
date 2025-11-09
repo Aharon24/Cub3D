@@ -40,7 +40,7 @@ int ft_empty(char *str)
     i = 0;
     while(str[i])
     {
-        if ((str[i] >= 9 && str <= 13) && str[i] == 32)
+        if ((str[i] >= 9 && str[i] <= 13) && str[i] == 32)
             i++;
         else
             return (0);

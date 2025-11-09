@@ -27,7 +27,7 @@ typedef struct cub3D
 
 t_cube	*ft_parsing_map(char **map, t_cube *st);
 int		ft_count_line(char **map);
-int		ft_empty(char *str)
+int		ft_empty(char *str);
 
 //  ft_validation.c
 
