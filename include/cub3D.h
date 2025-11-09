@@ -16,24 +16,30 @@
 
 typedef struct cub3D
 {
-    char **c_map;
-    int   map_len;
-    
+	char **c_map;
+	char **Normalayz_map;
+	int   map_len;
+	
 }   t_cube;
 
 
-//ft_validation.c
+//  ft_parsing.c
 
-int ft_strncmp(char *str, char *str1, int n);
-int ft_validation(char *argv);
-int ft_chek_file(int fd);
+t_cube	*ft_parsing_map(char **map, t_cube *st);
+int		ft_count_line(char **map);
+int		ft_empty(char *str)
 
-//ft_start_work.c
+//  ft_validation.c
+
+int		ft_strncmp(char *str, char *str1, int n);
+int		ft_validation(char *argv);
+int		ft_chek_file(int fd);
+
+//  ft_start_work.c
+
 void    ft_start_work(char *str);
-t_cube *ft_create_struct(int fd, t_cube *st);
+t_cube	*ft_create_struct(int fd, t_cube *st);
 t_cube  *ft_create_map(t_cube *st, char *line, int fd);
-
-
 
 
 #endif
