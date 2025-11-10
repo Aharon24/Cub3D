@@ -11,6 +11,7 @@
 # include <math.h>       // sin, cos, sqrt, etc.
 # include  "../get_next_line/get_next_line.h"
 # include  "../minilibx-linux/mlx.h"
+# include  "../Libft/libft.h"
 //#include "mlx.h"        // MiniLibX
 
 typedef struct path
@@ -32,6 +33,10 @@ typedef struct cub3D
 	int   map_len;
 	
 }   t_cube;
+
+//	ft_set_up_path_2.c
+
+void	ft_split_check(char *line);
 
 
 //	ft_set_up_path.c

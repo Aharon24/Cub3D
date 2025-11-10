@@ -14,6 +14,7 @@ void ft_create_arr_path(char *str)
     len = ft_count_without_white_space(str);
     line = malloc(sizeof( char) * (len + 2));
     ft_make_line(&line, str);
+    ft_split_check(line);
     printf("line ---> %s\n", line);
 }
 
