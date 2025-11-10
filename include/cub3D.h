@@ -13,9 +13,20 @@
 # include  "../minilibx-linux/mlx.h"
 //#include "mlx.h"        // MiniLibX
 
+typedef struct path
+{
+	int no;
+	int so;
+	int we;
+	int ea;
+	int floor;
+	int ceiling;
+}	t_path;
+
 
 typedef struct cub3D
 {
+	t_path Path_xpm;
 	char **c_map;
 	char **Normalayz_map;
 	int   map_len;
@@ -23,11 +34,22 @@ typedef struct cub3D
 }   t_cube;
 
 
+//	ft_set_up_path.c
+void	ft_set_up_path(t_cube *st, int n);
+void	ft_init_xpm(t_cube *st);
+void	ft_create_arr_path(char *str);
+int		ft_count_without_white_space(char *str);
+void    ft_make_line(char **line, char *str);
+
+
+
 //  ft_parsing.c
 
 t_cube	*ft_parsing_map(char **map, t_cube *st);
-int		ft_count_line(char **map);
+int 	ft_count_line(char **map, t_cube *st);
 int		ft_empty(char *str);
+int		ft_check_line(char *str, t_cube *st);
+int		ft_error_file_path(void);
 
 //  ft_validation.c
 
