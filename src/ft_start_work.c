@@ -4,8 +4,8 @@ void	ft_start_work(char *str)
 {
 	int		fd;
 	char	*line;
-	t_cube *st;
-	int i;
+	t_cube	*st;
+	int		i;
 
 	line = NULL;
 	st = NULL;
@@ -32,10 +32,10 @@ void	ft_start_work(char *str)
 	// }
 }
 
-t_cube *ft_create_struct(int fd, t_cube *st)
+t_cube	*ft_create_struct(int fd, t_cube *st)
 {
-	int i;
-	char *line; 
+	int		i;
+	char	*line;
 
 	i = 1;
 	line = get_next_line(fd);
@@ -45,17 +45,17 @@ t_cube *ft_create_struct(int fd, t_cube *st)
 		printf("Empty file\n");
 		return (NULL);
 	}
-	while(line)
-    {
+	while (line)
+	{
 		free(line);
-        line = get_next_line(fd);
+		line = get_next_line(fd);
 		i++;
-    }
+	}
 	if (i > 0)
 	{
 		st = malloc(sizeof(t_cube));
 		//// stil riheybol get_next_line -> (1)
-		st->c_map = malloc(sizeof(char*) * (i + 1));
+		st->c_map = malloc(sizeof(char *) * (i + 1));
 	}
 	if (!st->c_map)
 	{
@@ -66,16 +66,16 @@ t_cube *ft_create_struct(int fd, t_cube *st)
 	return (st);
 }
 
-t_cube *ft_create_map(t_cube *st, char *line, int fd)
+t_cube	*ft_create_map(t_cube *st, char *line, int fd)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	line = get_next_line(fd);
 	st->c_map[i] = line;
-	while(line)
+	while (line)
 	{
-		if(line) 
+		if (line)
 			st->c_map[i] = ft_strdup(line);
 		free(line);
 		line = get_next_line(fd);
