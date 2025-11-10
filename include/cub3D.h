@@ -1,5 +1,5 @@
 
-#ifndef CUB3D_H
+# ifndef CUB3D_H
 # define CUB3D_H
 
 # include <unistd.h>     // read, write, close
@@ -36,13 +36,15 @@ typedef struct cub3D
 
 //	ft_set_up_path_2.c
 
-void	ft_split_check(char *line);
+void	ft_split_check(char *line, t_cube **st);
+void    ft_check_floor_ceiling(char *str);
+
 
 
 //	ft_set_up_path.c
 void	ft_set_up_path(t_cube *st, int n);
 void	ft_init_xpm(t_cube *st);
-void	ft_create_arr_path(char *str);
+void	ft_create_arr_path(char *str, t_cube **st);
 int		ft_count_without_white_space(char *str);
 void    ft_make_line(char **line, char *str);
 
@@ -50,8 +52,8 @@ void    ft_make_line(char **line, char *str);
 
 //  ft_parsing.c
 
-t_cube	*ft_parsing_map(char **map, t_cube *st);
-int 	ft_count_line(char **map, t_cube *st);
+t_cube	*ft_parsing_map(char **map, t_cube **st);
+int		ft_count_line(char **map, t_cube **st);
 int		ft_empty(char *str);
 int		ft_check_line(char *str, t_cube *st);
 int		ft_error_file_path(void);

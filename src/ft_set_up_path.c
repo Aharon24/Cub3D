@@ -1,7 +1,7 @@
 #include "cub3D.h"
 
 
-void ft_create_arr_path(char *str)
+void    ft_create_arr_path(char *str, t_cube **st)
 {
     char *line;
     int len;
@@ -14,7 +14,7 @@ void ft_create_arr_path(char *str)
     len = ft_count_without_white_space(str);
     line = malloc(sizeof( char) * (len + 2));
     ft_make_line(&line, str);
-    ft_split_check(line);
+    ft_split_check(line, st);
     printf("line ---> %s\n", line);
 }
 

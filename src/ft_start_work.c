@@ -23,7 +23,7 @@ void	ft_start_work(char *str)
 		return ;
 	fd = open(str, O_RDONLY);
 	st = ft_create_map(st, line, fd);
-	if (ft_parsing_map(st->c_map, st) == NULL)
+	if (ft_parsing_map(st->c_map, &st) == NULL)
 		return ;
 	// while (st->c_map[i])
 	// {

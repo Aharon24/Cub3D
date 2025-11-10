@@ -1,14 +1,14 @@
 #include "cub3D.h"
 
-t_cube   *ft_parsing_map(char **map, t_cube *st)
+t_cube   *ft_parsing_map(char **map, t_cube **st)
 {
-    ft_init_xpm(st);
+    ft_init_xpm(*st);
     if (ft_count_line(map,st) == -1)
         return (NULL);
-    return (st);
+    return (*st);
 }
 
-int  ft_count_line(char **map, t_cube *st)
+int  ft_count_line(char **map, t_cube **st)
 {
     int i;
     int count;
@@ -18,20 +18,10 @@ int  ft_count_line(char **map, t_cube *st)
     while(map[i])
     {
         if (ft_empty(map[i]) == 1)
-        {
-            //printf("empty %d \n",i);
             i++;
-        }
-        else
+        else if ()
         {
-          //  printf("line %d\n",i);
-            ft_create_arr_path(map[i]);
-            if (ft_check_line(map[i], st) == -1)
-            {
-                ft_error_file_path();
-                return (-1);
-                ///free map **
-            }
+            ft_create_arr_path(map[i], st);
             count++;
             i++;
         }
@@ -53,15 +43,9 @@ int ft_check_line(char *str, t_cube *st)
         ft_set_up_path(st,4);
     else
     {
-        printf("0000\n");
+        printf("GAME MAP\n");
         return (-1);
     }
-    //esle if (t_strncmp(str,"path_to_the_north_texture",26) != 0)
-   // esle if(t_strncmp(str,"path_to_the_north_texture",26) != 0)
-    // else
-    // {
-
-    // }
     return (0);
 }
 
