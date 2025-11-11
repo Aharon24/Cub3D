@@ -43,6 +43,7 @@ typedef struct cub3D
 	int		secont_part;
 	int		start_creating_map;
 	int		color_check;
+	int		path_check;
 	char	**c_map;
 	char	**Normalayz_map;
 	int		map_len;

@@ -4,25 +4,26 @@ void    ft_split_check(char *line, t_cube **st)
 {
     char **arr;
 
-
+	printf("%s\n",line);
     arr = ft_split(line, ' ');
 	//printf(" 0 %s%s ", arr[0],arr[1]);
-	if (ft_strncmp(arr[0],"C",1) == 0)
+	if ((ft_strlen(arr[0]) == 1) && arr[0][0] == 'C')
 	    ft_check_floor_ceiling(st,arr[1],arr[0][0]);
-	else if (ft_strncmp(arr[0],"F",1) == 0)
+	else if ((ft_strlen(arr[0]) == 1) && arr[0][0] == 'F')
 	    ft_check_floor_ceiling(st,arr[1],arr[0][0]);
-	else if (ft_strncmp(arr[0],"NO",2) == 0)
+	else if ((ft_strncmp(arr[0],"NO",2)== 0) && (ft_strlen(arr[0]) == 2))
 		ft_check_line(arr[1],st);
-	else if (ft_strncmp(arr[0],"SO",2) == 0)
+	else if ((ft_strncmp(arr[0],"SO",2)== 0) && (ft_strlen(arr[0]) == 2))
 		ft_check_line(arr[1],st);
-	else if (ft_strncmp(arr[0],"WE",2) == 0)
+	else if ((ft_strncmp(arr[0],"WE",2)== 0) && (ft_strlen(arr[0]) == 2))
 		ft_check_line(arr[1],st);
-	else if (ft_strncmp(arr[0],"EA",2) == 0)
+	else if ((ft_strncmp(arr[0],"EA",2)== 0) && (ft_strlen(arr[0]) == 2))
 		ft_check_line(arr[1],st);
 	else
 	{
+		(*st)->path_check = 1;
 		ft_error_file_path();
-		printf("%s\n",line);
+		printf("%s",line);
 		///free map **
 		return ;
 	}
@@ -99,8 +100,19 @@ int	ft_check_valid_map(char *str , t_cube *st)
 void	ft_check_floor_ceiling(t_cube **st, char *str, char letter)
 {
 	char **line;
+	int i;
 
+	i = 0;
 	line = ft_split(str,',');
+	while(line[i])
+		i++;
+	if (i != 3)
+	{
+		printf("Error\n");
+		printf("you must write 3 number ! ->  %s" ,str);
+		(*st)->color_check = 1;
+		return ;
+	}
 	if (letter == 'C')
 	{
 		(*st)->co.c_1 = ft_atoi(line[0]);

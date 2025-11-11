@@ -34,7 +34,7 @@ int	ft_count_line(char **map, t_cube **st)
 		{
 			printf(" path\n");
 		    ft_create_arr_path(map[i], st);
-			if ((*st)->color_check == 1)
+			if ((*st)->color_check == 1 || (*st)->path_check == 1)
 			{
 				///free()
 				return (-1);
@@ -89,6 +89,6 @@ int	ft_empty(char *str)
 int	ft_error_file_path(void)
 {
 	printf("Error\n");
-	printf("wrong path in map w_s_n_e \n");
+	printf("wrong path in map \n");
 	return (-1);
 }

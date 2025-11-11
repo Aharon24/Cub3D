@@ -7,8 +7,8 @@ WEe ./path_to_the_west_texture
 SO ./path_to_the_south_texture
 NO ./path_to_the_north_texture
 EA ./path_to_the_east_texture
-        F 202,100,0
-        C 225,30,0
+        F       2,100,0          
+        C                    30,0,3  
 
 
         1111111111111111111111111

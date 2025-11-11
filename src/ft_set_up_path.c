@@ -92,4 +92,5 @@ void   ft_init_xpm(t_cube *st)
     st->main_map_check = 0;
     st->color_check = 0;
     st->secont_part = 0;
+    st->path_check = 0;
 }
