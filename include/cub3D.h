@@ -50,7 +50,11 @@ typedef struct cub3D
 	int		main_map_len;
 	//???
 	int		main_map_check;
-	
+	char	*west;
+	char	*south;
+	char	*north;
+	char	*east;
+
 }   t_cube;
 
 //	ft_set_up_path_2.c

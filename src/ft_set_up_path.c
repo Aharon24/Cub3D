@@ -93,4 +93,8 @@ void   ft_init_xpm(t_cube *st)
     st->color_check = 0;
     st->secont_part = 0;
     st->path_check = 0;
+    st->west  = ft_strdup("WE ./path_to_the_west_texture");
+    st->south = ft_strdup("SO ./path_to_the_south_texture");
+    st->north = ft_strdup("NO ./path_to_the_north_texture");
+    st->east  = ft_strdup("EA ./path_to_the_east_texture");
 }

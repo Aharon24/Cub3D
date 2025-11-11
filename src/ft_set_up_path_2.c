@@ -3,7 +3,9 @@
 void    ft_split_check(char *line, t_cube **st)
 {
     char **arr;
+	char c;
 
+	c = 0;
 	printf("%s\n",line);
     arr = ft_split(line, ' ');
 	//printf(" 0 %s%s ", arr[0],arr[1]);
@@ -12,13 +14,13 @@ void    ft_split_check(char *line, t_cube **st)
 	else if ((ft_strlen(arr[0]) == 1) && arr[0][0] == 'F')
 	    ft_check_floor_ceiling(st,arr[1],arr[0][0]);
 	else if ((ft_strncmp(arr[0],"NO",2)== 0) && (ft_strlen(arr[0]) == 2))
-		ft_check_line(arr[1],st);
+		c = ft_check_line(arr[1],st);
 	else if ((ft_strncmp(arr[0],"SO",2)== 0) && (ft_strlen(arr[0]) == 2))
-		ft_check_line(arr[1],st);
+		c = ft_check_line(arr[1],st);
 	else if ((ft_strncmp(arr[0],"WE",2)== 0) && (ft_strlen(arr[0]) == 2))
-		ft_check_line(arr[1],st);
+		c = ft_check_line(arr[1],st);
 	else if ((ft_strncmp(arr[0],"EA",2)== 0) && (ft_strlen(arr[0]) == 2))
-		ft_check_line(arr[1],st);
+		c = ft_check_line(arr[1],st);
 	else
 	{
 		(*st)->path_check = 1;
