@@ -15,7 +15,6 @@ void    ft_create_arr_path(char *str, t_cube **st)
     line = malloc(sizeof( char) * (len + 2));
     ft_make_line(&line, str);
     ft_split_check(line, st);
-    printf("line ---> %s\n", line);
 }
 
 
@@ -66,16 +65,17 @@ int ft_count_without_white_space(char *str)
 }
 
 
-void ft_set_up_path(t_cube *st, int n)
+void ft_set_up_path(t_cube **st, int n)
 {
     if (n == 1)
-        st->Path_xpm.no++;
+        (*st)->Path_xpm.no++;
     else if (n == 2)
-        st->Path_xpm.so++;
+        (*st)->Path_xpm.so++;
     else if (n == 3)
-            st->Path_xpm.we++;
+            (*st)->Path_xpm.we++;
     else if (n == 4)
-        st->Path_xpm.ea++;
+       (*st)->Path_xpm.ea++;
+
 }
 
 
@@ -87,4 +87,9 @@ void   ft_init_xpm(t_cube *st)
     st->Path_xpm.so = 0;
     st->Path_xpm.we = 0;
     st->Path_xpm.ea = 0;
+    st->start_creating_map = 0;
+    st->main_map_len = 0;
+    st->main_map_check = 0;
+    st->color_check = 0;
+    st->secont_part = 0;
 }

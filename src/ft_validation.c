@@ -15,13 +15,16 @@ int	ft_strncmp(char *str, char *str1, int n)
 {
 	int	i;
 
-	i = 0;
 	if (!str || !str1)
 		return (2);
-	while (i < n && str[i] == str1[i])
+	i = 0;
+	while (i < n && str[i] && str1[i] && str[i] == str1[i])
 		i++;
-	return (str[i] - str1[i]);
+	if (i == n)
+		return (0);
+	return ((unsigned char)str[i] - (unsigned char)str1[i]);
 }
+
 
 int	ft_validation(char *argv)
 {
@@ -43,3 +46,33 @@ int	ft_validation(char *argv)
 	}
 	return (0);
 }
+
+int ft_chesk_color_number(int a, int b, int c)
+{
+	if (a < 0 || a > 255)
+	{
+		printf("Error\n");
+		printf("wrong number it must be in size 0-255 -> (%d)\n",a);
+		return (-1);
+	}
+	if (b < 0 || b > 255)
+	{
+		printf("Error\n");
+		printf("wrong number it must be in size 0-255 -> (%d)\n",b);
+		return (-1);
+	}
+	if (c < 0 || c > 255)
+	{
+		printf("Error\n");
+		printf("wrong number it must be in size 0-255 -> (%d)\n",c);
+		return (-1);
+	}
+	return (0);
+}
+
+
+
+// void	ft_chesk_n_s_w_e(t_cube **st)
+// {
+// 	if ((*st) )
+// }

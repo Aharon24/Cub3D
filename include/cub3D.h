@@ -14,6 +14,17 @@
 # include  "../Libft/libft.h"
 //#include "mlx.h"        // MiniLibX
 
+
+typedef struct color
+{
+	int f_1;
+	int f_2;
+	int f_3;
+	int c_1;
+	int c_2;
+	int c_3;
+} t_color;
+
 typedef struct path
 {
 	int no;
@@ -27,22 +38,32 @@ typedef struct path
 
 typedef struct cub3D
 {
-	t_path Path_xpm;
-	char **c_map;
-	char **Normalayz_map;
-	int   map_len;
+	t_path	Path_xpm;
+	t_color co;
+	int		secont_part;
+	int		start_creating_map;
+	int		color_check;
+	char	**c_map;
+	char	**Normalayz_map;
+	int		map_len;
+	int		main_map_len;
+	//???
+	int		main_map_check;
 	
 }   t_cube;
 
 //	ft_set_up_path_2.c
 
 void	ft_split_check(char *line, t_cube **st);
-void    ft_check_floor_ceiling(char *str);
+void	ft_check_floor_ceiling(t_cube **st, char *str, char letter);
+void	ft_creat_main_map(int i, t_cube **st);
+int		ft_check_valid_map(char *str , t_cube *st);
+
 
 
 
 //	ft_set_up_path.c
-void	ft_set_up_path(t_cube *st, int n);
+void	ft_set_up_path(t_cube **st, int n);
 void	ft_init_xpm(t_cube *st);
 void	ft_create_arr_path(char *str, t_cube **st);
 int		ft_count_without_white_space(char *str);
@@ -55,7 +76,7 @@ void    ft_make_line(char **line, char *str);
 t_cube	*ft_parsing_map(char **map, t_cube **st);
 int		ft_count_line(char **map, t_cube **st);
 int		ft_empty(char *str);
-int		ft_check_line(char *str, t_cube *st);
+int		ft_check_line(char *str, t_cube **st);
 int		ft_error_file_path(void);
 
 //  ft_validation.c
@@ -63,6 +84,7 @@ int		ft_error_file_path(void);
 int		ft_strncmp(char *str, char *str1, int n);
 int		ft_validation(char *argv);
 int		ft_chek_file(int fd);
+int		ft_chesk_color_number(int a, int b, int c);
 
 //  ft_start_work.c
 
