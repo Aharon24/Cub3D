@@ -22,20 +22,25 @@ void    ft_make_line(char **line, char *str)
 {
     int i;
     int j;
+    int check;
 
+    check =0;
     i = 0;
     j = 0;
+
     while(str[i])
     {
+
         if ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
             i++;
         else
         {
             (*line)[j] = str[i];
-            if ((str[i + 1]  >= 9 && str[i + 1] <= 13) || str[i +1] == 32)
+            if (((str[i + 1]  >= 9 && str[i + 1] <= 13) || str[i + 1] == 32) && check == 0)
             {
+                check = 1;
                 (*line)[j + 1] = str[i + 1];
-                j++;
+                    j++;
             }
             j++;
             i++;
@@ -97,8 +102,8 @@ void   ft_init_xpm(t_cube *st)
     st->Path_xpm.SO = ft_strdup("SO");
     st->Path_xpm.EA = ft_strdup("EA");
     st->Path_xpm.WE = ft_strdup("WE");
-    st->west  = ft_strdup("./path_to_the_west_texture\n");
-    st->south = ft_strdup("./path_to_the_south_texture\n");
-    st->north = ft_strdup("./path_to_the_north_texture\n");
-    st->east  = ft_strdup("./path_to_the_east_texture\n");
+    st->west  = ft_strdup("./path_to_the_west_texture");
+    st->south = ft_strdup("./path_to_the_south_texture");
+    st->north = ft_strdup("./path_to_the_north_texture");
+    st->east  = ft_strdup("./path_to_the_east_texture");
 }
