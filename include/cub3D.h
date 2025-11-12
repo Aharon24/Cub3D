@@ -14,7 +14,6 @@
 # include  "../Libft/libft.h"
 //#include "mlx.h"        // MiniLibX
 
-
 typedef struct color
 {
 	int f_1;
@@ -33,6 +32,10 @@ typedef struct path
 	int ea;
 	int floor;
 	int ceiling;
+	char	*NO;
+	char	*WE;
+	char	*EA;
+	char	*SO;
 }	t_path;
 
 

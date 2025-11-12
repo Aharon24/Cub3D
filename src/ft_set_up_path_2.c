@@ -8,24 +8,23 @@ void    ft_split_check(char *line, t_cube **st)
 	c = 0;
 	printf("%s\n",line);
     arr = ft_split(line, ' ');
-	//printf(" 0 %s%s ", arr[0],arr[1]);
 	if ((ft_strlen(arr[0]) == 1) && arr[0][0] == 'C')
 	    ft_check_floor_ceiling(st,arr[1],arr[0][0]);
 	else if ((ft_strlen(arr[0]) == 1) && arr[0][0] == 'F')
 	    ft_check_floor_ceiling(st,arr[1],arr[0][0]);
 	else if ((ft_strncmp(arr[0],"NO",2)== 0) && (ft_strlen(arr[0]) == 2))
-		c = ft_check_line(arr[1],st);
+		ft_check_line(arr[1],st);
 	else if ((ft_strncmp(arr[0],"SO",2)== 0) && (ft_strlen(arr[0]) == 2))
-		c = ft_check_line(arr[1],st);
+		ft_check_line(arr[1],st);
 	else if ((ft_strncmp(arr[0],"WE",2)== 0) && (ft_strlen(arr[0]) == 2))
-		c = ft_check_line(arr[1],st);
+		ft_check_line(arr[1],st);
 	else if ((ft_strncmp(arr[0],"EA",2)== 0) && (ft_strlen(arr[0]) == 2))
-		c = ft_check_line(arr[1],st);
+		ft_check_line(arr[1],st);
 	else
 	{
 		(*st)->path_check = 1;
 		ft_error_file_path();
-		printf("%s",line);
+		printf("%s777\n",line);
 		///free map **
 		return ;
 	}
@@ -111,7 +110,7 @@ void	ft_check_floor_ceiling(t_cube **st, char *str, char letter)
 	if (i != 3)
 	{
 		printf("Error\n");
-		printf("you must write 3 number ! ->  %s" ,str);
+		printf("you must write 3 number or numbers should be separated ',' ! ->  %s" ,str);
 		(*st)->color_check = 1;
 		return ;
 	}
