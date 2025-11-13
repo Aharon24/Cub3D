@@ -70,6 +70,25 @@ int ft_chesk_color_number(int a, int b, int c)
 	return (0);
 }
 
+int	ft_check_path_count(t_cube **st)
+{
+	if ((*st)->Path_xpm.ceiling != 1)
+		return (1);
+	else if ((*st)->Path_xpm.floor != 1)
+		return (1);
+	else if ((*st)->Path_xpm.no != 1)
+		return (1);
+	else if ((*st)->Path_xpm.so != 1)
+		return (1);
+	else if ((*st)->Path_xpm.we != 1)
+		return (1);
+	else if ((*st)->Path_xpm.ea != 1)
+		return (1);
+	else
+		return (0);
+}
+
+
 
 
 // void	ft_chesk_n_s_w_e(t_cube **st)

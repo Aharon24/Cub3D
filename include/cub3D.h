@@ -44,6 +44,7 @@ typedef struct cub3D
 	t_path	Path_xpm;
 	t_color co;
 	int		secont_part;
+	int		frst_part;
 	int		start_creating_map;
 	int		color_check;
 	int		path_check;
@@ -53,6 +54,7 @@ typedef struct cub3D
 	int		main_map_len;
 	//???
 	int		main_map_check;
+	int		c;
 	char	*west;
 	char	*south;
 	char	*north;
@@ -66,6 +68,7 @@ void	ft_split_check(char *line, t_cube **st);
 void	ft_check_floor_ceiling(t_cube **st, char *str, char letter);
 void	ft_creat_main_map(int i, t_cube **st);
 int		ft_check_valid_map(char *str , t_cube *st);
+int		ft_check_f_c(char **line, t_cube **st);
 
 
 
@@ -93,6 +96,7 @@ int		ft_strncmp(char *str, char *str1, int n);
 int		ft_validation(char *argv);
 int		ft_chek_file(int fd);
 int		ft_chesk_color_number(int a, int b, int c);
+int		ft_check_path_count(t_cube **st);
 
 //  ft_start_work.c
 

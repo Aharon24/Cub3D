@@ -94,16 +94,20 @@ void   ft_init_xpm(t_cube *st)
     st->Path_xpm.ea = 0;
     st->start_creating_map = 0;
     st->main_map_len = 0;
+    st->c = 0;
     st->main_map_check = 0;
     st->color_check = 0;
     st->secont_part = 0;
     st->path_check = 0;
+    st->Path_xpm.floor = 0;
+    st->Path_xpm.ceiling = 0;
     st->Path_xpm.NO = ft_strdup("NO");
     st->Path_xpm.SO = ft_strdup("SO");
     st->Path_xpm.EA = ft_strdup("EA");
     st->Path_xpm.WE = ft_strdup("WE");
-    st->west  = ft_strdup("./path_to_the_west_texture");
-    st->south = ft_strdup("./path_to_the_south_texture");
-    st->north = ft_strdup("./path_to_the_north_texture");
-    st->east  = ft_strdup("./path_to_the_east_texture");
+    st->west  = ft_strdup("./Path_xpm/west.xpm");
+    st->south = ft_strdup("./Path_xpm/sount.xpm");
+    st->north = ft_strdup("./Path_xpm/north.xpm");
+    st->east  = ft_strdup("./Path_xpm/east.xpm");
+    st->frst_part = 0;
 }

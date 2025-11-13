@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahapetro <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/19 19:55:47 by ahapetro          #+#    #+#              #
-#    Updated: 2025/01/26 15:02:09 by ahapetro         ###   ########.fr        #
+#    Updated: 2025/11/13 14:55:25 by ahapetro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 GCC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS =	ft_calloc.c     ft_isprint.c    ft_memmove.c    ft_putstr_fd.c  ft_strjoin.c \
-		ft_strncmp.c    ft_tolower.c 	ft_isalnum.c    ft_itoa.c       ft_memset.c	 \
+SRCS =	ft_calloc.c     ft_isprint.c    ft_memmove.c    ft_putstr_fd.c \
+		ft_tolower.c 	ft_isalnum.c    ft_itoa.c       ft_memset.c	 \
 		ft_split.c      ft_strlcat.c    ft_strnstr.c    ft_toupper.c	ft_isalpha.c \
 		ft_memchr.c     ft_putchar_fd.c ft_strchr.c     ft_strlcpy.c	ft_strrchr.c \
 		ft_atoi.c       ft_isascii.c    ft_memcmp.c     ft_putendl_fd.c ft_strdup.c  \
@@ -29,19 +29,23 @@ HEADER = libft.h
 all: $(NAME)
 
 $(NAME): $(OBJ)  
-	ar rcs $(NAME) $(OBJ)  
+	@ar rcs $(NAME) $(OBJ)
+	@echo "✅ libft.a created"
 
 bonus: $(OBJ) $(BONUS_OBJ)
 	ar rcs $(NAME) $(OBJ) $(BONUS_OBJ)
 
 %.o:	%.c 
-	$(GCC)	$(CFLAGS) -I.  -c $< -o $@
+	@$(GCC)	$(CFLAGS) -I.  -c $< -o $@
+	@echo "Compiled: $<"
 
 clean:
-	rm -f $(OBJ) $(BONUS_OBJ)
+	@rm -f $(OBJ) $(BONUS_OBJ)
+	@echo "🧹 Object files removed"
 
 fclean: clean
-	rm -f $(NAME) 
+	@rm -f $(NAME)
+	@echo "🗑️  libft.a removed"
 
 re: fclean all
 

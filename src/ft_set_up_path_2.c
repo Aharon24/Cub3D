@@ -6,7 +6,6 @@ void    ft_split_check(char *line, t_cube **st)
 	char c;
 
 	c = 0;
-	printf("%s\n",line);
     arr = ft_split(line, ' ');
 	if ((ft_strlen(arr[0]) == 1) && arr[0][0] == 'C')
 	    ft_check_floor_ceiling(st,arr[1],arr[0][0]);
@@ -24,7 +23,7 @@ void    ft_split_check(char *line, t_cube **st)
 	{
 		(*st)->path_check = 1;
 		ft_error_file_path();
-		printf("%s777\n",line);
+		printf("%s\n",line);
 		///free map **
 		return ;
 	}
@@ -98,23 +97,40 @@ int	ft_check_valid_map(char *str , t_cube *st)
 
 /////
 
+int ft_check_f_c(char **line, t_cube **st)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (line[i])
+	{
+		j = 0;
+		while (line[i][j])
+		{
+			if (line[i][j] >= '0' && line[i][j] <= '9')
+				j++;
+			else
+			{
+				printf("Error\n");
+				printf("It must be number -> %c\n",line[i][j]);
+				(*st)->color_check = 1;
+				return (-1);
+			}
+		}
+		i++;
+	}
+	return(0);
+}
+
 void	ft_check_floor_ceiling(t_cube **st, char *str, char letter)
 {
 	char **line;
 	int i;
-	int j;
-
-
-//??????????????????????????????????????
 	i = 0;
 	line = ft_split(str,',');
-	// while(line[i])
-	// {
-	// 	if (line[i][j] >= '1')
-	// 	printf("%s\n",line[i]);
-	// 	i++;
-	// }
-	//i = 0;
+	if (ft_check_f_c(line, st) == -1)
+		return ;
 	while(line[i])
 		i++;
 	if (i != 3)
@@ -134,6 +150,8 @@ void	ft_check_floor_ceiling(t_cube **st, char *str, char letter)
 			(*st)->color_check = 1;
 			return ;
 		}
+		else
+			(*st)->Path_xpm.ceiling++;
 	}
 	else if(letter == 'F')
 	{
@@ -145,6 +163,8 @@ void	ft_check_floor_ceiling(t_cube **st, char *str, char letter)
 			(*st)->color_check = 1;
 			return ;
 		}
+		else
+			(*st)->Path_xpm.floor++;
 	}
 
 }

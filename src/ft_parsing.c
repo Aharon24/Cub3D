@@ -11,35 +11,35 @@ t_cube	*ft_parsing_map(char **map, t_cube **st)
 int	ft_count_line(char **map, t_cube **st)
 {
 	int	i;
-	int	count;
-	int c;
 
-	c = 0;
 	i = 0;
-	count = 0;
 	while (map[i])
 	{
-		//ft_chesk_n_s_w_e(st);
-		if (ft_empty(map[i]) == 1 && c == 0)
+		if (ft_empty(map[i]) == 1 && (*st)->c == 0)
 			i++;
 		else if(ft_check_valid_map(map[i], *st) == 1)
 		{
+			if(ft_check_path_count(st) != 0)
+			{
+				printf("Error\n");
+				printf("Wrong count path  or color\n");
+				return (-1);
+			}
 			//ft_creat_main_map(i,st);
 			printf("map\n");
 			(*st)->start_creating_map = 1;
-			c = 1;
+			(*st)->c = 1;
 			i++;
 		}
-		else if (c == 0)
+		else if ((*st)->c == 0)
 		{
-			printf(" path\n");
+			printf("path\n");
 		    ft_create_arr_path(map[i], st);
 			if ((*st)->color_check == 1 || (*st)->path_check == 1)
 			{
 				///free()
 				return (-1);
 			}
-		    count++;
 		    i++;
 		}
 		else
