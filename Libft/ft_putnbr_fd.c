@@ -27,9 +27,6 @@ static void	ft_putft(int fd, int len, char *s)
 
 static int	ft_min_zero(int n, int fd)
 {
-	int	i;
-
-	i = 0;
 	if (n == 0)
 	{
 		write(fd, "0", 1);

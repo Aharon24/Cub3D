@@ -5,11 +5,11 @@ void    ft_create_arr_path(char *str, t_cube **st)
 {
     char *line;
     int len;
-    int i;
-    int j;
+    //int i;
+   // int j;
 
-    i = 0;
-    j = 0;
+    //i = 0;
+   // j = 0;
     len = 0;
     len = ft_count_without_white_space(str);
     line = malloc(sizeof( char) * (len + 2));

@@ -1,9 +1,8 @@
 CC = cc
 CFLAGS = -g3 -Wall -Wextra -Werror -Iinclude
 MLXFLAGS = -Lminilibx-linux -lmlx -lXext -lX11 -lm -lbsd
-
-
-
+MLX_DIR = minilibx-linux
+MLX_LIB = $(MLX_DIR)/libmlx.a
 
 
 SRCS = src/main.c src/ft_validation.c   get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
@@ -16,13 +15,18 @@ LIBFT_DIR = Libft
 LIBFT = $(LIBFT_DIR)/libft.a
 NAME = cub3D
 
+
 all: $(NAME)
 
-$(NAME):$(LIBFT) $(OBJS)  
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT)  -o $(NAME) $(MLXFLAGS)
+$(MLX_LIB):
+	@make -C $(MLX_DIR)
+
+
+$(NAME):$(LIBFT) $(OBJS) $(MLX_LIB) 
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_LIB) -o $(NAME) $(MLXFLAGS)
 
 $(OBJDIR)/%.o: %.c | $(OBJDIR)
-	@mkdir -p $(dir $@)
+	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJDIR):

@@ -5,11 +5,11 @@ void	ft_start_work(char *str)
 	int		fd;
 	char	*line;
 	t_cube	*st;
-	int		i;
+	//int		i;
 
 	line = NULL;
 	st = NULL;
-	i = 0;
+	//i = 0;
 	fd = 0;
 	fd = open(str, O_RDONLY);
 	if (ft_chek_file(fd) == -1)

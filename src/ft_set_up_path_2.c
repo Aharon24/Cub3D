@@ -3,9 +3,9 @@
 void    ft_split_check(char *line, t_cube **st)
 {
     char **arr;
-	char c;
+	//char c;
 
-	c = 0;
+	//c = 0;
     arr = ft_split(line, ' ');
 	if ((ft_strlen(arr[0]) == 1) && arr[0][0] == 'C')
 	    ft_check_floor_ceiling(st,arr[1],arr[0][0]);
