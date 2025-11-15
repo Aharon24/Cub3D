@@ -20,11 +20,7 @@ int	ft_count_line(char **map, t_cube **st)
 		else if(ft_check_valid_map(map[i], *st) == 1)
 		{
 			if(ft_check_path_count(st) != 0)
-			{
-				printf("Error\n");
-				printf("Wrong count path  or color\n");
-				return (-1);
-			}
+				return (ft_error(2,i));
 			//ft_creat_main_map(i,st);
 			printf("map\n");
 			(*st)->start_creating_map = 1;
@@ -43,20 +39,13 @@ int	ft_count_line(char **map, t_cube **st)
 		    i++;
 		}
 		else
-		{
-			printf("Error\n");
-			printf("wrong map in map you can use (0,1,N,W,S,E or n,w,s,e and ' ')\n line -> %d",i);
-			return (-1);
-		}
+			return (ft_error(2,i));
 	}
 	return (0);
 }
 
 int	ft_check_line(char *str, t_cube **st)
 {
-	int i;
-
-	i = 0;
 	if (ft_strncmp(str, (*st)->north, ft_strlen((*st)->north)) == 0 && (ft_strlen((*st)->north) == ft_strlen(str)))
 	{
 		ft_set_up_path(st, 1);

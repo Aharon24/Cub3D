@@ -62,6 +62,16 @@ typedef struct cub3D
 
 }   t_cube;
 
+/// ft_error.c
+
+int	ft_error(int subject, int i);
+
+//	ft_set_up_path_3.c
+
+void	ft_set_number(char **line,t_cube **st, char letter);
+void    ft_letter(char letter, char **line, t_cube **st);
+//int	ft_check_len_number(char **line);
+
 //	ft_set_up_path_2.c
 
 void	ft_split_check(char *line, t_cube **st);

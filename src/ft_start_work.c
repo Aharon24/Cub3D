@@ -5,11 +5,9 @@ void	ft_start_work(char *str)
 	int		fd;
 	char	*line;
 	t_cube	*st;
-	//int		i;
 
 	line = NULL;
 	st = NULL;
-	//i = 0;
 	fd = 0;
 	fd = open(str, O_RDONLY);
 	if (ft_chek_file(fd) == -1)
@@ -26,11 +24,6 @@ void	ft_start_work(char *str)
 	close(fd);
 	if (ft_parsing_map(st->c_map, &st) == NULL)
 		return ;
-	// while (st->c_map[i])
-	// {
-	// 	printf("%s\n",st->c_map[i]);
-	// 	i++;
-	// }
 }
 
 t_cube	*ft_create_struct(int fd, t_cube *st)
