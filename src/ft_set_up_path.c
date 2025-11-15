@@ -30,7 +30,6 @@ void    ft_make_line(char **line, char *str)
 
     while(str[i])
     {
-
         if ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
             i++;
         else
@@ -38,9 +37,13 @@ void    ft_make_line(char **line, char *str)
             (*line)[j] = str[i];
             if (((str[i + 1]  >= 9 && str[i + 1] <= 13) || str[i + 1] == 32) && check == 0)
             {
-                check = 1;
-                (*line)[j + 1] = str[i + 1];
+                if (str[i + 2] == '\0')
+                    check = 1;
+                if (str[i + 2] != '\0')
+                {
+                    (*line)[j + 1] = str[i + 1];
                     j++;
+                }
             }
             j++;
             i++;

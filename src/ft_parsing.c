@@ -54,6 +54,9 @@ int	ft_count_line(char **map, t_cube **st)
 
 int	ft_check_line(char *str, t_cube **st)
 {
+	int i;
+
+	i = 0;
 	if (ft_strncmp(str, (*st)->north, ft_strlen((*st)->north)) == 0 && (ft_strlen((*st)->north) == ft_strlen(str)))
 	{
 		ft_set_up_path(st, 1);
