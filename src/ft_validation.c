@@ -25,7 +25,6 @@ int	ft_strncmp(char *str, char *str1, int n)
 	return ((unsigned char)str[i] - (unsigned char)str1[i]);
 }
 
-
 int	ft_validation(char *argv)
 {
 	int	ch;
@@ -47,24 +46,24 @@ int	ft_validation(char *argv)
 	return (0);
 }
 
-int ft_chesk_color_number(int a, int b, int c)
+int	ft_chesk_color_number(int a, int b, int c)
 {
 	if (a < 0 || a > 255)
 	{
 		printf("Error\n");
-		printf("wrong number it must be in size 0-255 -> (%d)\n",a);
+		printf("wrong number it must be in size 0-255 -> (%d)\n", a);
 		return (-1);
 	}
 	if (b < 0 || b > 255)
 	{
 		printf("Error\n");
-		printf("wrong number it must be in size 0-255 -> (%d)\n",b);
+		printf("wrong number it must be in size 0-255 -> (%d)\n", b);
 		return (-1);
 	}
 	if (c < 0 || c > 255)
 	{
 		printf("Error\n");
-		printf("wrong number it must be in size 0-255 -> (%d)\n",c);
+		printf("wrong number it must be in size 0-255 -> (%d)\n", c);
 		return (-1);
 	}
 	return (0);
@@ -72,26 +71,18 @@ int ft_chesk_color_number(int a, int b, int c)
 
 int	ft_check_path_count(t_cube **st)
 {
-	if ((*st)->Path_xpm.ceiling != 1)
+	if ((*st)->path_xpm.ceiling != 1)
 		return (1);
-	else if ((*st)->Path_xpm.floor != 1)
+	else if ((*st)->path_xpm.floor != 1)
 		return (1);
-	else if ((*st)->Path_xpm.no != 1)
+	else if ((*st)->path_xpm.no != 1)
 		return (1);
-	else if ((*st)->Path_xpm.so != 1)
+	else if ((*st)->path_xpm.so != 1)
 		return (1);
-	else if ((*st)->Path_xpm.we != 1)
+	else if ((*st)->path_xpm.we != 1)
 		return (1);
-	else if ((*st)->Path_xpm.ea != 1)
+	else if ((*st)->path_xpm.ea != 1)
 		return (1);
 	else
 		return (0);
 }
-
-
-
-
-// void	ft_chesk_n_s_w_e(t_cube **st)
-// {
-// 	if ((*st) )
-// }

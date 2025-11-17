@@ -31,7 +31,7 @@ void	ft_letter(char letter, char **line, t_cube **st)
 			return ;
 		}
 		else
-			(*st)->Path_xpm.ceiling++;
+			(*st)->path_xpm.ceiling++;
 	}
 	else if (letter == 'F')
 	{
@@ -43,7 +43,7 @@ void	ft_letter(char letter, char **line, t_cube **st)
 			return ;
 		}
 		else
-			(*st)->Path_xpm.floor++;
+			(*st)->path_xpm.floor++;
 	}
 }
 

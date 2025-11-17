@@ -2,27 +2,26 @@
 
 t_cube	*ft_parsing_map(char **map, t_cube **st)
 {
+	int	i;
+
+	i = 0;
 	ft_init_xpm(*st);
-	if (ft_count_line(map, st) == -1)
+	if (ft_count_line(map, st, i) == -1)
 		return (NULL);
 	return (*st);
 }
 
-int	ft_count_line(char **map, t_cube **st)
+int	ft_count_line(char **map, t_cube **st, int i)
 {
-	int	i;
-
-	i = 0;
 	while (map[i])
 	{
 		if (ft_empty(map[i]) == 1 && (*st)->c == 0)
 			i++;
-		else if(ft_check_valid_map(map[i], *st) == 1)
+		else if (ft_check_valid_map(map[i], *st) == 1)
 		{
-			if(ft_check_path_count(st) != 0)
-				return (ft_error(2,i));
-			//ft_creat_main_map(i,st);
 			printf("map\n");
+			if (ft_check_path_count(st) != 0)
+				return (ft_error(2, i));
 			(*st)->start_creating_map = 1;
 			(*st)->c = 1;
 			i++;
@@ -30,16 +29,16 @@ int	ft_count_line(char **map, t_cube **st)
 		else if ((*st)->c == 0)
 		{
 			printf("path\n");
-		    ft_create_arr_path(map[i], st);
+			ft_create_arr_path(map[i], st);
 			if ((*st)->color_check == 1 || (*st)->path_check == 1)
 			{
 				///free()
 				return (-1);
 			}
-		    i++;
+			i++;
 		}
 		else
-			return (ft_error(2,i));
+			return (ft_error(2, i));
 	}
 	return (0);
 }
@@ -65,7 +64,7 @@ int	ft_check_line(char *str, t_cube **st)
 	else
 	{
 		ft_error_file_path();
-		printf ("%s",str);
+		printf ("%s", str);
 		exit(1);
 		return (-1);
 	}

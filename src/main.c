@@ -1,6 +1,6 @@
 #include "cub3D.h"
 
-int main (int ac, char *argv[])
+int	main(int ac, char *argv[])
 {
 	if (ac != 2)
 	{
@@ -11,7 +11,7 @@ int main (int ac, char *argv[])
 	else
 	{
 		if (ft_validation(argv[1]) != 0)
-		return (1);
+			return (1);
 	}
 	ft_start_work(argv[1]);
 	return (0);

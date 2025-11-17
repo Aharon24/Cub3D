@@ -1,27 +1,35 @@
 {
   "configurations": [
     {
-      "name": "Linux-gcc-x64",
-      "includePath": ["${workspaceFolder}/**"],
-      "compilerPath": "/usr/bin/gcc",
+      "name": "windows-gcc-x86",
+      "includePath": [
+        "${workspaceFolder}/**"
+      ],
+      "compilerPath": "C:/MinGW/bin/gcc.exe",
       "cStandard": "${default}",
       "cppStandard": "${default}",
-      "intelliSenseMode": "linux-gcc-x64",
+      "intelliSenseMode": "windows-gcc-x86",
       "browse": {
-        "path": ["${workspaceFolder}/**"],
+        "path": [
+          "${workspaceFolder}/**"
+        ],
         "limitSymbolsToIncludedHeaders": false,
         "databaseFilename": ""
       }
     },
     {
       "name": "Windows-gcc-x86",
-      "includePath": ["${workspaceFolder}/**"],
+      "includePath": [
+        "${workspaceFolder}/**"
+      ],
       "compilerPath": "C:/MinGW/bin/gcc.exe",
       "cStandard": "${default}",
       "cppStandard": "${default}",
       "intelliSenseMode": "windows-gcc-x86",
       "browse": {
-        "path": ["${workspaceFolder}/**"],
+        "path": [
+          "${workspaceFolder}/**"
+        ],
         "limitSymbolsToIncludedHeaders": false,
         "databaseFilename": ""
       }
