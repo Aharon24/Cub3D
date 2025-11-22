@@ -3,32 +3,21 @@
     {
       "name": "windows-gcc-x86",
       "includePath": [
-        "${workspaceFolder}/**"
+        "${workspaceFolder}/include",
+        "${workspaceFolder}/Libft",
+        "${workspaceFolder}/get_next_line",
+        "${workspaceFolder}/minilibx-linux"
       ],
       "compilerPath": "C:/MinGW/bin/gcc.exe",
-      "cStandard": "${default}",
-      "cppStandard": "${default}",
+      "cStandard": "c11",
+      "cppStandard": "c++17",
       "intelliSenseMode": "windows-gcc-x86",
       "browse": {
         "path": [
-          "${workspaceFolder}/**"
-        ],
-        "limitSymbolsToIncludedHeaders": false,
-        "databaseFilename": ""
-      }
-    },
-    {
-      "name": "Windows-gcc-x86",
-      "includePath": [
-        "${workspaceFolder}/**"
-      ],
-      "compilerPath": "C:/MinGW/bin/gcc.exe",
-      "cStandard": "${default}",
-      "cppStandard": "${default}",
-      "intelliSenseMode": "windows-gcc-x86",
-      "browse": {
-        "path": [
-          "${workspaceFolder}/**"
+          "${workspaceFolder}/include",
+          "${workspaceFolder}/Libft",
+          "${workspaceFolder}/get_next_line",
+          "${workspaceFolder}/minilibx-linux"
         ],
         "limitSymbolsToIncludedHeaders": false,
         "databaseFilename": ""
