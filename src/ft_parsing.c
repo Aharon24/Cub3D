@@ -24,8 +24,8 @@ int	ft_count_line(char **map, t_cube **st, int i)
 				return (ft_error(2, i));
 			(*st)->start_creating_map = 1;
 			(*st)->c = 1;
-			ft_map_create_for_moveing(map[i], i, st,map);
-			if ((*st)->map_valid ==1)
+			ft_map_create_for_moveing(map[i], i, st, map);
+			if ((*st)->map_valid == 1)
 				return (-1);
 			i++;
 		}
@@ -44,9 +44,9 @@ int	ft_count_line(char **map, t_cube **st, int i)
 			return (ft_error(2, i));
 	}
 	i = 0;
-	while((*st)->normalayz_map[i])
+	while ((*st)->normalayz_map[i])
 	{
-		printf("%s",(*st)->normalayz_map[i]);
+		printf("%s", (*st)->normalayz_map[i]);
 		i++;
 	}
 	return (0);

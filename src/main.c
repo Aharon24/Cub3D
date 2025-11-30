@@ -1,6 +1,5 @@
 #include "../include/cub3D.h"
 
-
 int	main(int ac, char *argv[])
 {
 	if (ac != 2)
