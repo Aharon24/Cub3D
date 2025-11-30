@@ -44,9 +44,10 @@ typedef struct cub3D
 	int		path_check;
 	char	**c_map;
 	char	**normalayz_map;
+	int		norm_dor;
 	int		map_len;
 	int		main_map_len;
-	//???
+	int		map_valid;
 	int		main_map_check;
 	int		c;
 	char	*west;
@@ -101,5 +102,9 @@ int		ft_check_path_count(t_cube **st);
 void	ft_start_work(char *str);
 t_cube	*ft_create_struct(int fd, t_cube *st);
 t_cube	*ft_create_map(t_cube *st, char *line, int fd);
+
+//	ft_map_for_moving.c
+void 	ft_map_create_for_moveing(char *line,int i, t_cube **st,char **big_map);
+int		ft_valit_line_for_map(char * line);
 
 #endif

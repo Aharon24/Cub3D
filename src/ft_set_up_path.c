@@ -1,4 +1,4 @@
-#include "cub3D.h"
+#include "../include/cub3D.h"
 
 void	ft_create_arr_path(char *str, t_cube **st)
 {
@@ -99,4 +99,5 @@ void	ft_init_xpm(t_cube *st)
 	st->north = ft_strdup("./Path_xpm/north.xpm");
 	st->east = ft_strdup("./Path_xpm/east.xpm");
 	st->frst_part = 0;
+	st->map_valid = 0;
 }
