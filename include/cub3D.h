@@ -6,7 +6,7 @@
 # include <stdlib.h>     // malloc, free, exit
 # include <stdio.h>      // printf, perror
 # include <string.h>     // strerror
-# include <sys/time.h>   // gettimeofday
+# include <sys/time.h>
 # include <math.h>       // sin, cos, sqrt, etc.
 # include "../get_next_line/get_next_line.h"
 # include "../minilibx-linux/mlx.h"

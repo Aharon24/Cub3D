@@ -1,28 +1,34 @@
 {
-  "configurations": [
-    {
-      "name": "windows-gcc-x86",
-      "includePath": [
-        "${workspaceFolder}/include",
-        "${workspaceFolder}/Libft",
-        "${workspaceFolder}/get_next_line",
-        "${workspaceFolder}/minilibx-linux"
-      ],
-      "compilerPath": "C:/MinGW/bin/gcc.exe",
-      "cStandard": "c11",
-      "cppStandard": "c++17",
-      "intelliSenseMode": "windows-gcc-x86",
-      "browse": {
-        "path": [
-          "${workspaceFolder}/include",
-          "${workspaceFolder}/Libft",
-          "${workspaceFolder}/get_next_line",
-          "${workspaceFolder}/minilibx-linux"
-        ],
-        "limitSymbolsToIncludedHeaders": false,
-        "databaseFilename": ""
-      }
-    }
-  ],
-  "version": 4
+    "configurations": [
+        {
+            "name": "Linux-WSL",
+            "includePath": [
+                "${workspaceFolder}/src",
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/Libft",
+                "${workspaceFolder}/get_next_line",
+                "${workspaceFolder}/minilibx-linux",
+                "/usr/include",
+                "/usr/local/include"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/src",
+                    "${workspaceFolder}/include",
+                    "${workspaceFolder}/Libft",
+                    "${workspaceFolder}/get_next_line",
+                    "${workspaceFolder}/minilibx-linux",
+                    "/usr/include",
+                    "/usr/local/include"
+                ],
+                "limitSymbolsToIncludedHeaders": false,
+                "databaseFilename": ""
+            }
+        }
+    ],
+    "version": 4
 }
