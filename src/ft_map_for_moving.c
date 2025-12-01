@@ -7,7 +7,7 @@ int	ft_valit_line_for_map(char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] == '\n' || line[i] == 32)
+		if ((line[i] == '\n' && line[i + 1] == '\0') || line[i] == 32)
 			i++;
 		else if (line[i] == '1' || line[i] == '0')
 			i++;
@@ -48,4 +48,16 @@ void	ft_map_create_for_moveing(char *line, int i, t_cube **st, char **b)
 		l++;
 	}
 	(*st)->normalayz_map[l] = NULL;
+}
+
+
+void ft_flood_fill(char **map)
+{
+	
+}
+
+void	ft_chekc_norm_map_m(char **map)
+{
+	ft_flood_fill(map);
+
 }

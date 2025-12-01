@@ -8,6 +8,7 @@ t_cube	*ft_parsing_map(char **map, t_cube **st)
 	ft_init_xpm(*st);
 	if (ft_count_line(map, st, i) == -1)
 		return (NULL);
+	ft_chekc_norm_map_m((*st)->normalayz_map);
 	return (*st);
 }
 
@@ -42,12 +43,6 @@ int	ft_count_line(char **map, t_cube **st, int i)
 		}
 		else
 			return (ft_error(2, i));
-	}
-	i = 0;
-	while ((*st)->normalayz_map[i])
-	{
-		printf("%s", (*st)->normalayz_map[i]);
-		i++;
 	}
 	return (0);
 }
