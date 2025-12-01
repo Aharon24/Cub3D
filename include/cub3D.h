@@ -13,6 +13,12 @@
 # include "../Libft/libft.h"
 //#include "mlx.h"        // MiniLibX
 
+typedef struct s_map {
+    int rows;
+    int cols;
+}   t_map;
+
+
 typedef struct color
 {
 	int	f_1;
@@ -37,6 +43,7 @@ typedef struct cub3D
 {
 	t_path	path_xpm;
 	t_color	co;
+	t_map	map_s;
 	int		secont_part;
 	int		frst_part;
 	int		start_creating_map;
@@ -44,6 +51,7 @@ typedef struct cub3D
 	int		path_check;
 	char	**c_map;
 	char	**normalayz_map;
+	char 	**map_for_flood;
 	int		norm_dor;
 	int		map_len;
 	int		main_map_len;
@@ -54,6 +62,7 @@ typedef struct cub3D
 	char	*south;
 	char	*north;
 	char	*east;
+
 
 }	t_cube;
 
@@ -104,7 +113,10 @@ t_cube	*ft_create_struct(int fd, t_cube *st);
 t_cube	*ft_create_map(t_cube *st, char *line, int fd);
 
 //	ft_map_for_moving.c
-void 	ft_map_create_for_moveing(char *line,int i, t_cube **st,char **big_map);
+void 	ft_map_create_for_moveing(char *line,int i, t_cube **st, char **big_map);
 int		ft_valit_line_for_map(char * line);
+void ft_flood_fill(t_cube **st, int rows, int x, int y);
+void	ft_chekc_norm_map_m(char **map, t_cube **st);
+void	ft_set_map(char **map, t_cube **st);
 
 #endif

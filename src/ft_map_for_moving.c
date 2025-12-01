@@ -23,6 +23,7 @@ int	ft_valit_line_for_map(char *line)
 	return (0);
 }
 
+
 void	ft_map_create_for_moveing(char *line, int i, t_cube **st, char **b)
 {
 	int			len;
@@ -51,13 +52,64 @@ void	ft_map_create_for_moveing(char *line, int i, t_cube **st, char **b)
 }
 
 
-void ft_flood_fill(char **map)
+void ft_flood_fill(t_cube **st, int rows, int x, int y)
 {
-	
+	int cols;
+
+	if (x < 0 || x >= rows)
+        return ;
+
+	cols = ft_strlen((*st)->map_for_flood[x]);
+	if (y < 0 || y >= cols)
+		return ;
+
+	 if ((*st)->map_for_flood[x][y] != '0')
+	 	return ;
+	// if ((*st)->map_for_flood[x][y] == 'S' || (*st)->map_for_flood[x][y] == 'N'
+	// 		|| (*st)->map_for_flood[x][y] == 'W' || (*st)->map_for_flood[x][y] == 'E'|| (*st)->map_for_flood[x][y] == '\n')
+	// 	return ;
+	// else if ((*st)->map_for_flood[x][y] == 's' || (*st)->map_for_flood[x][y] == 'n'
+	// 		|| (*st)->map_for_flood[x][y] == 'w' || (*st)->map_for_flood[x][y] == 'e' || (*st)->map_for_flood[x][y] == '\n')
+	// 	return ;
+	(*st)->map_for_flood[x][y] = 'V';
+	ft_flood_fill(st, rows, x + 1, y);
+    ft_flood_fill(st, rows, x - 1, y);
+    ft_flood_fill(st, rows, x, y + 1);
+    ft_flood_fill(st, rows, x, y - 1);
 }
 
-void	ft_chekc_norm_map_m(char **map)
-{
-	ft_flood_fill(map);
 
+void ft_set_map(char **map, t_cube **st)
+{
+	int i;
+
+	i = 0;
+
+	while (map[i])
+	{
+		(*st)->map_for_flood[i] = ft_strdup(map[i]);
+		i++;
+	}
+	(*st)->map_for_flood[i] = NULL;
+}
+
+void	ft_chekc_norm_map_m(char **map,t_cube **st)
+{
+	int x;
+	int	i;
+
+	(*st)->map_for_flood = NULL;
+		x = 0;
+	while (map[x])
+    	x++; 
+	(*st)->map_for_flood  = malloc(sizeof(char *) * (x + 1));
+	ft_set_map(map, st);
+	i = 0;
+	ft_flood_fill(st,x,1,1);
+	i = 0;
+	while (map[i])
+	{
+		printf("--%s",(*st)->map_for_flood[i]);
+		i++;
+	}
 }
