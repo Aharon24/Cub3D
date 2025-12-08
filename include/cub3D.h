@@ -107,6 +107,13 @@ int		ft_chek_file(int fd);
 int		ft_chesk_color_number(int a, int b, int c);
 int		ft_check_path_count(t_cube **st);
 
+//	ft_validation_2.c
+
+void	ft_look_map(t_cube **st);
+int		ft_one(char *str);
+void	ft_look_middle(char **map, t_cube **s , int len);
+int		ft_chesk_middle_line(char *line, int index);
+
 //  ft_start_work.c
 void	ft_start_work(char *str);
 t_cube	*ft_create_struct(int fd, t_cube *st);
@@ -115,8 +122,9 @@ t_cube	*ft_create_map(t_cube *st, char *line, int fd);
 //	ft_map_for_moving.c
 void 	ft_map_create_for_moveing(char *line,int i, t_cube **st, char **big_map);
 int		ft_valit_line_for_map(char * line);
-void ft_flood_fill(t_cube **st, int rows, int x, int y);
+void	ft_flood_fill(t_cube **st, int rows, int x, int y);
 void	ft_chekc_norm_map_m(char **map, t_cube **st);
 void	ft_set_map(char **map, t_cube **st);
+char 	*ft_strdup_no_newline(const char *line);
 
 #endif

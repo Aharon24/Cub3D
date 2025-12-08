@@ -45,7 +45,7 @@ void	ft_map_create_for_moveing(char *line, int i, t_cube **st, char **b)
 		(*st)->map_valid = 1;
 	else if (l < len)
 	{
-		(*st)->normalayz_map[l] = ft_strdup(line);
+		(*st)->normalayz_map[l] = ft_strdup_no_newline(line);
 		l++;
 	}
 	(*st)->normalayz_map[l] = NULL;
@@ -65,12 +65,6 @@ void ft_flood_fill(t_cube **st, int rows, int x, int y)
 
 	 if ((*st)->map_for_flood[x][y] != '0')
 	 	return ;
-	// if ((*st)->map_for_flood[x][y] == 'S' || (*st)->map_for_flood[x][y] == 'N'
-	// 		|| (*st)->map_for_flood[x][y] == 'W' || (*st)->map_for_flood[x][y] == 'E'|| (*st)->map_for_flood[x][y] == '\n')
-	// 	return ;
-	// else if ((*st)->map_for_flood[x][y] == 's' || (*st)->map_for_flood[x][y] == 'n'
-	// 		|| (*st)->map_for_flood[x][y] == 'w' || (*st)->map_for_flood[x][y] == 'e' || (*st)->map_for_flood[x][y] == '\n')
-	// 	return ;
 	(*st)->map_for_flood[x][y] = 'V';
 	ft_flood_fill(st, rows, x + 1, y);
     ft_flood_fill(st, rows, x - 1, y);
@@ -106,10 +100,35 @@ void	ft_chekc_norm_map_m(char **map,t_cube **st)
 	ft_set_map(map, st);
 	i = 0;
 	ft_flood_fill(st,x,1,1);
+	ft_look_map(st);
+	// i = 0;
+	// while (map[i])
+	// {
+	// 	printf("--%s\n",(*st)->map_for_flood[i]);
+	// 	i++;
+	// }
+}
+
+char *ft_strdup_no_newline(const char *line) 
+{
+    size_t len;
+	char *copy;
+	size_t i;
+
 	i = 0;
-	while (map[i])
+	len = strlen(line);
+    if (len > 0 && line[len - 1] == '\n')
 	{
-		printf("--%s",(*st)->map_for_flood[i]);
+        len--;
+	}
+	copy = malloc(len + 1);
+    if (!copy)
+        return NULL;
+    while (i < len)
+	{
+		copy[i] = line[i];
 		i++;
 	}
+    copy[len] = '\0';
+    return copy;
 }
