@@ -100,7 +100,7 @@ void	ft_chekc_norm_map_m(char **map,t_cube **st)
 	ft_set_map(map, st);
 	i = 0;
 	ft_flood_fill(st,x,1,1);
-	ft_look_map(st);
+	ft_luck_map(st);
 	// i = 0;
 	// while (map[i])
 	// {

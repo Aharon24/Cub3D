@@ -1,5 +1,26 @@
 #include "../include/cub3D.h"
 
+
+int	ft_chesk_point(char *line)
+{
+	int i;
+	int p;
+
+	p = 0;
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == 'S' || line[i] == 'N'
+			|| line[i] == 'W' || line[i] == 'E')
+			p++;
+		else if (line[i] == 's' || line[i] == 'n'
+			|| line[i] == 'w' || line[i] == 'e')
+			p++;
+		i++;
+	}
+	return (p);
+}
+
 int	ft_chesk_middle_line(char *line, int index)
 {
 	int i;
@@ -26,18 +47,27 @@ int	ft_chesk_middle_line(char *line, int index)
 
 void ft_look_middle(char **map, t_cube **st, int len)
 {
-	int i;
-	int player;
+	int	i;
+	int	player;
 
+	i = 0;
 	player = 0;
+	player += ft_chesk_point(map[i]);
 	printf("%d",(*st)->c);
 	i = 1;
 	while (map[i] && i < len - 1)
 	{
+		player += ft_chesk_point(map[i]);
 		if (ft_chesk_middle_line(map[i],i) == 0)
 			i++;
 		else
 			return ;
+	}
+	if (player != 1)
+	{
+		printf("Error\n");
+		printf("pleeyer must start game in one point not %d\n",player);
+		return ;
 	}
 }
 
@@ -61,7 +91,7 @@ int	ft_one(char *str)
 	return (1);
 }
 
-void	ft_look_map(t_cube **st)
+void	ft_luck_map(t_cube **st)
 {
 	int i;
 	int j;
@@ -77,10 +107,10 @@ void	ft_look_map(t_cube **st)
 		ft_look_middle((*st)->normalayz_map, st, len);
 	else
 		return ;
-	// while((*st)->normalayz_map[i])
-	// {
-	// 	if(i == 0)
-	// 	printf("%s",(*st)->normalayz_map[i]);
-	// 	i++;
-	// }
+	while((*st)->normalayz_map[i])
+	{
+		if(i == 0)
+		printf("%s",(*st)->normalayz_map[i]);
+		i++;
+	}
 }

@@ -20,10 +20,15 @@ void	ft_start_work(char *str)
 	if (st == NULL)
 		return ;
 	fd = open(str, O_RDONLY);
+	ft_init_xpm(&st);
 	st = ft_create_map(st, line, fd);
 	close(fd);
 	if (ft_parsing_map(st->c_map, &st) == NULL)
+	{
+		ft_free_st(&st);
 		return ;
+	}
+	ft_free_st(&st);
 }
 
 t_cube	*ft_create_struct(int fd, t_cube *st)

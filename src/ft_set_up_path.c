@@ -77,27 +77,32 @@ void	ft_set_up_path(t_cube **st, int n)
 		(*st)->path_xpm.ea++;
 }
 
-void	ft_init_xpm(t_cube *st)
+void	ft_init_xpm(t_cube **st)
 {
-	st->path_xpm.floor = 0;
-	st->path_xpm.ceiling = 0;
-	st->path_xpm.no = 0;
-	st->path_xpm.so = 0;
-	st->path_xpm.we = 0;
-	st->path_xpm.ea = 0;
-	st->start_creating_map = 0;
-	st->main_map_len = 0;
-	st->c = 0;
-	st->main_map_check = 0;
-	st->color_check = 0;
-	st->secont_part = 0;
-	st->path_check = 0;
-	st->path_xpm.floor = 0;
-	st->path_xpm.ceiling = 0;
-	st->west = ft_strdup("./Path_xpm/west.xpm");
-	st->south = ft_strdup("./Path_xpm/sount.xpm");
-	st->north = ft_strdup("./Path_xpm/north.xpm");
-	st->east = ft_strdup("./Path_xpm/east.xpm");
-	st->frst_part = 0;
-	st->map_valid = 0;
+	(*st)->path_xpm.floor = 0;
+	(*st)->path_xpm.ceiling = 0;
+	(*st)->path_xpm.no = 0;
+	(*st)->path_xpm.so = 0;
+	(*st)->path_xpm.we = 0;
+	(*st)->path_xpm.ea = 0;
+	(*st)->start_creating_map = 0;
+	(*st)->main_map_len = 0;
+	(*st)->c = 0;
+	(*st)->main_map_check = 0;
+	(*st)->color_check = 0;
+	(*st)->secont_part = 0;
+	(*st)->path_check = 0;
+	(*st)->path_xpm.floor = 0;
+	(*st)->path_xpm.ceiling = 0;
+	// (*st)->west =  NULL;
+	// (*st)->south = NULL;
+	// (*st)->north = NULL;
+	// (*st)->east =  NULL;
+	/////// ??????
+	(*st)->west = ft_strdup("./Path_xpm/west.xpm");
+	(*st)->south = ft_strdup("./Path_xpm/sount.xpm");
+	(*st)->north = ft_strdup("./Path_xpm/north.xpm");
+	(*st)->east = ft_strdup("./Path_xpm/east.xpm");
+	(*st)->frst_part = 0;
+	(*st)->map_valid = 0;
 }

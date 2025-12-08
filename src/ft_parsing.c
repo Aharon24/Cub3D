@@ -5,7 +5,7 @@ t_cube	*ft_parsing_map(char **map, t_cube **st)
 	int	i;
 
 	i = 0;
-	ft_init_xpm(*st);
+	// ft_init_xpm(&st);
 	if (ft_count_line(map, st, i) == -1)
 		return (NULL);
 	ft_chekc_norm_map_m((*st)->normalayz_map,st);

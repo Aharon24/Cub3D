@@ -66,6 +66,11 @@ typedef struct cub3D
 
 }	t_cube;
 
+//	ft_free.c
+
+void	ft_free_st(t_cube **st);
+void	ft_free_two_dimensional_array(char **map);
+
 /// ft_error.c
 
 int		ft_error(int subject, int i);
@@ -86,7 +91,7 @@ int		ft_check_f_c(char **line, t_cube **st);
 
 //	ft_set_up_path.c
 void	ft_set_up_path(t_cube **st, int n);
-void	ft_init_xpm(t_cube *st);
+void	ft_init_xpm(t_cube **st);
 void	ft_create_arr_path(char *str, t_cube **st);
 int		ft_count_without_white_space(char *str);
 void	ft_make_line(char **line, char *s, int i, int j);
@@ -109,10 +114,11 @@ int		ft_check_path_count(t_cube **st);
 
 //	ft_validation_2.c
 
-void	ft_look_map(t_cube **st);
+void	ft_luck_map(t_cube **st);
 int		ft_one(char *str);
 void	ft_look_middle(char **map, t_cube **s , int len);
 int		ft_chesk_middle_line(char *line, int index);
+int		ft_chesk_point(char *line);
 
 //  ft_start_work.c
 void	ft_start_work(char *str);
