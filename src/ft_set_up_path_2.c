@@ -21,11 +21,11 @@ void	ft_split_check(char *line, t_cube **st)
 	{
 		(*st)->path_check = 1;
 		ft_error_file_path();
+		ft_free_two_dimensional_array(arr);
 		printf("%s\n", line);
 		return ;
 	}
-	///free(arr);
-	///free(line);
+	ft_free_two_dimensional_array(arr);
 }
 
 int	ft_check_valid_map(char *str, t_cube *st)
@@ -99,4 +99,5 @@ void	ft_check_floor_ceiling(t_cube **st, char *str, char letter)
 		return ;
 	}
 	ft_letter(letter, line, st);
+	ft_free_two_dimensional_array(line);
 }

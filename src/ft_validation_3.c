@@ -3,11 +3,18 @@
 int ft_chesk_side(char **map, int x, int y, int len_x)
 {
     int len_y;
+    size_t y_y;
 
+    y_y = (size_t)y;
     len_y = ft_strlen(map[x]);
-    if (x - 1 < len_x && x + 1 < len_x  &&  y - 1 < len_y &&  y + 1 < len_y)
+    if (x - 1 >= 0  && x + 1 < len_x  &&  y - 1 >= 0 &&  y + 1 < len_y && len_y <= y)
     {
-        if (map[x][y - 1] == ' ' || map[x][y + 1]  ==  ' ')
+        if (map[x][y] == 'V')
+        {
+            if ((y_y > ft_strlen(map[x + 1])) || (y_y > ft_strlen(map[x - 1])))
+                return (1);
+        }
+        else if (map[x][y - 1] == ' ' || map[x][y + 1]  ==  ' ')
             return (1);
         else if (map[x - 1][y] == ' ' || map[x + 1][y]  ==  ' ')
             return (1);

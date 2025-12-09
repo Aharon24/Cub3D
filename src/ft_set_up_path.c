@@ -14,6 +14,7 @@ void	ft_create_arr_path(char *str, t_cube **st)
 	line = malloc(sizeof(char) * (len + 2));
 	ft_make_line(&line, str, i, j);
 	ft_split_check(line, st);
+	free(line);
 }
 
 void	ft_make_line(char **line, char *s, int i, int j)
@@ -54,13 +55,9 @@ int	ft_count_without_white_space(char *str)
 	len = 0;
 	while (str[i])
 	{
-		if ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-			i++;
-		else
-		{
-			i++;
-			len++;
-		}
+        if (!((str[i] >= 9 && str[i] <= 13) || str[i] == 32))
+            len++;
+        i++;
 	}
 	return (len);
 }
@@ -100,4 +97,5 @@ void	ft_init_xpm(t_cube **st)
 	(*st)->east = ft_strdup("./Path_xpm/east.xpm");
 	(*st)->frst_part = 0;
 	(*st)->map_valid = 0;
+	(*st)->norm_dor = 0;
 }

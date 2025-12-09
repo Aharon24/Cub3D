@@ -29,6 +29,7 @@ void	ft_map_create_for_moveing(char *line, int i, t_cube **st, char **b)
 	int			len;
 	static int	l;
 
+	len = 0;
 	if ((*st)->norm_dor == 0)
 	{
 		(*st)->normalayz_map = NULL;
