@@ -126,6 +126,9 @@ int		ft_chesk_point(char *line);
 
 int		ft_chesk_x_y(char c);
 void	ft_find_player_point(t_cube **st, char **map);
+int		ft_flood_file_chesk(char **map);
+char 	*ft_strdup_no_newline(const char *line);
+int		ft_chesk_side(char **map, int x, int y, int len_x);
 
 //  ft_start_work.c
 void	ft_start_work(char *str);
@@ -136,8 +139,7 @@ t_cube	*ft_create_map(t_cube *st, char *line, int fd);
 void 	ft_map_create_for_moveing(char *line,int i, t_cube **st, char **big_map);
 int		ft_valit_line_for_map(char * line);
 void	ft_flood_fill(t_cube **st, int rows, int x, int y);
-void	ft_chekc_norm_map_m(char **map, t_cube **st);
+int		ft_chekc_norm_map_m(char **map,t_cube **st);
 void	ft_set_map(char **map, t_cube **st);
-char 	*ft_strdup_no_newline(const char *line);
 
 #endif

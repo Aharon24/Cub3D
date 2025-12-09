@@ -87,7 +87,7 @@ void ft_set_map(char **map, t_cube **st)
 	(*st)->map_for_flood[i] = NULL;
 }
 
-void	ft_chekc_norm_map_m(char **map,t_cube **st)
+int	ft_chekc_norm_map_m(char **map,t_cube **st)
 {
 	int x;
 	int	i;
@@ -100,39 +100,24 @@ void	ft_chekc_norm_map_m(char **map,t_cube **st)
 	ft_set_map(map, st);
 	i = 0;
 	if (ft_luck_map(st) == 0)
-		return ;
+		return (1);
 	ft_find_player_point(st,(*st)->normalayz_map);
 	printf("x-> %d  y -> %d\n",(*st)->player_x, (*st)->player_y);
 	ft_flood_fill(st, x, (*st)->player_x, (*st)->player_y);
-	//ft_flood_file_chesk();
 	i = 0;
 	while ((*st)->map_for_flood[i])
 	{
-		printf("--%s\n",(*st)->map_for_flood[i]);
+		printf("--line %d  %s\n",i,(*st)->map_for_flood[i]);
 		i++;
 	}
+	if (ft_flood_file_chesk((*st)->map_for_flood) == 1)
+		return (1);
+	// i = 0;
+	// while ((*st)->map_for_flood[i])
+	// {
+	// 	printf("--%s\n",(*st)->map_for_flood[i]);
+	// 	i++;
+	// }
+	return (0);
 }
 
-char *ft_strdup_no_newline(const char *line) 
-{
-    size_t len;
-	char *copy;
-	size_t i;
-
-	i = 0;
-	len = strlen(line);
-    if (len > 0 && line[len - 1] == '\n')
-	{
-        len--;
-	}
-	copy = malloc(len + 1);
-    if (!copy)
-        return NULL;
-    while (i < len)
-	{
-		copy[i] = line[i];
-		i++;
-	}
-    copy[len] = '\0';
-    return copy;
-}

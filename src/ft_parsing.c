@@ -8,7 +8,8 @@ t_cube	*ft_parsing_map(char **map, t_cube **st)
 	// ft_init_xpm(&st);
 	if (ft_count_line(map, st, i) == -1)
 		return (NULL);
-	ft_chekc_norm_map_m((*st)->normalayz_map,st);
+	if (ft_chekc_norm_map_m((*st)->normalayz_map,st) == 1)
+		return (NULL);
 	return (*st);
 }
 
