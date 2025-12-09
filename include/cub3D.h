@@ -116,11 +116,16 @@ int		ft_check_path_count(t_cube **st);
 
 //	ft_validation_2.c
 
-int	ft_luck_map(t_cube **st);
+int		ft_luck_map(t_cube **st);
 int		ft_one(char *str);
-void	ft_look_middle(char **map, t_cube **s , int len);
+void	ft_look_middle(char **map, int len);
 int		ft_chesk_middle_line(char *line, int index);
-int		ft_chesk_point(char *line, t_cube **st);
+int		ft_chesk_point(char *line);
+
+//	ft_validation_3.c
+
+int		ft_chesk_x_y(char c);
+void	ft_find_player_point(t_cube **st, char **map);
 
 //  ft_start_work.c
 void	ft_start_work(char *str);

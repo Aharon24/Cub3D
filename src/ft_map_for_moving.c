@@ -63,7 +63,7 @@ void ft_flood_fill(t_cube **st, int rows, int x, int y)
 	if (y < 0 || y >= cols)
 		return ;
 
-	if ((*st)->map_for_flood[x][y] != '0' && (*st)->map_for_flood[x][y] != 'N')
+	if ((*st)->map_for_flood[x][y] != '0' && ft_chesk_x_y((*st)->map_for_flood[x][y]))
 	 	return ;
 	(*st)->map_for_flood[x][y] = 'V';
 	ft_flood_fill(st, rows, x + 1, y);
@@ -101,8 +101,10 @@ void	ft_chekc_norm_map_m(char **map,t_cube **st)
 	i = 0;
 	if (ft_luck_map(st) == 0)
 		return ;
-	printf("x-> %d  y -> %d",(*st)->player_x, (*st)->player_y);
+	ft_find_player_point(st,(*st)->normalayz_map);
+	printf("x-> %d  y -> %d\n",(*st)->player_x, (*st)->player_y);
 	ft_flood_fill(st, x, (*st)->player_x, (*st)->player_y);
+	//ft_flood_file_chesk();
 	i = 0;
 	while ((*st)->map_for_flood[i])
 	{
