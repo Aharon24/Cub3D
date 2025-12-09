@@ -63,7 +63,7 @@ void ft_flood_fill(t_cube **st, int rows, int x, int y)
 	if (y < 0 || y >= cols)
 		return ;
 
-	 if ((*st)->map_for_flood[x][y] != '0')
+	if ((*st)->map_for_flood[x][y] != '0' && (*st)->map_for_flood[x][y] != 'N')
 	 	return ;
 	(*st)->map_for_flood[x][y] = 'V';
 	ft_flood_fill(st, rows, x + 1, y);
@@ -99,14 +99,16 @@ void	ft_chekc_norm_map_m(char **map,t_cube **st)
 	(*st)->map_for_flood  = malloc(sizeof(char *) * (x + 1));
 	ft_set_map(map, st);
 	i = 0;
-	ft_flood_fill(st,x,1,1);
-	ft_luck_map(st);
-	// i = 0;
-	// while (map[i])
-	// {
-	// 	printf("--%s\n",(*st)->map_for_flood[i]);
-	// 	i++;
-	// }
+	if (ft_luck_map(st) == 0)
+		return ;
+	printf("x-> %d  y -> %d",(*st)->player_x, (*st)->player_y);
+	ft_flood_fill(st, x, (*st)->player_x, (*st)->player_y);
+	i = 0;
+	while ((*st)->map_for_flood[i])
+	{
+		printf("--%s\n",(*st)->map_for_flood[i]);
+		i++;
+	}
 }
 
 char *ft_strdup_no_newline(const char *line) 

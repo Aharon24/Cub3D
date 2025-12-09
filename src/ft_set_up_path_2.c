@@ -22,7 +22,6 @@ void	ft_split_check(char *line, t_cube **st)
 		(*st)->path_check = 1;
 		ft_error_file_path();
 		printf("%s\n", line);
-		///free map **
 		return ;
 	}
 	///free(arr);

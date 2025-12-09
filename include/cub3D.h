@@ -44,6 +44,8 @@ typedef struct cub3D
 	t_path	path_xpm;
 	t_color	co;
 	t_map	map_s;
+	int 	player_x;
+	int 	player_y;
 	int		secont_part;
 	int		frst_part;
 	int		start_creating_map;
@@ -114,11 +116,11 @@ int		ft_check_path_count(t_cube **st);
 
 //	ft_validation_2.c
 
-void	ft_luck_map(t_cube **st);
+int	ft_luck_map(t_cube **st);
 int		ft_one(char *str);
 void	ft_look_middle(char **map, t_cube **s , int len);
 int		ft_chesk_middle_line(char *line, int index);
-int		ft_chesk_point(char *line);
+int		ft_chesk_point(char *line, t_cube **st);
 
 //  ft_start_work.c
 void	ft_start_work(char *str);

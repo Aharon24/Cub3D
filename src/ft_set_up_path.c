@@ -94,11 +94,6 @@ void	ft_init_xpm(t_cube **st)
 	(*st)->path_check = 0;
 	(*st)->path_xpm.floor = 0;
 	(*st)->path_xpm.ceiling = 0;
-	// (*st)->west =  NULL;
-	// (*st)->south = NULL;
-	// (*st)->north = NULL;
-	// (*st)->east =  NULL;
-	/////// ??????
 	(*st)->west = ft_strdup("./Path_xpm/west.xpm");
 	(*st)->south = ft_strdup("./Path_xpm/sount.xpm");
 	(*st)->north = ft_strdup("./Path_xpm/north.xpm");

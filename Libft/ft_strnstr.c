@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahapetro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 19:47:03 by ahapetro          #+#    #+#             */
-/*   Updated: 2025/01/30 20:15:48 by ahapetro         ###   ########.fr       */
+/*   Updated: 2025/12/09 13:13:17 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,3 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (NULL);
 }
-/* 
-int main(void)
-{
-	char a[] = "Hello  World";
-	char b[] = "World";
-	char *p;
-	char *p1;
-	int i = 0;	
-	 
-	p = ft_strnstr("", "tu", -1);
-	p1 = strnstr("", "tu", -1);
-	
-		printf("%s",p);
-		printf("%s",p1);
-
-
-
-} 
-*/
