@@ -30,7 +30,7 @@ for folder in test_folders:
     for file in os.listdir(folder_path):
         file_path = os.path.join(folder_path, file)
         # Определяем, что тест должен провалиться
-        fail_keywords = ["no_access", "wrong", ".txt", "empty"]
+        fail_keywords = ["no_access", "wrong", "wrnog", ".txt", "empty","Error"]
         should_fail = any(k in file for k in fail_keywords)
         tests_file.append(([file_path], should_fail, file))
 
