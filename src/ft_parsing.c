@@ -1,15 +1,18 @@
 #include "../include/cub3D.h"
 
+
 t_cube	*ft_parsing_map(char **map, t_cube **st)
 {
 	int	i;
 
 	i = 0;
-	// ft_init_xpm(&st);
+	if (ft_empty_chesk(map) == 1)
+		return (NULL);
 	if (ft_count_line(map, st, i) == -1)
 		return (NULL);
 	if (ft_chekc_norm_map_m((*st)->normalayz_map,st) == 1)
 		return (NULL);
+	
 	return (*st);
 }
 
@@ -80,7 +83,7 @@ int	ft_empty(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		if ((str[i] >= 9 && str[i] <= 13) || str[i] == 32 || str[i] == '\n')
 			i++;
 		else
 			return (0);
@@ -88,9 +91,4 @@ int	ft_empty(char *str)
 	return (1);
 }
 
-int	ft_error_file_path(void)
-{
-	printf("Error\n");
-	printf("wrong path in map \n");
-	return (-1);
-}
+

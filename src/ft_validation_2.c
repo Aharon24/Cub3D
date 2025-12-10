@@ -105,8 +105,10 @@ int	ft_luck_map(t_cube **st)
 	j = 0;
 	len = 0;
 	while((*st)->normalayz_map[len])
+	{
+		printf("%s \n",(*st)->normalayz_map[len]);
 		len++;
-
+	}
 	if ((ft_one((*st)->normalayz_map[len - 1])) && (ft_one((*st)->normalayz_map[i])))
 		ft_look_middle((*st)->normalayz_map, len);
 	else

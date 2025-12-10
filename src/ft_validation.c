@@ -42,6 +42,7 @@ int	ft_validation(char *argv)
 	{
 		printf("Error\n");
 		printf("Wrong file\n");
+		return (1);
 	}
 	return (0);
 }

@@ -20,6 +20,7 @@ int	ft_valit_line_for_map(char *line)
 		else
 			return (1);
 	}
+	printf("0\n");
 	return (0);
 }
 
@@ -29,6 +30,7 @@ void	ft_map_create_for_moveing(char *line, int i, t_cube **st, char **b)
 	int			len;
 	static int	l;
 
+	///// ##############################  len
 	len = 0;
 	if ((*st)->norm_dor == 0)
 	{
@@ -42,16 +44,17 @@ void	ft_map_create_for_moveing(char *line, int i, t_cube **st, char **b)
 		(*st)->normalayz_map = malloc(sizeof(char *) * (len + 1));
 		(*st)->norm_dor = 1;
 	}
+	printf(" l- %d len - > %d\n",l,len);
 	if (ft_valit_line_for_map(line) == 1)
 		(*st)->map_valid = 1;
 	else if (l < len)
 	{
 		(*st)->normalayz_map[l] = ft_strdup_no_newline(line);
+		printf("norm arr[L] %s\n",(*st)->normalayz_map[l]);
 		l++;
-	}
+	}	
 	(*st)->normalayz_map[l] = NULL;
 }
-
 
 void ft_flood_fill(t_cube **st, int rows, int x, int y)
 {
@@ -72,7 +75,6 @@ void ft_flood_fill(t_cube **st, int rows, int x, int y)
     ft_flood_fill(st, rows, x, y + 1);
     ft_flood_fill(st, rows, x, y - 1);
 }
-
 
 void ft_set_map(char **map, t_cube **st)
 {
@@ -95,30 +97,16 @@ int	ft_chekc_norm_map_m(char **map,t_cube **st)
 
 	(*st)->map_for_flood = NULL;
 		x = 0;
-	while (map[x])
-    	x++; 
 	(*st)->map_for_flood  = malloc(sizeof(char *) * (x + 1));
 	ft_set_map(map, st);
 	i = 0;
 	if (ft_luck_map(st) == 0)
 		return (1);
 	ft_find_player_point(st,(*st)->normalayz_map);
-	printf("x-> %d  y -> %d\n",(*st)->player_x, (*st)->player_y);
 	ft_flood_fill(st, x, (*st)->player_x, (*st)->player_y);
 	i = 0;
-	while ((*st)->map_for_flood[i])
-	{
-		printf("--line %d  %s\n",i,(*st)->map_for_flood[i]);
-		i++;
-	}
 	if (ft_flood_file_chesk((*st)->map_for_flood) == 1)
 		return (1);
-	// i = 0;
-	// while ((*st)->map_for_flood[i])
-	// {
-	// 	printf("--%s\n",(*st)->map_for_flood[i]);
-	// 	i++;
-	// }
 	return (0);
 }
 

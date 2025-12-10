@@ -1,0 +1,6 @@
+WE ./Path_xpm/west.xpm
+SO ./Path_xpm/sount.xpm
+NO ./Path_xpm/north.xpm
+EA ./Path_xpm/east.xpm
+        F 10,4,1
+        C 1,1,1,,,,,,,,,,,,

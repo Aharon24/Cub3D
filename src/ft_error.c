@@ -10,7 +10,14 @@ int	ft_error(int subject, int i)
 	else if (subject == 2)
 	{
 		printf("Error\n");
-		printf("wrong map only(0,1,N,W,S,E or n,w,s,e and' ')\n line ->%d", i);
+		printf("wrong map only(0,1,N,W,S,E or n,w,s,e and' ')\nline -> %d", i);
 	}
+	return (-1);
+}
+
+int	ft_error_file_path(void)
+{
+	printf("Error\n");
+	printf("wrong path in map \n");
 	return (-1);
 }

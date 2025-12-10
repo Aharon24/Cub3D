@@ -76,20 +76,21 @@ void	ft_free_two_dimensional_array(char **map);
 /// ft_error.c
 
 int		ft_error(int subject, int i);
+int		ft_error_file_path(void);
 
 //	ft_set_up_path_3.c
 
 void	ft_set_number(char **line, t_cube **st, char letter);
 void	ft_letter(char letter, char **line, t_cube **st);
-//int	ft_check_len_number(char **line);
+
 
 //	ft_set_up_path_2.c
 
 void	ft_split_check(char *line, t_cube **st);
-void	ft_check_floor_ceiling(t_cube **st, char *str, char letter);
-void	ft_creat_main_map(int i, t_cube **st);
 int		ft_check_valid_map(char *str, t_cube *st);
 int		ft_check_f_c(char **line, t_cube **st);
+void	ft_check_floor_ceiling(t_cube **st, char *str, char letter);
+int		ft_count_comma(char *str);
 
 //	ft_set_up_path.c
 void	ft_set_up_path(t_cube **st, int n);
@@ -100,11 +101,10 @@ void	ft_make_line(char **line, char *s, int i, int j);
 
 //  ft_parsing.c
 
+int		ft_check_line(char *str, t_cube **st);
 t_cube	*ft_parsing_map(char **map, t_cube **st);
 int		ft_count_line(char **map, t_cube **st, int i);
 int		ft_empty(char *str);
-int		ft_check_line(char *str, t_cube **st);
-int		ft_error_file_path(void);
 
 //  ft_validation.c
 
@@ -130,13 +130,17 @@ int		ft_flood_file_chesk(char **map);
 char 	*ft_strdup_no_newline(const char *line);
 int		ft_chesk_side(char **map, int x, int y, int len_x);
 
+//	ft_validation_4.c
+
+int ft_empty_chesk(char **map);
+
 //  ft_start_work.c
 void	ft_start_work(char *str);
 t_cube	*ft_create_struct(int fd, t_cube *st);
 t_cube	*ft_create_map(t_cube *st, char *line, int fd);
 
 //	ft_map_for_moving.c
-void 	ft_map_create_for_moveing(char *line,int i, t_cube **st, char **big_map);
+void 	ft_map_create_for_moveing(char *line,int i, t_cube **st, char **b);
 int		ft_valit_line_for_map(char * line);
 void	ft_flood_fill(t_cube **st, int rows, int x, int y);
 int		ft_chekc_norm_map_m(char **map,t_cube **st);

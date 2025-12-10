@@ -86,6 +86,8 @@ void	ft_check_floor_ceiling(t_cube **st, char *str, char letter)
 	int		i;
 
 	i = 0;
+	if (ft_count_comma(str) == 1)
+		return ;
 	line = ft_split(str, ',');
 	if (ft_check_f_c(line, st) == -1)
 		return ;
@@ -100,4 +102,22 @@ void	ft_check_floor_ceiling(t_cube **st, char *str, char letter)
 	}
 	ft_letter(letter, line, st);
 	ft_free_two_dimensional_array(line);
+}
+
+int	ft_count_comma(char *str)
+{
+	int i;
+	int c;
+
+	c = 0;
+	i = 0;
+	while( str[i])
+	{
+		if (str[i] == ',')
+			c++;
+		i++;
+	}
+	if (c != 2)
+		return (1);
+	return (0);
 }

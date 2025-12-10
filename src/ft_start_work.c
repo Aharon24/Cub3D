@@ -22,6 +22,12 @@ void	ft_start_work(char *str)
 	fd = open(str, O_RDONLY);
 	ft_init_xpm(&st);
 	st = ft_create_map(st, line, fd);
+	if (st == NULL)
+	{
+		printf("Error\n");
+		printf("wrnog map \n");
+		return ;
+	}
 	close(fd);
 	if (ft_parsing_map(st->c_map, &st) == NULL)
 	{
@@ -81,5 +87,7 @@ t_cube	*ft_create_map(t_cube *st, char *line, int fd)
 		i++;
 	}
 	st->c_map[i] = NULL;
+	if (i < 9)
+		return (NULL);
 	return (st);
 }
