@@ -29,11 +29,7 @@ void	ft_start_work(char *str)
 		return ;
 	}
 	close(fd);
-	if (ft_parsing_map(st->c_map, &st) == NULL)
-	{
-		ft_free_st(&st);
-		return ;
-	}
+	ft_parsing_map(st->c_map, &st);
 	ft_free_st(&st);
 }
 

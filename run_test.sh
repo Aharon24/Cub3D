@@ -12,8 +12,12 @@ fi
 
 echo "Running Cub3D tests..."
 
-# Запускаем Python-тесты
-python3 test/test_file.py
+# Если аргумент есть — передаём его в Python
+if [ $# -gt 0 ]; then
+    python3 test/test_file.py "$1"
+else
+    python3 test/test_file.py
+fi
 
 # Возвращаем код выхода последней команды
 exit $?

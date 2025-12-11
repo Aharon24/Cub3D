@@ -12,7 +12,6 @@ t_cube	*ft_parsing_map(char **map, t_cube **st)
 		return (NULL);
 	if (ft_chekc_norm_map_m((*st)->normalayz_map,st) == 1)
 		return (NULL);
-	
 	return (*st);
 }
 
@@ -70,7 +69,6 @@ int	ft_check_line(char *str, t_cube **st)
 	{
 		ft_error_file_path();
 		printf ("%s", str);
-		exit(1);
 		return (-1);
 	}
 	return (0);

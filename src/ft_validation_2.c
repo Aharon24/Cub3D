@@ -34,10 +34,10 @@ int	ft_chesk_middle_line(char *line, int index)
 			printf("wrong line in map %s index -> %d\n", line, index);
 			return (1);
 		}
-		else if ( line[i + 1] == '\0' && line[i] != '1')
+		else if (line[i + 1] == '\0' && line[i] != '1' && line[i] != ' ')
 		{
 			printf("Error\n");
-			printf("wrong line in map %s index -> %d\n", line, index);
+			printf("wrong line in map  %s index -> %d\n", line, index);
 			return (1);
 		}
 		i++;
@@ -106,7 +106,7 @@ int	ft_luck_map(t_cube **st)
 	len = 0;
 	while((*st)->normalayz_map[len])
 	{
-		printf("%s \n",(*st)->normalayz_map[len]);
+		// printf("%s \n",(*st)->normalayz_map[len]);
 		len++;
 	}
 	if ((ft_one((*st)->normalayz_map[len - 1])) && (ft_one((*st)->normalayz_map[i])))
