@@ -55,9 +55,9 @@ int	ft_count_without_white_space(char *str)
 	len = 0;
 	while (str[i])
 	{
-        if (!((str[i] >= 9 && str[i] <= 13) || str[i] == 32))
-            len++;
-        i++;
+		if (!((str[i] >= 9 && str[i] <= 13) || str[i] == 32))
+			len++;
+		i++;
 	}
 	return (len);
 }
@@ -91,6 +91,13 @@ void	ft_init_xpm(t_cube **st)
 	(*st)->path_check = 0;
 	(*st)->path_xpm.floor = 0;
 	(*st)->path_xpm.ceiling = 0;
+	//(*st)->c_map = NULL;
+	(*st)->map_for_flood = NULL;
+	(*st)->normalayz_map = NULL;
+	(*st)->west = NULL;
+	(*st)->south = NULL;
+	(*st)->north = NULL;
+	(*st)->east = NULL;
 	(*st)->west = ft_strdup("./Path_xpm/west.xpm");
 	(*st)->south = ft_strdup("./Path_xpm/sount.xpm");
 	(*st)->north = ft_strdup("./Path_xpm/north.xpm");

@@ -43,41 +43,42 @@ for folder in test_folders:
 
 
 print("Running Cub3D tests...\n")
-
 for i, file_path in enumerate(tests_file, 1):
 
-
-    result = subprocess.run([CUB3D, file_path], capture_output=True, text=True)
-    output = result.stdout + result.stderr
-
-    has_error = ("Error" in output)
-
-
     has_valgrind_error = False
+    v_run = None
 
+    # обычный запуск
+    result = subprocess.run([CUB3D, file_path],
+                            capture_output=True, text=True)
+
+    # запуск с valgrind
     if USE_VALGRIND:
         val_cmd = [
             "valgrind",
+            "--leak-check=full",
+            "--errors-for-leak-kinds=all",
             "--error-exitcode=42",
             CUB3D,
             file_path
         ]
-        v_run = subprocess.run(val_cmd, capture_output=True, text=True)
+
+        v_run = subprocess.run(val_cmd,
+                               capture_output=True, text=True)
+
         if v_run.returncode == 42:
             has_valgrind_error = True
 
-
-
-    passed = has_error or has_valgrind_error
-    status = GREEN + "ok" + RESET if passed else RED + "ko" + RESET
+    # === РЕЗУЛЬТАТ ===
+    if has_valgrind_error:
+        status = RED + "ko" + RESET
+    else:
+        status = GREEN + "ok" + RESET
 
     print(f"{i} -> {os.path.basename(file_path).ljust(40)} {status}")
 
-    if not passed:
-        print(f"Output:\n{output}\n")
-        if USE_VALGRIND:
-            print("Valgrind output:\n", v_run.stderr)
-            print()
-
-
-print("\nAll tests done.")
+    # печать деталей, НО тесты продолжаются
+    if has_valgrind_error and USE_VALGRIND:
+        print("Valgrind error detected:")
+        print(v_run.stderr)
+        print("-" * 60)

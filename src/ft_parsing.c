@@ -1,6 +1,5 @@
 #include "../include/cub3D.h"
 
-
 t_cube	*ft_parsing_map(char **map, t_cube **st)
 {
 	int	i;
@@ -10,7 +9,7 @@ t_cube	*ft_parsing_map(char **map, t_cube **st)
 		return (NULL);
 	if (ft_count_line(map, st, i) == -1)
 		return (NULL);
-	if (ft_chekc_norm_map_m((*st)->normalayz_map,st) == 1)
+	if (ft_chekc_norm_map_m((*st)->normalayz_map, st) == 1)
 		return (NULL);
 	return (*st);
 }
@@ -49,22 +48,24 @@ int	ft_count_line(char **map, t_cube **st, int i)
 
 int	ft_check_line(char *str, t_cube **st)
 {
-	if (ft_strncmp(str, (*st)->north, ft_strlen((*st)->north)) == 0 && (ft_strlen((*st)->north) == ft_strlen(str)))
+	if (ft_strncmp(str, (*st)->north, ft_strlen((*st)->north)) == 0
+		&& (ft_strlen((*st)->north) == ft_strlen(str)))
 	{
 		ft_set_up_path(st, 1);
 	}
-	else if (ft_strncmp(str, (*st)->south, ft_strlen((*st)->south)) == 0 && (ft_strlen((*st)->south) == ft_strlen(str)))
+	else if (ft_strncmp(str, (*st)->south, ft_strlen((*st)->south)) == 0
+		&& (ft_strlen((*st)->south) == ft_strlen(str)))
 	{
 		ft_set_up_path(st, 2);
 	}
-	else if (ft_strncmp(str, (*st)->west, ft_strlen((*st)->west)) == 0 && (ft_strlen((*st)->west) == ft_strlen(str)))
+	else if (ft_strncmp(str, (*st)->west, ft_strlen((*st)->west)) == 0
+		&& (ft_strlen((*st)->west) == ft_strlen(str)))
 	{
 		ft_set_up_path(st, 3);
 	}
-	else if (ft_strncmp(str, (*st)->east, ft_strlen((*st)->east)) == 0 && (ft_strlen((*st)->east) == ft_strlen(str)))
-	{
+	else if (ft_strncmp(str, (*st)->east, ft_strlen((*st)->east)) == 0
+		&& (ft_strlen((*st)->east) == ft_strlen(str)))
 		ft_set_up_path(st, 4);
-	}
 	else
 	{
 		ft_error_file_path();
@@ -88,5 +89,3 @@ int	ft_empty(char *str)
 	}
 	return (1);
 }
-
-

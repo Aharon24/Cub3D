@@ -106,12 +106,12 @@ void	ft_check_floor_ceiling(t_cube **st, char *str, char letter)
 
 int	ft_count_comma(char *str)
 {
-	int i;
-	int c;
+	int	i;
+	int	c;
 
 	c = 0;
 	i = 0;
-	while( str[i])
+	while (str[i])
 	{
 		if (str[i] == ',')
 			c++;

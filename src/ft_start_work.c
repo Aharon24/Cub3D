@@ -26,6 +26,7 @@ void	ft_start_work(char *str)
 	{
 		printf("Error\n");
 		printf("wrong map \n");
+		close(fd);
 		return ;
 	}
 	close(fd);
@@ -55,7 +56,6 @@ t_cube	*ft_create_struct(int fd, t_cube *st)
 	if (i > 0)
 	{
 		st = malloc(sizeof(t_cube));
-		//// stil riheybol get_next_line -> (1)
 		st->c_map = malloc(sizeof(char *) * (i + 1));
 	}
 	if (!st->c_map)
@@ -63,7 +63,6 @@ t_cube	*ft_create_struct(int fd, t_cube *st)
 		printf("malloc problem");
 		return (NULL);
 	}
-	//close(fd);
 	return (st);
 }
 
