@@ -21,11 +21,11 @@ void	ft_start_work(char *str)
 		return ;
 	fd = open(str, O_RDONLY);
 	ft_init_xpm(&st);
-	st = ft_create_map(st, line, fd);
+	st = ft_create_map(&st, line, fd);
 	if (st == NULL)
 	{
 		printf("Error\n");
-		printf("wrnog map \n");
+		printf("wrong map \n");
 		return ;
 	}
 	close(fd);
@@ -67,23 +67,26 @@ t_cube	*ft_create_struct(int fd, t_cube *st)
 	return (st);
 }
 
-t_cube	*ft_create_map(t_cube *st, char *line, int fd)
+t_cube	*ft_create_map(t_cube **st, char *line, int fd)
 {
 	int	i;
 
 	i = 0;
 	line = get_next_line(fd);
-	st->c_map[i] = line;
+	(*st)->c_map[i] = line;
 	while (line)
 	{
 		if (line)
-			st->c_map[i] = ft_strdup(line);
+			(*st)->c_map[i] = ft_strdup(line);
 		free(line);
 		line = get_next_line(fd);
 		i++;
 	}
-	st->c_map[i] = NULL;
+	(*st)->c_map[i] = NULL;
 	if (i < 9)
+	{
+		ft_free_st(st);
 		return (NULL);
-	return (st);
+	}
+	return (*st);
 }

@@ -46,17 +46,13 @@ print("Running Cub3D tests...\n")
 
 for i, file_path in enumerate(tests_file, 1):
 
-    # ────────────────────────────────
-    # 1) Запуск обычного cub3D
-    # ────────────────────────────────
+
     result = subprocess.run([CUB3D, file_path], capture_output=True, text=True)
     output = result.stdout + result.stderr
 
     has_error = ("Error" in output)
 
-    # ────────────────────────────────
-    # 2) Запуск через Valgrind (если включено)
-    # ────────────────────────────────
+
     has_valgrind_error = False
 
     if USE_VALGRIND:
@@ -71,9 +67,7 @@ for i, file_path in enumerate(tests_file, 1):
             has_valgrind_error = True
 
 
-    # ────────────────────────────────
-    # 3) Общий итог теста
-    # ────────────────────────────────
+
     passed = has_error or has_valgrind_error
     status = GREEN + "ok" + RESET if passed else RED + "ko" + RESET
 
