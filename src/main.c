@@ -2,6 +2,9 @@
 
 int	main(int ac, char *argv[])
 {
+	t_cube	*stt;
+
+	stt = NULL;
 	if (ac != 2)
 	{
 		printf("Error\n");
@@ -15,6 +18,10 @@ int	main(int ac, char *argv[])
 			return (1);
 		}
 	}
-	ft_start_work(argv[1]);
+	stt = ft_start_work(argv[1]);
+	if (stt == NULL)
+		return (1);
+	ft_game(stt);
+	ft_free_st(&stt);
 	return (0);
 }

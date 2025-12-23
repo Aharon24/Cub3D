@@ -6,6 +6,7 @@ int	ft_chek_file(int fd)
 	{
 		printf("Error\n");
 		printf("Permission denied file dont have Permission for reding\n");
+		close(fd);
 		return (-1);
 	}
 	return (0);

@@ -1,6 +1,6 @@
 #include "../include/cub3D.h"
 
-void	ft_start_work(char *str)
+t_cube 	*ft_start_work(char *str)
 {
 	int		fd;
 	char	*line;
@@ -11,27 +11,20 @@ void	ft_start_work(char *str)
 	fd = 0;
 	fd = open(str, O_RDONLY);
 	if (ft_chek_file(fd) == -1)
-	{
-		close(fd);
-		return ;
-	}
+		return (NULL);
 	st = ft_create_struct(fd, st);
 	close(fd);
 	if (st == NULL)
-		return ;
+		return (NULL);
 	fd = open(str, O_RDONLY);
 	ft_init_xpm(&st);
 	st = ft_create_map(&st, line, fd);
 	if (st == NULL)
-	{
-		printf("Error\n");
-		printf("wrong map \n");
-		close(fd);
-		return ;
-	}
+		return (ft_st_null(fd));
 	close(fd);
 	ft_parsing_map(st->c_map, &st);
-	ft_free_st(&st);
+	//ft_free_st(&st); ????  
+	return (st);
 }
 
 t_cube	*ft_create_struct(int fd, t_cube *st)

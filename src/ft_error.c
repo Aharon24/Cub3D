@@ -21,3 +21,12 @@ int	ft_error_file_path(void)
 	printf("wrong path in map \n");
 	return (-1);
 }
+
+
+t_cube  *ft_st_null(int fd)
+{
+	printf("Error\n");
+	printf("wrong map \n");
+	close(fd);
+	return (NULL);
+}
