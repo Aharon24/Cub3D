@@ -92,17 +92,5 @@ void	ft_init_xpm(t_cube **st)
 	(*st)->path_xpm.floor = 0;
 	(*st)->path_xpm.ceiling = 0;
 	//(*st)->c_map = NULL;
-	(*st)->map_for_flood = NULL;
-	(*st)->normalayz_map = NULL;
-	(*st)->west = NULL;
-	(*st)->south = NULL;
-	(*st)->north = NULL;
-	(*st)->east = NULL;
-	(*st)->west = ft_strdup("./Path_xpm/west.xpm");
-	(*st)->south = ft_strdup("./Path_xpm/sount.xpm");
-	(*st)->north = ft_strdup("./Path_xpm/north.xpm");
-	(*st)->east = ft_strdup("./Path_xpm/east.xpm");
-	(*st)->frst_part = 0;
-	(*st)->map_valid = 0;
-	(*st)->norm_dor = 0;
+	ft_init_xpm_one(st);
 }

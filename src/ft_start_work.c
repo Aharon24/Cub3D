@@ -1,6 +1,6 @@
 #include "../include/cub3D.h"
 
-t_cube 	*ft_start_work(char *str)
+t_cube	*ft_start_work(char *str)
 {
 	int		fd;
 	char	*line;
@@ -52,10 +52,7 @@ t_cube	*ft_create_struct(int fd, t_cube *st)
 		st->c_map = malloc(sizeof(char *) * (i + 1));
 	}
 	if (!st->c_map)
-	{
-		printf("malloc problem");
-		return (NULL);
-	}
+		return (ft_error_start_work());
 	return (st);
 }
 

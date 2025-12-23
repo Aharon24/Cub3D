@@ -68,8 +68,7 @@ void	ft_look_middle(char **map, int len)
 	}
 	if (player != 1)
 	{
-		printf("Error\n");
-		printf("pleeyer must start game in one point not %d\n", player);
+		ft_error_validation_two(player);
 		return ;
 	}
 }

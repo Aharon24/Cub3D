@@ -1,5 +1,11 @@
 #include "../include/cub3D.h"
 
+void	ft_one_for_parsing(t_cube **st)
+{
+	(*st)->start_creating_map = 1;
+	(*st)->c = 1;
+}
+
 t_cube	*ft_parsing_map(char **map, t_cube **st)
 {
 	int	i;
@@ -22,11 +28,9 @@ int	ft_count_line(char **map, t_cube **st, int i)
 			i++;
 		else if (ft_check_valid_map(map[i], *st) == 1)
 		{
-			printf("map\n");
 			if (ft_check_path_count(st) != 0)
 				return (ft_error(2, i));
-			(*st)->start_creating_map = 1;
-			(*st)->c = 1;
+			ft_one_for_parsing(st);
 			ft_map_create_for_moveing(map[i], i, st, map);
 			if ((*st)->map_valid == 1)
 				return (-1);
@@ -34,7 +38,6 @@ int	ft_count_line(char **map, t_cube **st, int i)
 		}
 		else if ((*st)->c == 0)
 		{
-			printf("path\n");
 			ft_create_arr_path(map[i], st);
 			if ((*st)->color_check == 1 || (*st)->path_check == 1)
 				return (-1);

@@ -21,7 +21,7 @@ int	main(int ac, char *argv[])
 	stt = ft_start_work(argv[1]);
 	if (stt == NULL)
 		return (1);
-	ft_game(stt);
+	ft_game(&stt);
 	ft_free_st(&stt);
 	return (0);
 }

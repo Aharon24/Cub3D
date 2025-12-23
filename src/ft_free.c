@@ -16,7 +16,7 @@ void	ft_free_two_dimensional_array(char **map)
 	free(map);
 }
 
-void	ft_free_st(t_cube **st)
+void	ft_free_arr_map(t_cube **st)
 {
 	if ((*st)->c_map)
 	{
@@ -38,6 +38,11 @@ void	ft_free_st(t_cube **st)
 		free((*st)->west);
 		(*st)->west = NULL;
 	}
+}
+
+void	ft_free_st(t_cube **st)
+{
+	ft_free_arr_map(st);
 	if ((*st)->south)
 	{
 		free((*st)->south);

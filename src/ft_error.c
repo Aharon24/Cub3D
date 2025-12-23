@@ -22,11 +22,22 @@ int	ft_error_file_path(void)
 	return (-1);
 }
 
-
-t_cube  *ft_st_null(int fd)
+t_cube	*ft_st_null(int fd)
 {
 	printf("Error\n");
 	printf("wrong map \n");
 	close(fd);
+	return (NULL);
+}
+
+void	ft_error_validation_two(int player)
+{
+	printf("Error\n");
+	printf("pleeyer must start game in one point not %d\n", player);
+}
+
+t_cube	*ft_error_start_work(void)
+{
+	printf("malloc problem");
 	return (NULL);
 }
