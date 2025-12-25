@@ -23,6 +23,14 @@ typedef struct s_game
 	void *mlx;
 	void *win;
 	void *img;
+	int win_x;
+	int win_y;
+	char *data;
+	int bpp;
+	int size_len;
+	int endian;
+	int f_color;
+	int c_color;
 }	t_game;
 
 typedef struct s_color
@@ -71,6 +79,8 @@ typedef struct cub3D
 	char	*south;
 	char	*north;
 	char	*east;
+	int		f_pix_x;
+	int		c_pix_x;
 }	t_cube;
 
 //	ft_free.c
@@ -158,12 +168,18 @@ int		ft_chekc_norm_map_m(char **map,t_cube **st);
 void	ft_set_map(char **map, t_cube **st);
 
 //	ft_map_for_moving_1.c
-
 void ft_zero(int *len , int *l);
 
-//	ft_game.c
 
+//	ft_game.c
 void	ft_game(t_cube **stt);
 void	ft_create_window(t_cube **stt);
+
+
+//	ft_draw.c
+void	put_pixel(int x, int y, int color, t_game *game);
+int		get_color(int r, int g, int b);
+void	ft_draw_floor_cealing(t_cube **stt);
+void	ft_draw_part(t_cube **stt, int color);
 
 #endif
