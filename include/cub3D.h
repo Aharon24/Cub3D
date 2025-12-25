@@ -27,8 +27,8 @@ typedef struct s_game
 	int win_y;
 	char *data;
 	int bpp;
-	int size_len;
-	int endian;
+	int s_l;
+	int e_d;
 	int f_color;
 	int c_color;
 }	t_game;
@@ -58,7 +58,7 @@ typedef struct cub3D
 	t_path	path_xpm;
 	t_color	co;
 	t_map	map_s;
-	t_game 	game;
+	t_game 	g;
 	int 	player_x;
 	int 	player_y;
 	int		secont_part;
@@ -180,6 +180,8 @@ void	ft_create_window(t_cube **stt);
 void	put_pixel(int x, int y, int color, t_game *game);
 int		get_color(int r, int g, int b);
 void	ft_draw_floor_cealing(t_cube **stt);
-void	ft_draw_part(t_cube **stt, int color);
+void    ft_draw_part(t_cube **stt, int color, char c);
+void    ft_draw_c(int color, t_cube **stt, int i, int j);
+void    ft_draw_f(int color, t_cube **stt, int i, int j);
 
 #endif
