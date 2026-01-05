@@ -200,11 +200,13 @@ void    ft_draw_part(t_cube **stt, int color, char c);
 void    ft_draw_c(int color, t_cube **stt, int i, int j);
 void    ft_draw_f(int color, t_cube **stt, int i, int j);
 
-
-
+//	ft_draw_2.c
+void ft_draw_square(int x, int y, int size, int color, t_cube **st);
+int ft_draw_loop(t_cube **st);
 //	ft_key_press.c 
 int		key_press(int keycode, t_cube **st);
 int		ft_key_update(int keycode, t_cube **st);
+void	ft_move_player(t_cube **st);
 
 //	ft_player.c
 void	ft_init_player(t_player *player, t_cube **st);

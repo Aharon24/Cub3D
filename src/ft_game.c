@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 14:40:56 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/05 15:11:20 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/05 16:42:06 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ void	ft_game(t_cube **stt)
 	ft_create_window(stt);
 	ft_draw_floor_cealing(stt);
 	ft_player_key_click(&(*stt)->player, stt);
+	ft_draw_loop(stt);
 	// ft_craete_game_map(stt);
+	//ft_draw_square(1600 /2, 1600 / 2, 10, 0x00FFFF, stt);
 	mlx_loop((*stt)->g.mlx);
 }
 
