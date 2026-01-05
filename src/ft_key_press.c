@@ -2,10 +2,9 @@
 
 void	ft_move_player(t_cube **st)
 {
-	int size_walk;
+	int	size_walk;
 
 	size_walk = 5;
-
 	if ((*st)->player.p_up)
 		(*st)->player.p_y -= size_walk;
 	if ((*st)->player.p_down)
@@ -20,7 +19,7 @@ void	ft_move_player(t_cube **st)
 
 // }
 
-int ft_key_update(int keycode, t_cube **st)
+int	ft_key_update(int keycode, t_cube **st)
 {
 	if (keycode == 119)
 		(*st)->player.p_up = false;
@@ -33,7 +32,7 @@ int ft_key_update(int keycode, t_cube **st)
 	return (0);
 }
 
-int key_press(int keycode, t_cube **st)
+int	key_press(int keycode, t_cube **st)
 {
 	/*
 		W 119
@@ -42,34 +41,16 @@ int key_press(int keycode, t_cube **st)
 		D 100
 	*/
 	if (keycode == 119)
-	{
 		(*st)->player.p_up = true;
-		// ft_move_player(st);
-	}
 	else if (keycode == 97)
-	{
 		(*st)->player.p_left = true;
-		// ft_move_player(st);
-	}
 	else if (keycode == 115)
-	{
 		(*st)->player.p_down = true;
-		// ft_move_player(st);
-	}
 	else if (keycode == 100)
-	{
 		(*st)->player.p_rigth = true;
-		// ft_move_player(st);
-	}
-	else if(keycode == 65361) // <
-	{
+	else if (keycode == 65361) // <
 		(*st)->player.left = true;
-		// ft_move_player(st);
-	}
 	else if (keycode == 65363) // >
-	{
 		(*st)->player.rigth = true;
-		//ft_move_player(st);
-	}
 	return (0);
 }

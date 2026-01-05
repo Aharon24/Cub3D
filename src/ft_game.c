@@ -6,22 +6,18 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 14:40:56 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/05 16:42:06 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/05 17:48:34 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3D.h"
 
-
-
-
 void	ft_player_key_click(t_player *player, t_cube **st)
-{	
+{
 	ft_init_player(player, st);
-	mlx_hook((*st)->g.win, 2, 1L<<0, key_press, &st);
-	mlx_hook((*st)->g.win, 3, 1L<<1, ft_key_update, &st);
+	mlx_hook((*st)->g.win, 2, 1L << 0, key_press, &st);
+	mlx_hook((*st)->g.win, 3, 1L << 1, ft_key_update, &st);
 	mlx_loop_hook((*st)->g.win, ft_draw_loop, st);
-	
 }
 
 
