@@ -11,7 +11,21 @@
 # include "../get_next_line/get_next_line.h"
 # include "../minilibx-linux/mlx.h"
 # include "../Libft/libft.h"
+# include <stdbool.h>
 //#include "mlx.h"        // MiniLibX
+
+
+typedef struct s_player
+{
+	int p_x;
+	int p_y;
+	bool p_up;
+	bool p_down;
+	bool p_left;
+	bool p_rigth;
+	bool left;
+	bool rigth;
+}	t_player;
 
 typedef struct s_map {
     int rows;
@@ -55,32 +69,33 @@ typedef struct s_path
 
 typedef struct cub3D
 {
-	t_path	path_xpm;
-	t_color	co;
-	t_map	map_s;
-	t_game 	g;
-	int 	player_x;
-	int 	player_y;
-	int		secont_part;
-	int		frst_part;
-	int		start_creating_map;
-	int		color_check;
-	int		path_check;
-	char	**c_map;
-	char	**normalayz_map;
-	char 	**map_for_flood;
-	int		norm_dor;
-	int		map_len;
-	int		main_map_len;
-	int		map_valid;
-	int		main_map_check;
-	int		c;
-	char	*west;
-	char	*south;
-	char	*north;
-	char	*east;
-	int		f_pix_x;
-	int		c_pix_x;
+	t_path		path_xpm;
+	t_color		co;
+	t_map		map_s;
+	t_game		g;
+	t_player	player;
+	int 		player_x;
+	int 		player_y;
+	int			secont_part;
+	int			frst_part;
+	int			start_creating_map;
+	int			color_check;
+	int			path_check;
+	char		**c_map;
+	char		**normalayz_map;
+	char 		**map_for_flood;
+	int			norm_dor;
+	int			map_len;
+	int			main_map_len;
+	int			map_valid;
+	int			main_map_check;
+	int			c;
+	char		*west;
+	char		*south;
+	char		*north;
+	char		*east;
+	int			f_pix_x;
+	int			c_pix_x;
 }	t_cube;
 
 //	ft_free.c
@@ -174,14 +189,24 @@ void ft_zero(int *len , int *l);
 //	ft_game.c
 void	ft_game(t_cube **stt);
 void	ft_create_window(t_cube **stt);
+void	ft_draw_floor_cealing(t_cube **stt);
+void	ft_player_key_click(t_player *player, t_cube **st);
 
 
 //	ft_draw.c
 void	put_pixel(int x, int y, int color, t_game *game);
 int		get_color(int r, int g, int b);
-void	ft_draw_floor_cealing(t_cube **stt);
 void    ft_draw_part(t_cube **stt, int color, char c);
 void    ft_draw_c(int color, t_cube **stt, int i, int j);
 void    ft_draw_f(int color, t_cube **stt, int i, int j);
+
+
+
+//	ft_key_press.c 
+int		key_press(int keycode, t_cube **st);
+int		ft_key_update(int keycode, t_cube **st);
+
+//	ft_player.c
+void	ft_init_player(t_player *player, t_cube **st);
 
 #endif

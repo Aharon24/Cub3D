@@ -6,15 +6,24 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 14:40:56 by ahapetro          #+#    #+#             */
-/*   Updated: 2025/12/25 17:14:51 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/05 15:11:20 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3D.h"
 
-// void	ft_craete_game_map(t_cube **stt)
-// {
-// }
+
+
+
+void	ft_player_key_click(t_player *player, t_cube **st)
+{	
+	ft_init_player(player, st);
+	mlx_hook((*st)->g.win, 2, 1L<<0, key_press, &st);
+	mlx_hook((*st)->g.win, 3, 1L<<1, ft_key_update, &st);
+	mlx_loop_hook((*st)->g.win, ft_draw_loop, st);
+	
+}
+
 
 void	ft_draw_floor_cealing(t_cube **stt)
 {
@@ -45,6 +54,7 @@ void	ft_game(t_cube **stt)
 	(*stt)->c_pix_x = (*stt)->g.win_x;
 	ft_create_window(stt);
 	ft_draw_floor_cealing(stt);
+	ft_player_key_click(&(*stt)->player, stt);
 	// ft_craete_game_map(stt);
 	mlx_loop((*stt)->g.mlx);
 }
