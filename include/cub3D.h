@@ -12,13 +12,28 @@
 # include "../minilibx-linux/mlx.h"
 # include "../Libft/libft.h"
 # include <stdbool.h>
+
+# define PI 3.14159265359
+# define DEBUG 0
+# define WIDTH 2600
+# define HEIGHT 1800
+# define BLOCK 64
+# define DEBUG 0
+# define W 119
+# define A 97
+# define S 115
+# define D 100
+# define LEFT 65361
+# define RIGHT 65363
+
 //#include "mlx.h"        // MiniLibX
 
 
 typedef struct s_player
 {
-	int p_x;
-	int p_y;
+   	float x;
+    float y;
+    float angle;
 	bool p_up;
 	bool p_down;
 	bool p_left;

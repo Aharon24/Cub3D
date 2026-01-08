@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 17:41:51 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/05 17:44:21 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/08 18:23:45 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,25 @@
 
 int	ft_draw_loop(t_cube **st)
 {
-	ft_move_player(st);
-	ft_draw_square((*st)->player.p_x, (*st)->player.p_y, 5, 0x00FFFF, st);
-	mlx_put_image_to_window((*st)->g.mlx, (*st)->g.win, (*st)->g.img, 0, 0);
+	t_player *player = &(*st)->player;
+    move_player(player);
+    clear_image((*st)->g);
+    if(DEBUG)
+    {
+        ft_draw_square(player->x, player->y, 10, 0x00FF00, st);
+        ft_draw_map(st);
+    }
+    float fraction = PI / 3 / WIDTH;
+    float start_x = player->angle - PI / 6;
+    int i = 0;
+    while(i < WIDTH)
+    {
+        draw_line(player, game, start_x, i);
+        start_x += fraction;
+        i++;
+    }
+    mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
+    return 0;
 	return (0);
 }
 
