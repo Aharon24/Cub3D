@@ -13,12 +13,12 @@
 # include "../Libft/libft.h"
 # include <stdbool.h>
 
-# define PI 3.14159265359
-# define DEBUG 0
-# define WIDTH 2600
-# define HEIGHT 1800
+
+# define WIDTH 1280
+# define HEIGHT 720
 # define BLOCK 64
 # define DEBUG 0
+
 # define W 119
 # define A 97
 # define S 115
@@ -26,20 +26,24 @@
 # define LEFT 65361
 # define RIGHT 65363
 
+# define PI 3.14159265359
+
 //#include "mlx.h"        // MiniLibX
 
 
 typedef struct s_player
 {
-   	float x;
+    float x;
     float y;
     float angle;
-	bool p_up;
-	bool p_down;
-	bool p_left;
-	bool p_rigth;
-	bool left;
-	bool rigth;
+
+    bool key_up;
+    bool key_down;
+    bool key_left;
+    bool key_right;
+
+    bool left_rotate;
+    bool right_rotate;
 }	t_player;
 
 typedef struct s_map {
@@ -60,6 +64,7 @@ typedef struct s_game
 	int e_d;
 	int f_color;
 	int c_color;
+	t_player	player;
 }	t_game;
 
 typedef struct s_color
@@ -87,8 +92,7 @@ typedef struct cub3D
 	t_path		path_xpm;
 	t_color		co;
 	t_map		map_s;
-	t_game		g;
-	t_player	player;
+	t_game		*g;
 	int 		player_x;
 	int 		player_y;
 	int			secont_part;
@@ -203,27 +207,29 @@ void ft_zero(int *len , int *l);
 
 //	ft_game.c
 void	ft_game(t_cube **stt);
-void	ft_create_window(t_cube **stt);
+void	ft_init_game(t_game *g);
+int 	ft_draw_loop(t_game *game);
+
 void	ft_draw_floor_cealing(t_cube **stt);
-void	ft_player_key_click(t_player *player, t_cube **st);
+
 
 
 //	ft_draw.c
 void	put_pixel(int x, int y, int color, t_game *game);
 int		get_color(int r, int g, int b);
-void    ft_draw_part(t_cube **stt, int color, char c);
-void    ft_draw_c(int color, t_cube **stt, int i, int j);
-void    ft_draw_f(int color, t_cube **stt, int i, int j);
+void	ft_draw_part(t_game *g, int color, char c);
+void	ft_draw_c(int color, t_game *g, int i, int j);
+void	ft_draw_f(int color, t_game *g, int i, int j);
 
-//	ft_draw_2.c
-void ft_draw_square(int x, int y, int size, int color, t_cube **st);
-int ft_draw_loop(t_cube **st);
-//	ft_key_press.c 
-int		key_press(int keycode, t_cube **st);
-int		ft_key_update(int keycode, t_cube **st);
-void	ft_move_player(t_cube **st);
+
+// ft_draw_2.c
+void	ft_draw_square(int x, int y, int size, int color, t_game *game);
 
 //	ft_player.c
-void	ft_init_player(t_player *player, t_cube **st);
+void	ft_init_player(t_player *player);
+int		key_press(int keycode, t_game *game);
+int		ft_key_release(int keycode, t_game *game);
+void	ft_move_player(t_player *player);
+
 
 #endif
