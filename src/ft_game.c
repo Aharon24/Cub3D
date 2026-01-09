@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 14:40:56 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/09 13:37:56 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/09 14:35:19 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ int ft_draw_loop(t_game *game)
 
 	player = &game->player;
 	ft_move_player(player);
-	
 	ft_clear_image(game);
-	
-	ft_draw_square(player->x, player->y, 20, 0x00FF00, game);
-	ft_draw_map(game);
-
+	if (DEBUG)
+	{
+		ft_draw_map(game);
+		ft_draw_square(player->x / 4, player->y / 4, 3, 0x00FF00, game);
+	}
 	fraction = PI / 3 / WIDTH;
 	start_x = game->player.angle - PI / 6;
 	i = 0;
@@ -67,7 +67,6 @@ int ft_draw_loop(t_game *game)
 		start_x += fraction;
 		i++;
 	}
-
 	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 	return (0);
 }

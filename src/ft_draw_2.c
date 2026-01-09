@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 17:41:51 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/09 12:53:58 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/09 14:28:26 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void ft_draw_map(t_game *g)
 {
-	int color = 0X0000FF;
+	int color = 0XFFFFFF;
 	int i;
 	int j;
 	
@@ -27,7 +27,7 @@ void ft_draw_map(t_game *g)
 		while (g->map[i][j])
 		{
 			if (g->map[i][j] == '1')
-				ft_draw_square(j * BLOCK, i * BLOCK, BLOCK, color, g);
+				ft_draw_square(j * BLOCK / 4, i * BLOCK/ 4, BLOCK / 4, color, g);
 			j++;
 		}
 		i++;

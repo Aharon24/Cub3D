@@ -14,8 +14,8 @@
 # include <stdbool.h>
 
 
-# define WIDTH 1289
-# define HEIGHT 720
+# define WIDTH 1920
+# define HEIGHT 1680
 # define BLOCK 64
 # define DEBUG 0
 
@@ -233,6 +233,8 @@ void	ft_draw_map(t_game *g);
 //	ft_draw_3.c
 bool	ft_touch(float px, float py, t_game *game);
 void	ft_draw_line(t_player *player, t_game *game, float start_x, int i);
+float	ft_distance(float x, float y);
+float	fixed_dist(float x1, float y1, float x2, float y2, t_game *game);
 
 
 
