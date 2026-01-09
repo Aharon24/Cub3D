@@ -14,7 +14,7 @@
 # include <stdbool.h>
 
 
-# define WIDTH 1280
+# define WIDTH 1289
 # define HEIGHT 720
 # define BLOCK 64
 # define DEBUG 0
@@ -64,6 +64,7 @@ typedef struct s_game
 	int e_d;
 	int f_color;
 	int c_color;
+	char **map;
 	t_player	player;
 }	t_game;
 
@@ -209,6 +210,8 @@ void ft_zero(int *len , int *l);
 void	ft_game(t_cube **stt);
 void	ft_init_game(t_game *g);
 int 	ft_draw_loop(t_game *game);
+void	ft_clear_image(t_game *game);
+
 
 void	ft_draw_floor_cealing(t_cube **stt);
 
@@ -224,6 +227,14 @@ void	ft_draw_f(int color, t_game *g, int i, int j);
 
 // ft_draw_2.c
 void	ft_draw_square(int x, int y, int size, int color, t_game *game);
+void	ft_draw_map(t_game *g);
+
+
+//	ft_draw_3.c
+bool	ft_touch(float px, float py, t_game *game);
+void	ft_draw_line(t_player *player, t_game *game, float start_x, int i);
+
+
 
 //	ft_player.c
 void	ft_init_player(t_player *player);

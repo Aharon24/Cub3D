@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 14:12:43 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/09 11:46:39 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/09 12:45:58 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	ft_draw_part(t_game *g, int color, char c)
 	else
 		ft_draw_f(color, g, i, j);
 }
+
 
 void	put_pixel(int x, int y, int color, t_game *game)
 {
