@@ -16,7 +16,7 @@
 
 # define WIDTH 1920
 # define HEIGHT 1680
-# define BLOCK 64
+# define B 64
 # define DEBUG 1
 
 # define W 119
@@ -51,6 +51,16 @@ typedef struct s_map {
     int cols;
 }   t_map;
 
+typedef struct s_color
+{
+	int	f_1;
+	int	f_2;
+	int	f_3;
+	int	c_1;
+	int	c_2;
+	int	c_3;
+}	t_color;
+
 typedef struct s_game
 {
 	void		*mlx;
@@ -67,17 +77,13 @@ typedef struct s_game
 	char		**map;
 	t_player	player;
 	t_color		*co;
+	int			i_25l;
+	int			start_y;
+	int			end;
+	float ray_x;
+	float ray_y;
 }	t_game;
 
-typedef struct s_color
-{
-	int	f_1;
-	int	f_2;
-	int	f_3;
-	int	c_1;
-	int	c_2;
-	int	c_3;
-}	t_color;
 
 typedef struct s_path
 {
@@ -217,15 +223,16 @@ void	ft_draw_floor_cealing(t_game *g);
 
 
 //	ft_draw.c
-void	put_pixel(int x, int y, int color, t_game *game);
 int		get_color(int r, int g, int b);
 void	ft_draw_part(t_game *g, int color, char c);
 void	ft_draw_c(int color, t_game *g, int i, int j);
 void	ft_draw_f(int color, t_game *g, int i, int j);
+void	ft_draw_floor_cealing(t_game *g);
 
 
 // ft_draw_2.c
 void	ft_draw_square(int x, int y, int size, int color, t_game *game);
+void	put_pixel(int x, int y, int color, t_game *game);
 void	ft_draw_map(t_game *g);
 
 
@@ -242,6 +249,7 @@ void	ft_init_player(t_player *player);
 int		key_press(int keycode, t_game *game);
 int		ft_key_release(int keycode, t_game *game);
 void	ft_move_player(t_player *player);
+void	ft_move_2(t_player *player, float cos_angle, float sin_angle, float speed);
 
 
 #endif

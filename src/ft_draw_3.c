@@ -6,73 +6,67 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 13:14:32 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/09 14:40:13 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/09 17:36:33 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3D.h"
 
-float ft_distance(float x, float y)
+float	ft_distance(float x, float y)
 {
-    return sqrt(x * x + y * y);
+	return (sqrt(x * x + y * y));
 }
 
-float fixed_dist(float x1, float y1, float x2, float y2, t_game *game)
+float	fixed_dist(float x1, float y1, float x2, float y2, t_game *game)
 {
-	float delta_x;
-	float delta_y;
-	float angle;
-	float fix_dist;
-	
+	float	delta_x;
+	float	delta_y;
+	float	angle;
+	float	fix_dist;
 
 	delta_y = y2 - y1;
 	delta_x = x2 - x1;
-	angle = atan2(delta_y,delta_x) - game->player.angle;
-	fix_dist = ft_distance(delta_x, delta_y) *  cos(angle);
+	angle = atan2(delta_y, delta_x) - game->player.angle;
+	fix_dist = ft_distance(delta_x, delta_y) * cos(angle);
 	return (fix_dist);
 }
 
-void ft_draw_line(t_player *player, t_game *game, float start_x, int i)
+void	ft_draw_line(t_player *player, t_game *game, float start_x, int i)
 {
-	float cos_angle;
-	float sin_angle;
-	float ray_x;
-	float ray_y;
-	float dist;
-	float height;
-	int start_y;
-	int end;
+	float	cos_angle;
+	float	sin_angle;
+	float	dist;
+	float	height;
 
 	cos_angle = cos(start_x);
 	sin_angle = sin(start_x);
-	ray_x = player->x;
-	ray_y = player->y;
-	while (!ft_touch(ray_x,ray_y, game))
+	game->ray_x = player->x;
+	game->ray_y = player->y;
+	while (!ft_touch(game->ray_x, game->ray_y, game))
 	{
 		// if (DEBUG)
 		// 	put_pixel(ray_x, ray_x, 0xFF0000, game);
-		ray_x += cos_angle;
-		ray_y += sin_angle;
+		game->ray_x += cos_angle;
+		game->ray_y += sin_angle;
 	}
-	dist = fixed_dist(player->x, player->y,ray_x,ray_y,game);
-	height = (BLOCK / dist) * (WIDTH / 2);
-	start_y = (HEIGHT - height) / 2;
-	end = start_y + height;
-	while (start_y < end)
+	dist = fixed_dist(player->x, player->y, game->ray_x, game->ray_y, game);
+	height = (B / dist) * (WIDTH / 2);
+	game->start_y = (HEIGHT - height) / 2;
+	game->end = game->start_y + height;
+	while (game->start_y < game->end)
 	{
-		put_pixel(i, start_y,255,game);
-		start_y++;
+		put_pixel(i, game->start_y, 255, game);
+		game->start_y++;
 	}
 }
 
-
-bool ft_touch(float px, float py, t_game *game)
+bool	ft_touch(float px, float py, t_game *game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
-	x = px / BLOCK;
-	y = py / BLOCK;
+	x = px / B;
+	y = py / B;
 	if (game->map[y][x] == '1')
 		return (true);
 	return (false);

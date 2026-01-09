@@ -2,8 +2,8 @@ WE ./Path_xpm/west.xpm
 SO ./Path_xpm/sount.xpm
 NO ./Path_xpm/north.xpm
 EA ./Path_xpm/east.xpm
-        F 0,255,0
-        C 255,0,0
+        F 128,128,128
+        C 0,0,0
 
 111111111111111111111111
 110N0000000000000011111111111111111

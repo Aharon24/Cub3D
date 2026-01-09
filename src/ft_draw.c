@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 14:12:43 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/09 12:45:58 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/09 17:28:30 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,22 @@ void	ft_draw_part(t_game *g, int color, char c)
 		ft_draw_f(color, g, i, j);
 }
 
-
-void	put_pixel(int x, int y, int color, t_game *game)
-{
-	int	index;
-
-	if (x >= WIDTH || y >= HEIGHT || x < 0 || y < 0)
-		return ;
-	index = y * game->s_l + x * game->bpp / 8;
-	game->data[index] = color & 0xFF;
-	game->data[index + 1] = (color >> 8) & 0xFF;
-	game->data[index + 2] = (color >> 16) & 0xFF;
-}
-
 int	get_color(int r, int g, int b)
 {
 	return ((r << 16) | (g << 8) | b);
+}
+
+void	ft_draw_floor_cealing(t_game *g)
+{
+	int	f_pix_x;
+	int	c_pix_x;
+
+	g->win_x = WIDTH;
+	g->win_y = HEIGHT;
+	f_pix_x = g->win_x / 2;
+	c_pix_x = g->win_x;
+	g->f_color = get_color(g->co->f_1, g->co->f_2, g->co->f_3);
+	g->c_color = get_color(g->co->c_1, g->co->c_2, g->co->c_3);
+	ft_draw_part(g, g->f_color, 'f');
+	ft_draw_part(g, g->c_color, 'c');
 }
