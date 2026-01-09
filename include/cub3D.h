@@ -17,7 +17,7 @@
 # define WIDTH 1920
 # define HEIGHT 1680
 # define BLOCK 64
-# define DEBUG 0
+# define DEBUG 1
 
 # define W 119
 # define A 97

@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 13:14:32 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/09 14:37:33 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/09 14:40:13 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,14 @@ void ft_draw_line(t_player *player, t_game *game, float start_x, int i)
 		ray_x += cos_angle;
 		ray_y += sin_angle;
 	}
-	if (!DEBUG)
+	dist = fixed_dist(player->x, player->y,ray_x,ray_y,game);
+	height = (BLOCK / dist) * (WIDTH / 2);
+	start_y = (HEIGHT - height) / 2;
+	end = start_y + height;
+	while (start_y < end)
 	{
-		dist = fixed_dist(player->x, player->y,ray_x,ray_y,game);
-		height = (BLOCK / dist) * (WIDTH / 2);
-		start_y = (HEIGHT - height) / 2;
-		end = start_y + height;
-		while (start_y < end)
-		{
-			put_pixel(i, start_y,255,game);
-			start_y++;
-		}
+		put_pixel(i, start_y,255,game);
+		start_y++;
 	}
 }
 
