@@ -53,19 +53,20 @@ typedef struct s_map {
 
 typedef struct s_game
 {
-	void *mlx;
-	void *win;
-	void *img;
-	int win_x;
-	int win_y;
-	char *data;
-	int bpp;
-	int s_l;
-	int e_d;
-	int f_color;
-	int c_color;
-	char **map;
+	void		*mlx;
+	void		*win;
+	void		*img;
+	int			win_x;
+	int			win_y;
+	char		*data;
+	int			bpp;
+	int			s_l;
+	int			e_d;
+	int			f_color;
+	int			c_color;
+	char		**map;
 	t_player	player;
+	t_color		*co;
 }	t_game;
 
 typedef struct s_color
@@ -211,9 +212,7 @@ void	ft_game(t_cube **stt);
 void	ft_init_game(t_game *g);
 int 	ft_draw_loop(t_game *game);
 void	ft_clear_image(t_game *game);
-
-
-void	ft_draw_floor_cealing(t_cube **stt);
+void	ft_draw_floor_cealing(t_game *g);
 
 
 
