@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 14:12:50 by ahapetro          #+#    #+#             */
-/*   Updated: 2025/12/25 14:12:51 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/11 19:17:52 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ t_cube	*ft_start_work(char *str)
 	if (st == NULL)
 		return (ft_st_null(fd));
 	close(fd);
-	ft_parsing_map(st->c_map, &st);
+	if (ft_parsing_map(st->c_map, &st) == NULL)
+		return (NULL);
 	//ft_free_st(&st); ????  
 	return (st);
 }

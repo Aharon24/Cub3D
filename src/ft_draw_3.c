@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 13:14:32 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/11 16:22:09 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/11 19:10:51 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ float	ft_distance(float x, float y)
 	return (sqrt(x * x + y * y));
 }
 
-float	fixed_dist(float x1, float y1, float x2, float y2, t_game *game)
+float	fixed_dist(float x2, float y2, t_game *game)
 {
 	float	delta_x;
 	float	delta_y;
 	float	angle;
 	float	fix_dist;
 
-	delta_y = y2 - y1;
-	delta_x = x2 - x1;
+	delta_y = y2 - game->player.y;
+	delta_x = x2 - game->player.x;
 	angle = atan2(delta_y, delta_x) - game->player.angle;
 	fix_dist = ft_distance(delta_x, delta_y) * cos(angle);
 	return (fix_dist);
@@ -49,7 +49,7 @@ void	ft_draw_line(t_player *player, t_game *game, float start_x, int i)
 		game->ray_x += cos_angle;
 		game->ray_y += sin_angle;
 	}
-	dist = fixed_dist(player->x, player->y, game->ray_x, game->ray_y, game);
+	dist = fixed_dist(game->ray_x, game->ray_y, game);
 	height = (B / dist) * (WIDTH / 2);
 	game->start_y = (HEIGHT - height) / 2;
 	game->end = game->start_y + height;

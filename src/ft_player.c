@@ -6,33 +6,52 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 17:44:56 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/11 16:18:53 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/11 19:05:40 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3D.h"
 
-void	ft_move_2(t_player *player, float cos_angle, float sin_angle, float s)
+void	ft_move_2(t_game *g, float cos_angle, float sin_angle, float s)
 {
-	if (player->key_up)
+	float	new_x;
+	float	new_y;
+
+	if (g->player.key_up)
 	{
-		player->x += cos_angle * s;
-		player->y += sin_angle * s;
+		new_x = g->player.x + cos_angle * s;
+		new_y = g->player.y + sin_angle * s;
+		if (!ft_wall_chesk(new_x, g->player.y, g))
+			g->player.x = new_x;
+		if (!ft_wall_chesk(g->player.x, new_y, g))
+			g->player.y = new_y;
 	}
-	if (player->key_down)
+	if (g->player.key_down)
 	{
-		player->x -= cos_angle * s;
-		player->y -= sin_angle * s;
+		new_x = g->player.x - cos_angle * s;
+		new_y = g->player.y - sin_angle * s;
+		if (!ft_wall_chesk(new_x, g->player.y, g))
+			g->player.x = new_x;
+		if (!ft_wall_chesk(g->player.x, new_y, g))
+			g->player.y = new_y;
 	}
-	if (player->key_left)
+	if (g->player.key_left)
 	{
-		player->x += sin_angle * s;
-		player->y -= cos_angle * s;
+		new_x = g->player.x + sin_angle * s;
+		new_y = g->player.y - cos_angle * s;
+		if (!ft_wall_chesk(new_x, g->player.y, g))
+			g->player.x = new_x;
+		if (!ft_wall_chesk(g->player.x, new_y, g))
+			g->player.y = new_y;
 	}
-	if (player->key_right)
+	if (g->player.key_right)
 	{
-		player->x -= sin_angle * s;
-		player->y += cos_angle * s;
+		new_x = g->player.x - sin_angle * s;
+		new_y = g->player.y + cos_angle * s;
+		if (!ft_wall_chesk(new_x, g->player.y, g))
+			g->player.x = new_x;
+		if (!ft_wall_chesk(g->player.x, new_y, g))
+			g->player.y = new_y;
 	}
 }
 
@@ -47,28 +66,28 @@ void	ft_init_player(t_player *player)
 	player->right_rotate = false;
 }
 
-void	ft_move_player(t_player *player)
+void	ft_move_player(t_game *g)
 {
 	int		speed;
 	float	angle_speed;
 	float	cos_angle;
 	float	sin_angle;
 
-	sin_angle = sin(player->angle);
-	cos_angle = cos(player->angle);
+	sin_angle = sin(g->player.angle);
+	cos_angle = cos(g->player.angle);
 	angle_speed = 0.1;
 	speed = 5;
-	if (player->left_rotate)
-		player->angle -= angle_speed;
-	if (player->right_rotate)
-		player->angle += angle_speed;
-	if (player->angle > 2 * PI)
-		player->angle = 0;
-	if (player->angle < 0)
+	if (g->player.left_rotate)
+		g->player.angle -= angle_speed;
+	if (g->player.right_rotate)
+		g->player.angle += angle_speed;
+	if (g->player.angle > 2 * PI)
+		g->player.angle = 0;
+	if (g->player.angle < 0)
 	{
-		player->angle = 2 * PI;
+		g->player.angle = 2 * PI;
 	}
-	ft_move_2(player, cos_angle, sin_angle, speed);
+	ft_move_2(g, cos_angle, sin_angle, speed);
 }
 
 int	ft_key_release(int keycode, t_game *game)

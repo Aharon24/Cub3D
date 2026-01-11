@@ -218,7 +218,7 @@ void	ft_game(t_cube **stt);
 void	ft_init_game(t_game *g);
 int 	ft_draw_loop(t_game *game);
 void	ft_clear_image(t_game *game);
-void	ft_draw_floor_cealing(t_game *g);
+int		ft_wall_chesk(float px, float py, t_game *game);
 
 
 
@@ -240,7 +240,7 @@ void	ft_draw_map(t_game *g);
 bool	ft_touch(float px, float py, t_game *game);
 void	ft_draw_line(t_player *player, t_game *game, float start_x, int i);
 float	ft_distance(float x, float y);
-float	fixed_dist(float x1, float y1, float x2, float y2, t_game *game);
+float	fixed_dist(float x2, float y2, t_game *game);
 
 
 
@@ -248,8 +248,8 @@ float	fixed_dist(float x1, float y1, float x2, float y2, t_game *game);
 void	ft_init_player(t_player *player);
 int		key_press(int keycode, t_game *game);
 int		ft_key_release(int keycode, t_game *game);
-void	ft_move_player(t_player *player);
-void	ft_move_2(t_player *player, float cos_angle, float sin_angle, float speed);
+void	ft_move_player(t_game *g);
+void	ft_move_2(t_game *g, float cos_angle, float sin_angle, float speed);
 
 
 // ft_exit_Ecs_x.c

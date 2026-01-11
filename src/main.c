@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 14:41:41 by ahapetro          #+#    #+#             */
-/*   Updated: 2025/12/25 14:41:42 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/11 19:19:33 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	main(int ac, char *argv[])
 	stt = ft_start_work(argv[1]);
 	if (stt == NULL)
 		return (1);
-	ft_game(&stt);
+	if (stt)
+		ft_game(&stt);
 	ft_free_st(&stt);
 	return (0);
 }
