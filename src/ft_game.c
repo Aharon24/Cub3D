@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 14:40:56 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/09 17:03:16 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/11 16:18:46 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,12 @@ void	ft_game(t_cube **stt)
 	game.map = (*stt)->normalayz_map;
 	game.co = &(*stt)->co;
 	(*stt)->g = &game;
+	(*stt)->g->player.y =  (*stt)->player_x * B + B / 2 ;
+	(*stt)->g->player.x = (*stt)->player_y * B + B / 2 ;
 	ft_init_game(&game);
 	mlx_hook(game.win, 2, 1L << 0, key_press, &game);
 	mlx_hook(game.win, 3, 1L << 1, ft_key_release, &game);
+	mlx_hook(game.win, 17, 0, ft_handle_destroy, stt);
 	mlx_loop_hook(game.mlx, ft_draw_loop, &game);
 	mlx_loop(game.mlx);
 }

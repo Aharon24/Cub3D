@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 13:14:32 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/09 17:36:33 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/11 16:22:09 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_draw_line(t_player *player, t_game *game, float start_x, int i)
 	while (!ft_touch(game->ray_x, game->ray_y, game))
 	{
 		// if (DEBUG)
-		// 	put_pixel(ray_x, ray_x, 0xFF0000, game);
+		put_pixel(game->ray_x / 4, game->ray_y / 4, 0xFF0000, game);
 		game->ray_x += cos_angle;
 		game->ray_y += sin_angle;
 	}

@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 17:44:56 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/09 16:55:43 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/11 16:18:53 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void	ft_move_2(t_player *player, float cos_angle, float sin_angle, float s)
 
 void	ft_init_player(t_player *player)
 {
-	player->x = WIDTH / 2;
-	player->y = HEIGHT / 2;
 	player->angle = PI / 2;
 	player->key_up = false;
 	player->key_down = false;
@@ -104,5 +102,10 @@ int	key_press(int keycode, t_game *game)
 		game->player.left_rotate = true;
 	else if (keycode == 65363)
 		game->player.right_rotate = true;
+	else if (keycode == 65307)
+	{
+		printf("esc\n");
+		exit(0);
+	}
 	return (0);
 }

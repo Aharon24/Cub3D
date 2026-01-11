@@ -80,8 +80,8 @@ typedef struct s_game
 	int			i_25l;
 	int			start_y;
 	int			end;
-	float ray_x;
-	float ray_y;
+	float		ray_x;
+	float		ray_y;
 }	t_game;
 
 
@@ -251,5 +251,9 @@ int		ft_key_release(int keycode, t_game *game);
 void	ft_move_player(t_player *player);
 void	ft_move_2(t_player *player, float cos_angle, float sin_angle, float speed);
 
+
+// ft_exit_Ecs_x.c
+int		ft_handle_key(int keycode, t_cube **st);
+int		ft_handle_destroy(t_cube **st);
 
 #endif
