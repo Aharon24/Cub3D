@@ -26,7 +26,6 @@ void put_pixel(int x, int y, int color, t_game *game)
 }
 
 
-// Функция для создания цвета из R,G,B
 int get_color(int r, int g, int b)
 {
     return (r << 16) | (g << 8) | b;

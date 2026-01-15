@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 13:14:32 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/11 19:10:51 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/15 16:54:22 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	ft_draw_line(t_player *player, t_game *game, float start_x, int i)
 	height = (B / dist) * (WIDTH / 2);
 	game->start_y = (HEIGHT - height) / 2;
 	game->end = game->start_y + height;
+	
 	while (game->start_y < game->end)
 	{
 		put_pixel(i, game->start_y, 255, game);
@@ -67,7 +68,7 @@ bool	ft_touch(float px, float py, t_game *game)
 
 	x = px / B;
 	y = py / B;
-	if (game->map[y][x] == '1')
+	if (game->map[y][x]  && game->map[y][x] == '1')
 		return (true);
 	return (false);
 }

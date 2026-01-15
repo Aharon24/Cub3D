@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 14:40:56 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/11 19:08:19 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/15 16:53:57 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	ft_draw_loop(t_game *game)
 		i++;
 	}
 	ft_draw_map(game);
-	ft_draw_square(player->x / 4, player->y / 4, 3, 0x00FF00, game);
+	//ft_draw_square(player->x / 4, player->y / 4, 3, 0x00FF00, game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 	return (0);
 }
@@ -88,6 +88,7 @@ void	ft_game(t_cube **stt)
 	(*stt)->g->player.y = (*stt)->player_x * B + B / 2 ;
 	(*stt)->g->player.x = (*stt)->player_y * B + B / 2 ;
 	ft_init_game(&game);
+	ft_get_picture(stt);
 	mlx_hook(game.win, 2, 1L << 0, key_press, &game);
 	mlx_hook(game.win, 3, 1L << 1, ft_key_release, &game);
 	mlx_hook(game.win, 17, 0, ft_handle_destroy, stt);

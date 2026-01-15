@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 20:33:46 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/11 20:39:52 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/15 16:00:45 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,10 @@ typedef struct s_game
 	int			end;
 	float		ray_x;
 	float		ray_y;
+	void		*img_w;
+	void		*img_s;
+	void		*img_n;
+	void		*img_e;
 }	t_game;
 
 typedef struct s_path
@@ -230,5 +234,9 @@ void	ft_move_2(t_game *g, float cos_angle, float sin_angle, float speed);
 // ft_exit_Ecs_x.c
 int		ft_handle_key(int keycode, t_cube **st);
 int		ft_handle_destroy(t_cube **st);
+
+// ft_get_picture
+
+void	ft_get_picture(t_cube **st);
 
 #endif
