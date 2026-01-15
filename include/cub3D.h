@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 20:33:46 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/15 17:47:53 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/15 19:02:30 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,10 +251,10 @@ int		ft_handle_destroy(t_cube **st);
 
 // ft_get_picture
 
-void	ft_get_picture(t_cube **st);
-int		ft_get_wall_pixel(t_game *game, t_tex *wall_tex, int y);
-t_tex	*ft_get_wall_tex(t_game *g, float ray_x,float angle);
+t_tex *ft_get_wall_tex(t_game *g, float ray_x, float ray_y, float angle);
 void	ft_load_texture(t_game *g, t_tex *tex, char *path);
-int		ft_get_tex_pixel(t_tex *tex, int x, int y);
+void	ft_get_picture(t_cube **st);
+int	ft_get_wall_pixel(t_game *game, t_tex *wall_tex, int y);
+int	ft_get_tex_pixel(t_tex *tex, int x, int y);
 
 #endif

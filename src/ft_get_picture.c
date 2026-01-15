@@ -5,13 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 14:39:41 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/15 18:01:57 by ahapetro         ###   ########.fr       */
+/*   Created: 2026/01/15 19:01:02 by ahapetro          #+#    #+#             */
+/*   Updated: 2026/01/15 19:06:28 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3D.h"
 
+
+t_tex *ft_get_wall_tex(t_game *g, float ray_x, float ray_y, float angle)
+{
+	printf("%f",ray_y);
+    // Если мы попали точно на вертикальную линию (x делится на B)
+    if ((int)ray_x % B == 0)
+    {
+        if (cos(angle) > 0) // смотрим вправо
+            return &g->img_e;
+        else                 // смотрим влево
+            return &g->img_w;
+    }
+    else // горизонтальная линия
+    {
+        if (sin(angle) > 0) // смотрим вниз
+            return &g->img_s;
+        else                 // смотрим вверх
+            return &g->img_n;
+    }
+}
 
 void	ft_load_texture(t_game *g, t_tex *tex, char *path)
 {
@@ -28,6 +48,7 @@ void	ft_load_texture(t_game *g, t_tex *tex, char *path)
 	tex->height = h;
 	tex->data = mlx_get_data_addr(tex->img, &tex->bpp, &tex->s_l, &tex->endian);
 }
+
 void	ft_get_picture(t_cube **st)
 {
 	t_game *g = (*st)->g;
@@ -36,29 +57,6 @@ void	ft_get_picture(t_cube **st)
 	ft_load_texture(g, &g->img_s, (*st)->south);
 	ft_load_texture(g, &g->img_e, (*st)->east);
 	ft_load_texture(g, &g->img_n, (*st)->north);
-}
-
-
-
-t_tex *ft_get_wall_tex(t_game *g, float ray_x, float angle)
-{
-	//int map_x = (int)(ray_x / B);
-	//int map_y = (int)(ray_y / B);
-
-	if ((int)ray_x % B == 0) 
-	{
-		if (cos(angle) > 0)
-			return &g->img_e; 
-		else
-			return &g->img_w; 
-	}
-	else 
-	{
-		if (sin(angle) > 0)
-			return &g->img_s; 
-		else
-			return &g->img_n;
-	}
 }
 
 int	ft_get_wall_pixel(t_game *game, t_tex *wall_tex, int y)

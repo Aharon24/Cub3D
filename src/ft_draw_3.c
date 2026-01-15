@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 13:14:32 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/15 18:17:09 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/15 19:09:25 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_draw_line(t_player *player, t_game *game, float start_x, int i)
 	height = (B / dist) * (WIDTH / 2);
 	game->start_y = (HEIGHT - height) / 2;
 	game->end = game->start_y + height;
-	game->wall_tex = ft_get_wall_tex(game, game->ray_x, start_x);
+	game->wall_tex = ft_get_wall_tex(game, game->ray_x,  game->ray_y,start_x);
 	while (game->start_y < game->end)
 	{
 		game->color = ft_get_wall_pixel(game, game->wall_tex, game->start_y);
