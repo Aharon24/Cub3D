@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 20:33:46 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/15 16:00:45 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/15 17:47:53 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,18 @@
 # define RIGHT 65363
 # define PI 3.14159265359
 //#include "mlx.h"        // MiniLibX
+
+
+typedef struct s_tex
+{
+	void	*img; 
+	char	*data; 
+	int		width; 
+	int		height; 
+	int		bpp; 
+	int		s_l; 
+	int		endian;
+}	t_tex;
 
 typedef struct s_player
 {
@@ -70,6 +82,14 @@ typedef struct s_color
 
 typedef struct s_game
 {
+	t_color		*co;
+	t_player	player;
+	t_tex		img_s;
+	t_tex		img_w;
+	t_tex		img_e;
+	t_tex		img_n;
+	t_tex		*wall_tex;
+	char		**map;
 	void		*mlx;
 	void		*win;
 	void		*img;
@@ -81,18 +101,12 @@ typedef struct s_game
 	int			e_d;
 	int			f_color;
 	int			c_color;
-	char		**map;
-	t_player	player;
-	t_color		*co;
 	int			i_25l;
 	int			start_y;
 	int			end;
 	float		ray_x;
 	float		ray_y;
-	void		*img_w;
-	void		*img_s;
-	void		*img_n;
-	void		*img_e;
+	int			color;
 }	t_game;
 
 typedef struct s_path
@@ -238,5 +252,9 @@ int		ft_handle_destroy(t_cube **st);
 // ft_get_picture
 
 void	ft_get_picture(t_cube **st);
+int		ft_get_wall_pixel(t_game *game, t_tex *wall_tex, int y);
+t_tex	*ft_get_wall_tex(t_game *g, float ray_x,float angle);
+void	ft_load_texture(t_game *g, t_tex *tex, char *path);
+int		ft_get_tex_pixel(t_tex *tex, int x, int y);
 
 #endif
