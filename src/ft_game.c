@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 14:40:56 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/15 16:53:57 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/16 19:33:11 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,20 +52,42 @@ void	ft_init_game(t_game *g)
 	mlx_put_image_to_window(g->mlx, g->win, g->img, 0, 0);
 }
 
-int	ft_draw_loop(t_game *game)
+// int	ft_draw_loop(t_game *game)
+// {
+// 	float		fraction;
+// 	float		start_x;
+// 	int			i;
+// 	t_player	*player;
+// 	player = &game->player;
+// 	ft_move_player(game);
+// 	ft_clear_image(game);
+// 	ft_draw_floor_cealing(game);
+// 	fraction = PI / 3 / WIDTH;
+// 	start_x = game->player.angle - PI / 6;
+// 	//ft_draw_map_four(game);
+// 	i = 0;
+// 	while (i < WIDTH)
+// 	{
+// 		ft_draw_line(player, game, start_x, i);
+// 		start_x += fraction;
+// 		i++;
+// 	}
+// 	ft_draw_map(game);
+// 	ft_draw_square(player->x / 4, player->y / 4, 3, 0x00FF00, game);
+// 	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
+// 	return (0);
+//}
+void	ft_draw_walls_one_time(t_game *game)
 {
 	float		fraction;
 	float		start_x;
 	int			i;
 	t_player	*player;
 
-	player = &game->player;
-	ft_move_player(game);
-	ft_clear_image(game);
-	ft_draw_floor_cealing(game);
-	fraction = PI / 3 / WIDTH;
-	start_x = game->player.angle - PI / 6;
 	i = 0;
+	player = &game->player;
+	start_x = game->player.angle - PI / 6;
+	fraction = PI / 3 / WIDTH;
 	while (i < WIDTH)
 	{
 		ft_draw_line(player, game, start_x, i);
@@ -73,9 +95,8 @@ int	ft_draw_loop(t_game *game)
 		i++;
 	}
 	ft_draw_map(game);
-	//ft_draw_square(player->x / 4, player->y / 4, 3, 0x00FF00, game);
+	ft_draw_square(player->x / 4, player->y / 4, 3, 0x00FF00, game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
-	return (0);
 }
 
 void	ft_game(t_cube **stt)

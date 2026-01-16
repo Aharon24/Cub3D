@@ -13,17 +13,28 @@ typedef struct s_game
     int endian;
 }   t_game;
 
-void put_pixel(int x, int y, int color, t_game *game)
+void	put_pixel(int x, int y, int color, t_game *game)
 {
-    int index;
+	int	index;
 
-    if (x >= game->win_x || y >= game->win_y || x < 0 || y < 0)
-        return;
-    index = y * game->size_len + x * game->bpp / 8;
-    game->data[index] = color & 0xff;
-    game->data[index + 1] = (color >> 8) & 0xff;
-    game->data[index + 2] = (color >> 16) & 0xff;
+	if (x >= WIDTH= || y >= HEIGHT || x < 0 || y < 0)
+		return ;
+	index = y * game->s_l + x * (game->bpp / 8);
+
+	if (game->bpp == 32)
+	{
+		unsigned int *dst = (unsigned int *)(game->data + index);
+		*dst = (unsigned int)color;
+	}
+	else if (game->bpp == 24)
+	{
+		game->data[index] = color & 0xFF;
+		game->data[index + 1] = (color >> 8) & 0xFF;
+		game->data[index + 2] = (color >> 16) & 0xFF;
+	}
+	// для других bpp — можно добавить обработку
 }
+
 
 
 int get_color(int r, int g, int b)

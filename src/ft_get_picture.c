@@ -6,38 +6,37 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 19:01:02 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/15 19:06:28 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/16 19:29:42 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3D.h"
 
-
-t_tex *ft_get_wall_tex(t_game *g, float ray_x, float ray_y, float angle)
+t_tex	*ft_get_wall_tex(t_game *g)
 {
-	printf("%f",ray_y);
-    // Если мы попали точно на вертикальную линию (x делится на B)
-    if ((int)ray_x % B == 0)
-    {
-        if (cos(angle) > 0) // смотрим вправо
-            return &g->img_e;
-        else                 // смотрим влево
-            return &g->img_w;
-    }
-    else // горизонтальная линия
-    {
-        if (sin(angle) > 0) // смотрим вниз
-            return &g->img_s;
-        else                 // смотрим вверх
-            return &g->img_n;
-    }
+	if (g->hit_vertical)
+	{
+		if (g->ray_x > g->player.x)
+			return (&g->img_e);
+		else
+			return (&g->img_w);
+	}
+	else
+	{
+		if (g->ray_y > g->player.y)
+			return (&g->img_s);
+		else
+			return (&g->img_n);
+	}
 }
 
 void	ft_load_texture(t_game *g, t_tex *tex, char *path)
 {
-	int w;
-	int h;
+	int	w;
+	int	h;
 
+	w = 0;
+	h = 0;
 	tex->img = mlx_xpm_file_to_image(g->mlx, path, &w, &h);
 	if (!tex->img)
 	{
@@ -51,45 +50,50 @@ void	ft_load_texture(t_game *g, t_tex *tex, char *path)
 
 void	ft_get_picture(t_cube **st)
 {
-	t_game *g = (*st)->g;
+	t_game	*g;
 
+	g = (*st)->g;
 	ft_load_texture(g, &g->img_w, (*st)->west);
 	ft_load_texture(g, &g->img_s, (*st)->south);
 	ft_load_texture(g, &g->img_e, (*st)->east);
 	ft_load_texture(g, &g->img_n, (*st)->north);
 }
 
-int	ft_get_wall_pixel(t_game *game, t_tex *wall_tex, int y)
+int	ft_get_wall_pixel(t_game *game, t_tex *w, int y)
 {
-	int tex_x;
-	int tex_y;
-	float hit_x;
-	float wall_height;
+	float	hit_x;
+	int		block_x;
+	int		block_y;
+	float	wall_height;
 
-	// вычисляем hit_x
-	if ((int)game->ray_x % B == 0)
-		hit_x = fmod(game->ray_y, B) / B; // вертикальная стена
-	else
-		hit_x = fmod(game->ray_x, B) / B; // горизонтальная
-
-	tex_x = (int)(hit_x * wall_tex->width);
-
-	// вычисляем tex_y
+	block_x = (int)(game->ray_x / B);
+	block_y = (int)(game->ray_y / B);
 	wall_height = game->end - game->start_y;
-	tex_y = (int)((y - game->start_y) / wall_height * wall_tex->height);
-
-	return ft_get_tex_pixel(wall_tex, tex_x, tex_y);
+	if (game->hit_vertical)
+		hit_x = (game->ray_y - block_y * B) / (float)B;
+	else
+		hit_x = (game->ray_x - block_x * B) / (float)B;
+	if (hit_x < 0.0f)
+		hit_x = 0.0f;
+	if (hit_x > 1.0f)
+		hit_x = 1.0f;
+	w->tex_x = (int)(hit_x * w->width);
+	if (w->tex_x >= w->width)
+		w->tex_x = w->width - 1;
+	w->tex_y = (int)(((y - game->start_y) * w->height) / wall_height);
+	if (w->tex_y < 0)
+		w->tex_y = 0;
+	if (w->tex_y >= w->height)
+		w->tex_y = w->height - 1;
+	return (ft_get_tex_pixel(w, w->tex_x, w->tex_y));
 }
-
 
 int	ft_get_tex_pixel(t_tex *tex, int x, int y)
 {
 	char	*pixel_addr;
 
 	if (x < 0 || x >= tex->width || y < 0 || y >= tex->height)
-		return (0);  
-
+		return (0);
 	pixel_addr = tex->data + (y * tex->s_l + x * (tex->bpp / 8));
-
 	return (*(unsigned int *)pixel_addr);
 }

@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 17:44:56 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/11 19:05:40 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/16 19:00:33 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,7 @@ void	ft_move_2(t_game *g, float cos_angle, float sin_angle, float s)
 		if (!ft_wall_chesk(g->player.x, new_y, g))
 			g->player.y = new_y;
 	}
-	if (g->player.key_left)
-	{
-		new_x = g->player.x + sin_angle * s;
-		new_y = g->player.y - cos_angle * s;
-		if (!ft_wall_chesk(new_x, g->player.y, g))
-			g->player.x = new_x;
-		if (!ft_wall_chesk(g->player.x, new_y, g))
-			g->player.y = new_y;
-	}
-	if (g->player.key_right)
-	{
-		new_x = g->player.x - sin_angle * s;
-		new_y = g->player.y + cos_angle * s;
-		if (!ft_wall_chesk(new_x, g->player.y, g))
-			g->player.x = new_x;
-		if (!ft_wall_chesk(g->player.x, new_y, g))
-			g->player.y = new_y;
-	}
+	ft_move_3(g, cos_angle, sin_angle, s);
 }
 
 void	ft_init_player(t_player *player)
