@@ -74,16 +74,33 @@ int	ft_count_without_white_space(char *str)
 	return (len);
 }
 
-void	ft_set_up_path(t_cube **st, int n)
+void	ft_set_up_path(t_cube **st, int n, char *str)
 {
 	if (n == 1)
+	{
+		printf("plus\n");
+		if ((*st)->path_xpm.no == 0)
+			(*st)->cub_n = ft_strdup(str); 
 		(*st)->path_xpm.no++;
+	}
 	else if (n == 2)
+	{
+		if ((*st)->path_xpm.so == 0)
+			(*st)->cub_s = ft_strdup(str);
 		(*st)->path_xpm.so++;
+	}
 	else if (n == 3)
+	{
+		if ((*st)->path_xpm.we == 0)
+			(*st)->cub_w = ft_strdup(str);
 		(*st)->path_xpm.we++;
+	}
 	else if (n == 4)
+	{
+		if ((*st)->path_xpm.ea == 0)
+			(*st)->cub_e = ft_strdup(str);
 		(*st)->path_xpm.ea++;
+	}
 }
 
 void	ft_init_xpm(t_cube **st)
@@ -103,6 +120,10 @@ void	ft_init_xpm(t_cube **st)
 	(*st)->path_check = 0;
 	(*st)->path_xpm.floor = 0;
 	(*st)->path_xpm.ceiling = 0;
+	(*st)->cub_w = NULL; 
+	(*st)->cub_s = NULL; 
+	(*st)->cub_e = NULL; 
+	(*st)->cub_n = NULL;
 	//(*st)->c_map = NULL;
 	ft_init_xpm_one(st);
 }

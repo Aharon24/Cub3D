@@ -17,18 +17,19 @@ void	ft_split_check(char *line, t_cube **st)
 	char	**arr;
 
 	arr = ft_split(line, ' ');
+	ft_crate_path_value(st,arr);
 	if ((ft_strlen(arr[0]) == 1) && arr[0][0] == 'C')
 		ft_check_floor_ceiling(st, arr[1], arr[0][0]);
 	else if ((ft_strlen(arr[0]) == 1) && arr[0][0] == 'F')
 		ft_check_floor_ceiling(st, arr[1], arr[0][0]);
 	else if ((ft_strncmp(arr[0], "NO", 2) == 0) && (ft_strlen(arr[0]) == 2))
-		ft_check_line(arr[1], st);
+		ft_check_line(arr[1], st,1);
 	else if ((ft_strncmp(arr[0], "SO", 2) == 0) && (ft_strlen(arr[0]) == 2))
-		ft_check_line(arr[1], st);
+		ft_check_line(arr[1], st,2);
 	else if ((ft_strncmp(arr[0], "WE", 2) == 0) && (ft_strlen(arr[0]) == 2))
-		ft_check_line(arr[1], st);
+		ft_check_line(arr[1], st,3);
 	else if ((ft_strncmp(arr[0], "EA", 2) == 0) && (ft_strlen(arr[0]) == 2))
-		ft_check_line(arr[1], st);
+		ft_check_line(arr[1], st,4);
 	else
 	{
 		(*st)->path_check = 1;

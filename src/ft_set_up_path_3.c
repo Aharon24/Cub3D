@@ -12,25 +12,7 @@
 
 #include "../include/cub3D.h"
 
-////???????????????????
-// int ft_check_len_number(char **line)
-// {
-//     int i;
-//     int len;
 
-//     i = 0;
-//     len = 0;
-//     if (!line)
-//         return (-1);
-//     while (line[i])
-//     {
-//         len = ft_strlen(line[i]);
-//         if (len == 14)
-//             return (-1);
-//         i++;
-//     }
-//     return (0);
-// }
 void	ft_letter(char letter, char **line, t_cube **st)
 {
 	if (letter == 'C')

@@ -1,7 +1,7 @@
 WE ./Path_xpm/west.xpm
-SO ./Path_xpm/sount.xpm
-NO ./Path_xpm/north.xpm
-EA ./Path_xpm/east.xpm
+SO ./Path_xpm/west.xpm
+NO ./Path_xpm/west.xpm
+EA ./Path_xpm/west.xpm
         F 128,128,128
         C 0,0,0
 

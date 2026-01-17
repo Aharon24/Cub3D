@@ -53,10 +53,14 @@ void	ft_get_picture(t_cube **st)
 	t_game	*g;
 
 	g = (*st)->g;
-	ft_load_texture(g, &g->img_w, (*st)->west);
-	ft_load_texture(g, &g->img_s, (*st)->south);
-	ft_load_texture(g, &g->img_e, (*st)->east);
-	ft_load_texture(g, &g->img_n, (*st)->north);
+	printf("%s 1\n",(*st)->cub_e);
+	printf("%s 2\n",(*st)->cub_n);
+	printf("%s 3\n",(*st)->cub_s);
+	printf("%s 4\n",(*st)->cub_w);
+	ft_load_texture(g, &g->img_w, (*st)->cub_w);
+	ft_load_texture(g, &g->img_s, (*st)->cub_s);
+	ft_load_texture(g, &g->img_e, (*st)->cub_e);
+	ft_load_texture(g, &g->img_n, (*st)->cub_n);
 }
 
 int	ft_get_wall_pixel(t_game *game, t_tex *w, int y)

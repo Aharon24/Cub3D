@@ -152,6 +152,10 @@ typedef struct cub3D
 	char		*east;
 	int			f_pix_x;
 	int			c_pix_x;
+	char		*cub_w;
+	char		*cub_s;
+	char		*cub_n;
+	char		*cub_e;
 }	t_cube;
 
 //	ft_free.c
@@ -179,14 +183,14 @@ void	ft_check_floor_ceiling(t_cube **st, char *str, char letter);
 int		ft_count_comma(char *str);
 
 //	ft_set_up_path.c
-void	ft_set_up_path(t_cube **st, int n);
+void	ft_set_up_path(t_cube **st, int n, char *str);
 void	ft_init_xpm(t_cube **st);
 void	ft_create_arr_path(char *str, t_cube **st);
 int		ft_count_without_white_space(char *str);
 void	ft_make_line(char **line, char *s, int i, int j);
 
 //  ft_parsing.c
-int		ft_check_line(char *str, t_cube **st);
+int		ft_check_line(char *str, t_cube **st, int t);
 t_cube	*ft_parsing_map(char **map, t_cube **st);
 int		ft_count_line(char **map, t_cube **st, int i);
 int		ft_empty(char *str);
@@ -215,6 +219,8 @@ int		ft_chesk_side(char **map, int x, int y, int len_x);
 
 //	ft_validation_4.c
 int		ft_empty_chesk(char **map);
+void	ft_crate_path_value(t_cube **st, char **arr);
+void	ft_open_path(t_cube **st, char *path, int type);
 
 //  ft_start_work.c
 t_cube	*ft_start_work(char *str);
