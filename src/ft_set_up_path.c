@@ -78,9 +78,8 @@ void	ft_set_up_path(t_cube **st, int n, char *str)
 {
 	if (n == 1)
 	{
-		printf("plus\n");
 		if ((*st)->path_xpm.no == 0)
-			(*st)->cub_n = ft_strdup(str); 
+			(*st)->cub_n = ft_strdup(str);
 		(*st)->path_xpm.no++;
 	}
 	else if (n == 2)
@@ -120,9 +119,9 @@ void	ft_init_xpm(t_cube **st)
 	(*st)->path_check = 0;
 	(*st)->path_xpm.floor = 0;
 	(*st)->path_xpm.ceiling = 0;
-	(*st)->cub_w = NULL; 
-	(*st)->cub_s = NULL; 
-	(*st)->cub_e = NULL; 
+	(*st)->cub_w = NULL;
+	(*st)->cub_s = NULL;
+	(*st)->cub_e = NULL;
 	(*st)->cub_n = NULL;
 	//(*st)->c_map = NULL;
 	ft_init_xpm_one(st);

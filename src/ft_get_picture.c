@@ -53,10 +53,6 @@ void	ft_get_picture(t_cube **st)
 	t_game	*g;
 
 	g = (*st)->g;
-	printf("%s 1\n",(*st)->cub_e);
-	printf("%s 2\n",(*st)->cub_n);
-	printf("%s 3\n",(*st)->cub_s);
-	printf("%s 4\n",(*st)->cub_w);
 	ft_load_texture(g, &g->img_w, (*st)->cub_w);
 	ft_load_texture(g, &g->img_s, (*st)->cub_s);
 	ft_load_texture(g, &g->img_e, (*st)->cub_e);

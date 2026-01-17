@@ -12,7 +12,6 @@
 
 #include "../include/cub3D.h"
 
-
 void	ft_letter(char letter, char **line, t_cube **st)
 {
 	if (letter == 'C')

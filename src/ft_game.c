@@ -14,7 +14,6 @@
 
 #define MINI_MAP_SCALE 8
 
-
 int	ft_wall_chesk(float px, float py, t_game *game)
 {
 	int	x;
@@ -52,7 +51,6 @@ void	ft_init_game(t_game *g)
 	g->win = mlx_new_window(g->mlx, WIDTH, HEIGHT, "cub3D");
 	g->img = mlx_new_image(g->mlx, WIDTH, HEIGHT);
 	g->data = mlx_get_data_addr(g->img, &g->bpp, &g->s_l, &g->e_d);
-	//mlx_put_image_to_window(g->mlx, g->win, g->img, 0, 0);
 }
 
 // int	ft_draw_loop(t_game *game)
@@ -88,21 +86,18 @@ void	ft_draw_walls_one_time(t_game *game)
 	t_player	*player;
 
 	player = &game->player;
-	start_angle = player->angle - PI / 6;   // левый угол обзора
-	fraction = PI / 3 / WIDTH;             // шаг между лучами (FOV 60°)
-
+	start_angle = player->angle - PI / 6;
+	fraction = PI / 3 / WIDTH;
 	screen_x = 0;
 	while (screen_x < WIDTH)
 	{
 		ft_draw_line(player, game, start_angle, screen_x);
-		start_angle += fraction; // следующий луч
+		start_angle += fraction;
 		screen_x++;
 	}
 	ft_draw_map(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 }
-
-
 
 void	ft_game(t_cube **stt)
 {

@@ -12,9 +12,9 @@
 
 #include "../include/cub3D.h"
 
-void ft_open_path(t_cube **st, char *path, int type)
+void	ft_open_path(t_cube **st, char *path, int type)
 {
-	int fd;
+	int	fd;
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1 && type == 1)
@@ -25,7 +25,6 @@ void ft_open_path(t_cube **st, char *path, int type)
 		(*st)->west = ft_strdup("x");
 	if (fd == -1 && type == 4)
 		(*st)->east = ft_strdup("x");
-
 	if (type == 1 && fd != -1)
 		(*st)->north = ft_strdup(path);
 	if (type == 2 && fd != -1)
@@ -38,17 +37,15 @@ void ft_open_path(t_cube **st, char *path, int type)
 
 void	ft_crate_path_value(t_cube **st, char **arr)
 {
-	printf("-%s\n%s\n",arr[0],arr[1]);
 	if ((ft_strncmp(arr[0], "NO", 2) == 0) && (ft_strlen(arr[0]) == 2))
 		ft_open_path(st, arr[1], 1);
 	else if ((ft_strncmp(arr[0], "SO", 2) == 0) && (ft_strlen(arr[0]) == 2))
-		ft_open_path(st, arr[1],2);
+		ft_open_path(st, arr[1], 2);
 	else if ((ft_strncmp(arr[0], "WE", 2) == 0) && (ft_strlen(arr[0]) == 2))
 		ft_open_path(st, arr[1], 3);
 	else if ((ft_strncmp(arr[0], "EA", 2) == 0) && (ft_strlen(arr[0]) == 2))
 		ft_open_path(st, arr[1], 4);
 }
-
 
 int	ft_empty_chesk(char **map)
 {

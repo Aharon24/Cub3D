@@ -41,10 +41,7 @@ int	ft_count_line(char **map, t_cube **st, int i)
 		else if (ft_check_valid_map(map[i], *st) == 1)
 		{
 			if (ft_check_path_count(st) != 0)
-			{
-				printf("sssssssssssssssssssssssssss");
 				return (ft_error(2, i));
-			}
 			ft_one_for_parsing(st);
 			ft_map_create_for_moveing(map[i], i, st, map);
 			if ((*st)->map_valid == 1)
@@ -68,28 +65,16 @@ int	ft_check_line(char *str, t_cube **st, int t)
 {
 	if (ft_strncmp(str, (*st)->north, ft_strlen((*st)->north)) == 0
 		&& (ft_strlen((*st)->north) == ft_strlen(str)) && t == 1)
-	{
-		printf("one\n");
 		ft_set_up_path(st, 1, str);
-	}
 	else if (ft_strncmp(str, (*st)->south, ft_strlen((*st)->south)) == 0
 		&& (ft_strlen((*st)->south) == ft_strlen(str)) && t == 2)
-	{
-		printf("two\n");
 		ft_set_up_path(st, 2, str);
-	}
 	else if (ft_strncmp(str, (*st)->west, ft_strlen((*st)->west)) == 0
-		&& (ft_strlen((*st)->west) == ft_strlen(str)) && t == 3 )
-	{
-		printf("tree\n");
+		&& (ft_strlen((*st)->west) == ft_strlen(str)) && t == 3)
 		ft_set_up_path(st, 3, str);
-	}
 	else if (ft_strncmp(str, (*st)->east, ft_strlen((*st)->east)) == 0
-		&& (ft_strlen((*st)->east) == ft_strlen(str)) &&  t == 4)
-	{
-		printf("four\n");
+		&& (ft_strlen((*st)->east) == ft_strlen(str)) && t == 4)
 		ft_set_up_path(st, 4, str);
-	}
 	else
 	{
 		ft_error_file_path();

@@ -69,38 +69,27 @@ void	ft_draw_wall_slice(t_game *g, float dist, int screen_x)
 	int		color;
 	t_tex	*tex;
 
-	// Ограничиваем минимальную дистанцию, чтобы не было сильного зума
 	if (dist < 0.1f)
 		dist = 0.1f;
-
-	// Рассчёт высоты стены на экране
 	wall_height = (int)(B * HEIGHT / dist);
-
-	// Ограничиваем максимальную высоту, чтобы не вылезала за экран
 	if (wall_height > HEIGHT)
 		wall_height = HEIGHT;
-
-	// Верхняя и нижняя границы для вертикальной полоски
 	g->start_y = HEIGHT / 2 - wall_height / 2;
 	g->end = HEIGHT / 2 + wall_height / 2;
-
 	if (g->start_y < 0)
 		g->start_y = 0;
 	if (g->end >= HEIGHT)
 		g->end = HEIGHT - 1;
-
-	// Получаем текстуру стены
 	tex = ft_get_wall_tex(g);
-
-	// Рисуем вертикальную полоску стены
 	y = g->start_y;
 	while (y < g->end)
 	{
 		color = ft_get_wall_pixel(g, tex, y);
-		put_pixel(screen_x, y, color, g); // screen_x = фиксированная ширина полоски
+		put_pixel(screen_x, y, color, g);
 		y++;
 	}
 }
+
 void	ft_draw_line(t_player *p, t_game *g, float angle, int screen_x)
 {
 	float	ray_x;
@@ -109,14 +98,12 @@ void	ft_draw_line(t_player *p, t_game *g, float angle, int screen_x)
 
 	ray_x = p->x;
 	ray_y = p->y;
-	step = 1.3f; // оптимальный шаг, чтобы не прыгало
-
+	step = 1.3f;
 	while (1)
 	{
 		p->prev_x = ray_x;
 		ray_x += cos(angle) * step;
 		ray_y += sin(angle) * step;
-
 		if (ft_wall_chesk(ray_x, ray_y, g))
 		{
 			g->ray_x = ray_x;
@@ -125,15 +112,10 @@ void	ft_draw_line(t_player *p, t_game *g, float angle, int screen_x)
 			break ;
 		}
 	}
-
-	// Расстояние до стены с коррекцией по углу (убирает эффект "рыбьего глаза")
 	p->dist = hypot(ray_x - p->x, ray_y - p->y);
 	p->dist *= cos(angle - p->angle);
-
-	// Ограничиваем минимальное расстояние
 	if (p->dist < 0.3f)
 		p->dist = 0.3f;
-
 	ft_draw_wall_slice(g, p->dist, screen_x);
 }
 
