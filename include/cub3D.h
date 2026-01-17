@@ -6,7 +6,7 @@
 /*   By: ahapetro <ahapetro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 20:33:46 by ahapetro          #+#    #+#             */
-/*   Updated: 2026/01/16 19:35:42 by ahapetro         ###   ########.fr       */
+/*   Updated: 2026/01/17 14:04:40 by ahapetro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,7 +202,7 @@ int		ft_check_path_count(t_cube **st);
 //	ft_validation_2.c
 int		ft_luck_map(t_cube **st);
 int		ft_one(char *str);
-void	ft_look_middle(char **map, int len);
+int		ft_look_middle(char **map, int len, int  p);
 int		ft_chesk_middle_line(char *line, int index);
 int		ft_chesk_point(char *line);
 
