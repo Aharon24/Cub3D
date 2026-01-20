@@ -35,6 +35,8 @@
 # define LEFT 65361
 # define RIGHT 65363
 # define PI 3.14159265359
+#define MINI_MAP_SCALE 8
+#define FOV (PI / 3.0f)
 //#include "mlx.h"        // MiniLibX
 
 typedef struct s_tex
@@ -278,12 +280,12 @@ int		ft_handle_key(int keycode, t_cube **st);
 int		ft_handle_destroy(t_cube **st);
 
 // ft_get_picture
-t_tex	*ft_get_wall_tex(t_game *g);
+t_tex *ft_get_wall_tex(t_game *g, float angle);
 void	ft_load_texture(t_game *g, t_tex *tex, char *path);
 void	ft_get_picture(t_cube **st);
-int		ft_get_wall_pixel(t_game *game, t_tex *wall_tex, int y);
+int ft_get_wall_pixel(t_game *game, t_tex *tex, int y, int wall_h);
 int		ft_get_tex_pixel(t_tex *tex, int x, int y);
-void	ft_draw_wall_slice(t_game *g, float dist, int screen_x);
+void    ft_draw_wall_slice(t_game *g, float dist, int screen_x, float angle);
 
 // cub3D
 int		ft_draw_loop(t_game *game);

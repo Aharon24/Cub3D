@@ -66,3 +66,31 @@ int main()
     mlx_loop(game.mlx);
     return 0;
 }
+
+
+
+// int	ft_draw_loop(t_game *game)
+// {
+// 	float		fraction;
+// 	float		start_x;
+// 	int			i;
+// 	t_player	*player;
+// 	player = &game->player;
+// 	ft_move_player(game);
+// 	ft_clear_image(game);
+// 	ft_draw_floor_cealing(game);
+// 	fraction = PI / 3 / WIDTH;
+// 	start_x = game->player.angle - PI / 6;
+// 	//ft_draw_map_four(game);
+// 	i = 0;
+// 	while (i < WIDTH)
+// 	{
+// 		ft_draw_line(player, game, start_x, i);
+// 		start_x += fraction;
+// 		i++;
+// 	}
+// 	ft_draw_map(game);
+// 	ft_draw_square(player->x / 4, player->y / 4, 3, 0x00FF00, game);
+// 	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
+// 	return (0);
+//}

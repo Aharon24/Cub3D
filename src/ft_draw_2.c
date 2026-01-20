@@ -67,6 +67,22 @@ int	get_pixel_color(void *img, int x, int y)
 	return (*pixel_color);
 }
 
+// void ft_draw_square(int x, int y, int size, int color, t_game *game)
+// {
+//     int i, j;
+//     i = 0;
+//     while (i < size)
+//     {
+//         j = 0;
+//         while (j < size)
+//         {
+//             put_pixel(x + j, y + i, color, game);
+//             j++;
+//         }
+//         i++;
+//     }
+// }
+
 void	ft_draw_square(int x, int y, int size, int color, t_game *game)
 {
 	game->i_25l = 0;

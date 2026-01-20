@@ -12,19 +12,25 @@
 
 #include "../include/cub3D.h"
 
-#define MINI_MAP_SCALE 8
-
 int	ft_wall_chesk(float px, float py, t_game *game)
 {
 	int	x;
 	int	y;
 
-	x = px / B;
-	y = py / B;
+	x = (int)(px / B);
+	y = (int)(py / B);
+
+	if (y < 0 || x < 0)
+		return (1);
+	if (!game->map || !game->map[y])
+		return (1);
+	if (x >= (int)ft_strlen(game->map[y]))
+		return (1);
 	if (game->map[y][x] == '1')
 		return (1);
 	return (0);
 }
+
 
 void	ft_clear_image(t_game *game)
 {
@@ -53,31 +59,6 @@ void	ft_init_game(t_game *g)
 	g->data = mlx_get_data_addr(g->img, &g->bpp, &g->s_l, &g->e_d);
 }
 
-// int	ft_draw_loop(t_game *game)
-// {
-// 	float		fraction;
-// 	float		start_x;
-// 	int			i;
-// 	t_player	*player;
-// 	player = &game->player;
-// 	ft_move_player(game);
-// 	ft_clear_image(game);
-// 	ft_draw_floor_cealing(game);
-// 	fraction = PI / 3 / WIDTH;
-// 	start_x = game->player.angle - PI / 6;
-// 	//ft_draw_map_four(game);
-// 	i = 0;
-// 	while (i < WIDTH)
-// 	{
-// 		ft_draw_line(player, game, start_x, i);
-// 		start_x += fraction;
-// 		i++;
-// 	}
-// 	ft_draw_map(game);
-// 	ft_draw_square(player->x / 4, player->y / 4, 3, 0x00FF00, game);
-// 	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
-// 	return (0);
-//}
 void	ft_draw_walls_one_time(t_game *game)
 {
 	float		fraction;
