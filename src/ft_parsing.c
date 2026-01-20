@@ -36,6 +36,12 @@ int	ft_count_line(char **map, t_cube **st, int i)
 {
 	while (map[i])
 	{
+		if (ft_empty(map[i]) == 1 && (*st)->c == 1)
+		{
+			printf("Error\n");
+			printf("Wrong map game map must not split\n");
+			return (-1);
+		}
 		if (ft_empty(map[i]) == 1 && (*st)->c == 0)
 			i++;
 		else if (ft_check_valid_map(map[i], *st) == 1)
