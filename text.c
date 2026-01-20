@@ -94,3 +94,40 @@ int main()
 // 	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 // 	return (0);
 //}
+
+// void ft_draw_square(int x, int y, int size, int color, t_game *game)
+// {
+//     int i, j;
+//     i = 0;
+//     while (i < size)
+//     {
+//         j = 0;
+//         while (j < size)
+//         {
+//             put_pixel(x + j, y + i, color, game);
+//             j++;
+//         }
+//         i++;
+//     }
+// }
+
+// int ft_get_wall_pixel(t_game *game, t_tex *tex, int y)
+// {
+//     int tex_x;
+//     int tex_y;
+//     float wall_height;
+
+//     tex_x = (int)(game->ray_x * (float)tex->width);
+//     if ((game->hit_vertical == 1 && cos(game->player.angle) < 0) || 
+//         (game->hit_vertical == 0 && sin(game->player.angle) > 0))
+//         tex_x = tex->width - tex_x - 1;
+//     wall_height = (int)(B * HEIGHT / (game->player.dist));
+//     int relative_y = y - game->start_y;
+//     tex_y = (int)(relative_y * (float)tex->height / wall_height);
+//     if (tex_y < 0) tex_y = 0;
+//     if (tex_y >= tex->height) tex_y = tex->height - 1;
+//     if (tex_x < 0) tex_x = 0;
+//     if (tex_x >= tex->width) tex_x = tex->width - 1;
+
+//     return (ft_get_tex_pixel(tex, tex_x, tex_y));
+// }

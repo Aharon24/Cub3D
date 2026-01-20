@@ -47,7 +47,10 @@ void	ft_draw_map(t_game *g)
 		while (g->map[i][j])
 		{
 			if (g->map[i][j] == '1')
-				ft_draw_square(j * B / 4, i * B / 4, B / 4, color, g);
+			{
+				g->ft_size = B / 4;
+				ft_draw_square(j * B / 4, i * B / 4, color, g);
+			}
 			j++;
 		}
 		i++;
@@ -67,31 +70,27 @@ int	get_pixel_color(void *img, int x, int y)
 	return (*pixel_color);
 }
 
-// void ft_draw_square(int x, int y, int size, int color, t_game *game)
-// {
-//     int i, j;
-//     i = 0;
-//     while (i < size)
-//     {
-//         j = 0;
-//         while (j < size)
-//         {
-//             put_pixel(x + j, y + i, color, game);
-//             j++;
-//         }
-//         i++;
-//     }
-// }
-
-void	ft_draw_square(int x, int y, int size, int color, t_game *game)
+void	ft_draw_square(int x, int y, int color, t_game *game)
 {
 	game->i_25l = 0;
-	while (game->i_25l < size)
+	while (game->i_25l < game->ft_size)
 	{
 		put_pixel(x + game->i_25l, y, color, game);
 		put_pixel(x, y + game->i_25l, color, game);
-		put_pixel(x + size, y + game->i_25l, color, game);
-		put_pixel(x + game->i_25l, y + size, color, game);
+		put_pixel(x + game->ft_size, y + game->i_25l, color, game);
+		put_pixel(x + game->i_25l, y + game->ft_size, color, game);
 		game->i_25l++;
 	}
+}
+
+bool	ft_touch(float px, float py, t_game *game)
+{
+	int	x;
+	int	y;
+
+	x = px / B;
+	y = py / B;
+	if (game->map[y][x] && game->map[y][x] == '1')
+		return (true);
+	return (false);
 }

@@ -19,7 +19,6 @@ int	ft_wall_chesk(float px, float py, t_game *game)
 
 	x = (int)(px / B);
 	y = (int)(py / B);
-
 	if (y < 0 || x < 0)
 		return (1);
 	if (!game->map || !game->map[y])
@@ -30,7 +29,6 @@ int	ft_wall_chesk(float px, float py, t_game *game)
 		return (1);
 	return (0);
 }
-
 
 void	ft_clear_image(t_game *game)
 {

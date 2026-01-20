@@ -12,183 +12,106 @@
 
 #include "../include/cub3D.h"
 
-float	ft_distance(float x, float y)
+void	ft_draw_wall_slice(t_game *g, float dist, int screen_x, float angle)
 {
-	return (sqrt(x * x + y * y));
+	int		color;
+	t_tex	*tex;
+	int		real_wall_height;
+	int		draw_end;
+
+	if (dist < 0.1f)
+		dist = 0.1f;
+	real_wall_height = (int)(B * HEIGHT / dist);
+	g->start_y = HEIGHT / 2 - real_wall_height / 2;
+	g->end = HEIGHT / 2 + real_wall_height / 2;
+	tex = ft_get_wall_tex(g, angle);
+	g->ft_d_y = g->start_y;
+	if (g->ft_d_y < 0)
+		g->ft_d_y = 0;
+	draw_end = g->end;
+	if (draw_end >= HEIGHT)
+		draw_end = HEIGHT - 1;
+	while (g->ft_d_y < draw_end)
+	{
+		color = ft_get_wall_pixel(g, tex, g->ft_d_y, real_wall_height);
+		if (g->hit_vertical)
+			color = (color >> 1) & 0x7F7F7F;
+		put_pixel(screen_x, g->ft_d_y, color, g);
+		g->ft_d_y++;
+	}
 }
 
-float	fixed_dist(float x2, float y2, t_game *game)
+void	ft_init_line(t_player *p, float angle)
 {
-	float	delta_x;
-	float	delta_y;
-	float	angle;
-	float	fix_dist;
-
-	delta_y = y2 - game->player.y;
-	delta_x = x2 - game->player.x;
-	angle = atan2(delta_y, delta_x) - game->player.angle;
-	fix_dist = ft_distance(delta_x, delta_y) * cos(angle);
-	return (fix_dist);
-}
-void    ft_draw_wall_slice(t_game *g, float dist, int screen_x, float angle)
-{
-   // int     wall_height;
-    int     y;
-    int     color;
-    t_tex   *tex;
-    int     real_wall_height; // Nuzhna dlya tochnogo rascheta tekstury
-
-    if (dist < 0.1f)
-        dist = 0.1f;
-    
-    // Real'naya vysota mozhet byt' bol'she ekrana (naprimer 3000 pikseley)
-    real_wall_height = (int)(B * HEIGHT / dist);
-    
-    // Opredelyaem granitsy risovaniya na ekrane
-    g->start_y = HEIGHT / 2 - real_wall_height / 2;
-    g->end = HEIGHT / 2 + real_wall_height / 2;
-
-    // Vybiraem teksturu (peredayem ugol)
-    tex = ft_get_wall_tex(g, angle);
-
-    y = g->start_y;
-    // Esli stena vyshe ekrana, nachinaem risovat' s 0 piksel'ya ekrana
-    if (y < 0) y = 0;
-    
-    int draw_end = g->end;
-    if (draw_end >= HEIGHT) draw_end = HEIGHT - 1;
-
-    while (y < draw_end)
-    {
-        // Peredayem real_wall_height, chtoby tex_y schitalsya pravil'no
-        color = ft_get_wall_pixel(g, tex, y, real_wall_height);
-        
-        // Esli nuzhna ten' dlya ob"yema (bokovyye steny chut' temneye)
-        if (g->hit_vertical)
-            color = (color >> 1) & 0x7F7F7F; // Umen'shaem yarkost' v 2 raza
-            
-        put_pixel(screen_x, y, color, g);
-        y++;
-    }
+	p->delta_dist_x = fabs(1 / p->ray_dir_x);
+	p->delta_dist_y = fabs(1 / p->ray_dir_y);
+	p->map_x = (int)(p->x / B);
+	p->map_y = (int)(p->y / B);
+	p->ray_dir_x = cos(angle);
+	p->ray_dir_y = sin(angle);
 }
 
-// void	ft_draw_line(t_player *p, t_game *g, float angle, int screen_x)
-// {
-// 	float	ray_x;
-// 	float	ray_y;
-// 	float	step;
-
-// 	ray_x = p->x;
-// 	ray_y = p->y;
-// 	step = 0.1f;
-// 	while (1)
-// 	{
-// 		p->prev_x = ray_x;
-// 		ray_x += cos(angle) * step;
-// 		ray_y += sin(angle) * step;
-// 		if (ft_wall_chesk(ray_x, ray_y, g))
-// 		{
-// 			g->ray_x = ray_x;
-// 			g->ray_y = ray_y;
-// 			g->hit_vertical = ((int)(p->prev_x / B) != (int)(ray_x / B));
-// 			break ;
-// 		}
-// 	}
-// 	p->dist = hypot(ray_x - p->x, ray_y - p->y);
-// 	p->dist *= cos(angle - p->angle);
-// 	if (p->dist < 0.1f)
-// 		p->dist = 0.1f;
-// 	ft_draw_wall_slice(g, p->dist, screen_x);
-// }
-
-
-void ft_draw_line(t_player *p, t_game *g, float angle, int screen_x)
+void	ft_second_part(t_player *p)
 {
-    float ray_dir_x = cos(angle);
-    float ray_dir_y = sin(angle);
-
-    // Tekushchaya kletka na karte, gde nakhoditsya igrok
-    int map_x = (int)(p->x / B);
-    int map_y = (int)(p->y / B);
-
-    // Dlina lucha ot tekushchey pozitsii do sleduyushchey storony kletki
-    float side_dist_x;
-    float side_dist_y;
-
-    // Rasstoyaniye, kotoroye nuzhno proyti luchu ot odnoy linii setki do sleduyushchey
-    float delta_dist_x = fabs(1 / ray_dir_x);
-    float delta_dist_y = fabs(1 / ray_dir_y);
-
-    int step_x;
-    int step_y;
-
-    // Vychislyayem napravleniye shaga i nachal'noye rasstoyaniye
-    if (ray_dir_x < 0) {
-        step_x = -1;
-        side_dist_x = (p->x / B - map_x) * delta_dist_x;
-    } else {
-        step_x = 1;
-        side_dist_x = (map_x + 1.0 - p->x / B) * delta_dist_x;
-    }
-    if (ray_dir_y < 0) {
-        step_y = -1;
-        side_dist_y = (p->y / B - map_y) * delta_dist_y;
-    } else {
-        step_y = 1;
-        side_dist_y = (map_y + 1.0 - p->y / B) * delta_dist_y;
-    }
-
-    // Osnovnoy tsikl DDA
-    int hit = 0;
-    while (hit == 0) {
-        // Prygayem v sleduyushchuyu kletku setki
-        if (side_dist_x < side_dist_y) {
-            side_dist_x += delta_dist_x;
-            map_x += step_x;
-            g->hit_vertical = 1; // Udar v vertikal'nuyu storonu (West/East)
-        } else {
-            side_dist_y += delta_dist_y;
-            map_y += step_y;
-            g->hit_vertical = 0; // Udar v gorizontal'nuyu storonu (North/South)
-        }
-        // Proveryayem, ne udarilis' li v stenu
-        if (g->map[map_y][map_x] == '1')
-            hit = 1;
-    }
-
-    // Vychislyayem perpendikulyarnuyu distantsiyu (chtoby ne bylo fish-eye)
-    float wall_dist;
-    if (g->hit_vertical == 1)
-        wall_dist = (side_dist_x - delta_dist_x);
-    else
-        wall_dist = (side_dist_y - delta_dist_y);
-
-    // Sokhranyayem distantsiyu (perevodim v piksely, umnozhaya na razmer bloka B)
-    p->dist = wall_dist * B;
-
-    // Raschet tochnoy koordinaty udara na stene (dlya tekstur)
-    float wall_hit_point;
-    if (g->hit_vertical == 1)
-        wall_hit_point = p->y / B + wall_dist * ray_dir_y;
-    else
-        wall_hit_point = p->x / B + wall_dist * ray_dir_x;
-    wall_hit_point -= floor(wall_hit_point);
-
-    // Peredayem wall_hit_point v g dlya ispol'zovaniya v ft_get_wall_pixel
-    g->ray_x = wall_hit_point; 
-
-    ft_draw_wall_slice(g, p->dist, screen_x,angle);
+	if (p->ray_dir_x < 0)
+	{
+		p->step_x = -1;
+		p->side_dist_x = (p->x / B - p->map_x) * p->delta_dist_x;
+	}
+	else
+	{
+		p->step_x = 1;
+		p->side_dist_x = (p->map_x + 1.0 - p->x / B) * p->delta_dist_x;
+	}
+	if (p->ray_dir_y < 0)
+	{
+		p->step_y = -1;
+		p->side_dist_y = (p->y / B - p->map_y) * p->delta_dist_y;
+	}
+	else
+	{
+		p->step_y = 1;
+		p->side_dist_y = (p->map_y + 1.0 - p->y / B) * p->delta_dist_y;
+	}
 }
 
-
-bool	ft_touch(float px, float py, t_game *game)
+void	ft_three_part(t_player *p, t_game *g)
 {
-	int	x;
-	int	y;
+	p->hit = 0;
+	while (p->hit == 0)
+	{
+		if (p->side_dist_x < p->side_dist_y)
+		{
+			p->side_dist_x += p->delta_dist_x;
+			p->map_x += p->step_x;
+			g->hit_vertical = 1;
+		}
+		else
+		{
+			p->side_dist_y += p->delta_dist_y;
+			p->map_y += p->step_y;
+			g->hit_vertical = 0;
+		}
+		if (g->map[p->map_y][p->map_x] == '1')
+			p->hit = 1;
+	}
+}
 
-	x = px / B;
-	y = py / B;
-	if (game->map[y][x] && game->map[y][x] == '1')
-		return (true);
-	return (false);
+void	ft_draw_line(t_player *p, t_game *g, float angle, int screen_x)
+{
+	ft_init_line(p, angle);
+	ft_second_part(p);
+	ft_three_part(p, g);
+	if (g->hit_vertical == 1)
+		p->wall_dist = (p->side_dist_x - p->delta_dist_x);
+	else
+		p->wall_dist = (p->side_dist_y - p->delta_dist_y);
+	p->dist = p->wall_dist * B;
+	if (g->hit_vertical == 1)
+		p->wall_hit_point = p->y / B + p->wall_dist * p->ray_dir_y;
+	else
+		p->wall_hit_point = p->x / B + p->wall_dist * p->ray_dir_x;
+	p->wall_hit_point -= floor(p->wall_hit_point);
+	g->ray_x = p->wall_hit_point;
+	ft_draw_wall_slice(g, p->dist, screen_x, angle);
 }

@@ -35,9 +35,8 @@
 # define LEFT 65361
 # define RIGHT 65363
 # define PI 3.14159265359
-#define MINI_MAP_SCALE 8
-#define FOV (PI / 3.0f)
-//#include "mlx.h"        // MiniLibX
+# define MINI_MAP_SCALE 8
+# define FOV (PI / 3.0f)
 
 typedef struct s_tex
 {
@@ -68,6 +67,19 @@ typedef struct s_player
 	float		step;
 	float		dist;
 	float		prev_x;
+	float		ray_dir_x;
+	float		ray_dir_y;
+	float		side_dist_x;
+	float		side_dist_y;
+	float		delta_dist_y;
+	float		delta_dist_x;
+	float		wall_dist;
+	float		wall_hit_point;
+	int			map_x;
+	int			map_y;
+	int			step_x;
+	int			step_y;
+	int			hit;
 }	t_player;
 
 typedef struct s_map
@@ -114,6 +126,8 @@ typedef struct s_game
 	float		ray_x;
 	float		ray_y;
 	int			color;
+	int			ft_size;
+	int			ft_d_y;
 }	t_game;
 
 typedef struct s_path
@@ -208,7 +222,7 @@ int		ft_check_path_count(t_cube **st);
 //	ft_validation_2.c
 int		ft_luck_map(t_cube **st);
 int		ft_one(char *str);
-int		ft_look_middle(char **map, int len, int  p);
+int		ft_look_middle(char **map, int len, int p);
 int		ft_chesk_middle_line(char *line, int index);
 int		ft_chesk_point(char *line);
 
@@ -254,16 +268,17 @@ void	ft_draw_f(int color, t_game *g, int i, int j);
 void	ft_draw_floor_cealing(t_game *g);
 
 // ft_draw_2.c
-void	ft_draw_square(int x, int y, int size, int color, t_game *game);
+void	ft_draw_square(int x, int y, int color, t_game *game);
 void	put_pixel(int x, int y, int color, t_game *game);
 void	ft_draw_map(t_game *g);
 void	ft_draw_map_four(t_tex *tex, t_game *g, int x, int y);
 
 //	ft_draw_3.c
-bool	ft_touch(float px, float py, t_game *game);
-void	ft_draw_line(t_player *player, t_game *game, float start_x, int i);
-float	ft_distance(float x, float y);
-float	fixed_dist(float x2, float y2, t_game *game);
+void	ft_draw_wall_slice(t_game *g, float dist, int screen_x, float angle);
+void	ft_init_line(t_player *p, float angle);
+void	ft_second_part(t_player *p);
+void	ft_three_part(t_player *p, t_game *g);
+void	ft_draw_line(t_player *p, t_game *g, float angle, int screen_x);
 
 //	ft_player.c
 void	ft_init_player(t_player *player);
@@ -280,14 +295,16 @@ int		ft_handle_key(int keycode, t_cube **st);
 int		ft_handle_destroy(t_cube **st);
 
 // ft_get_picture
-t_tex *ft_get_wall_tex(t_game *g, float angle);
+t_tex	*ft_get_wall_tex(t_game *g, float angle);
 void	ft_load_texture(t_game *g, t_tex *tex, char *path);
 void	ft_get_picture(t_cube **st);
-int ft_get_wall_pixel(t_game *game, t_tex *tex, int y, int wall_h);
+int		ft_get_wall_pixel(t_game *game, t_tex *tex, int y, int wall_h);
 int		ft_get_tex_pixel(t_tex *tex, int x, int y);
-void    ft_draw_wall_slice(t_game *g, float dist, int screen_x, float angle);
+void	ft_draw_wall_slice(t_game *g, float dist, int screen_x, float angle);
 
 // cub3D
 int		ft_draw_loop(t_game *game);
+float	fixed_dist(float x2, float y2, t_game *game);
+float	ft_distance(float x, float y);
 
 #endif
