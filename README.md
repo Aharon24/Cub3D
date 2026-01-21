@@ -44,6 +44,7 @@ The project is implemented in C using miniLibX for graphics.
 
 ### Example Minimal Map File
 
+```text
 NO ./path_to_the_north_texture
 SO ./path_to_the_south_texture
 WE ./path_to_the_west_texture
