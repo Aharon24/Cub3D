@@ -36,7 +36,7 @@ int	ft_count_line(char **map, t_cube **st, int i)
 {
 	while (map[i])
 	{
-		if (ft_empty_second(st, map[i], i) == -1)
+		if (ft_empty_second(st, map[i], &i) == -1)
 			return (-1);
 		else if (ft_check_valid_map(map[i], *st) == 1)
 		{

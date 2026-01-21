@@ -12,7 +12,7 @@
 
 #include "../include/cub3D.h"
 
-int	ft_empty_second(t_cube **st, char *map_i, int i)
+int	ft_empty_second(t_cube **st, char *map_i, int *i)
 {
 	if (ft_empty(map_i) == 1 && (*st)->c == 1)
 		return (ft_exit_count_line());

@@ -290,7 +290,7 @@ void	ft_move_2(t_game *g, float cos_angle, float sin_angle, float speed);
 
 // ft_player_2.c
 void	ft_move_3(t_game *g, float cos_angle, float sin_angle, float s);
-int		ft_empty_second(t_cube **st, char *map_i, int i);
+int		ft_empty_second(t_cube **st, char *map_i, int *i);
 
 // ft_exit_Ecs_x.c
 int		ft_handle_key(int keycode, t_cube **st);
