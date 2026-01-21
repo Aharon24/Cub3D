@@ -14,14 +14,28 @@
 
 void	ft_free_wnes(t_cube **st)
 {
+	if (!(*st))
+		return ;
 	if ((*st)->cub_w)
+	{
 		free((*st)->cub_w);
+		(*st)->cub_w = NULL;
+	}
 	if ((*st)->cub_s)
+	{
 		free((*st)->cub_s);
+		(*st)->cub_s = NULL;
+	}
 	if ((*st)->cub_n)
+	{
 		free((*st)->cub_n);
+		(*st)->cub_n = NULL;
+	}
 	if ((*st)->cub_e)
+	{
 		free((*st)->cub_e);
+		(*st)->cub_e = NULL;
+	}
 }
 
 void	ft_free_two_dimensional_array(char **map)
@@ -42,6 +56,8 @@ void	ft_free_two_dimensional_array(char **map)
 
 void	ft_free_arr_map(t_cube **st)
 {
+	if (!(*st))
+		return ;
 	if ((*st)->c_map)
 	{
 		ft_free_two_dimensional_array((*st)->c_map);
@@ -68,6 +84,8 @@ void	ft_free_st(t_cube **st)
 {
 	ft_free_wnes(st);
 	ft_free_arr_map(st);
+	if (!(*st))
+		return ;
 	if ((*st)->south)
 	{
 		free((*st)->south);

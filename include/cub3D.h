@@ -36,7 +36,6 @@
 # define RIGHT 65363
 # define PI 3.14159265359
 # define MINI_MAP_SCALE 8
-# define FOV (PI / 3.0f)
 
 typedef struct s_tex
 {
@@ -238,9 +237,10 @@ int		ft_chesk_side(char **map, int x, int y, int len_x);
 int		ft_empty_chesk(char **map);
 void	ft_crate_path_value(t_cube **st, char **arr);
 void	ft_open_path(t_cube **st, char *path, int type);
+void	ft_w_s_e_n_dup(t_cube **st, int type, int fd, char *path);
 
 //  ft_start_work.c
-t_cube	*ft_start_work(char *str);
+t_cube	*ft_start_work(char *str, int fd);
 t_cube	*ft_create_struct(int fd, t_cube *st);
 t_cube	*ft_create_map(t_cube **st, char *line, int fd);
 
@@ -290,11 +290,14 @@ void	ft_move_2(t_game *g, float cos_angle, float sin_angle, float speed);
 
 // ft_player_2.c
 void	ft_move_3(t_game *g, float cos_angle, float sin_angle, float s);
+int		ft_empty_second(t_cube **st, char *map_i, int i);
 
 // ft_exit_Ecs_x.c
 int		ft_handle_key(int keycode, t_cube **st);
 int		ft_handle_destroy(t_cube **st);
 void	ft_distroy(t_game *g);
+int		ft_exit_main(void);
+int		ft_exit_count_line(void);
 
 // ft_get_picture
 t_tex	*ft_get_wall_tex(t_game *g, float angle);

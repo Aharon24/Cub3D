@@ -12,19 +12,8 @@
 
 #include "../include/cub3D.h"
 
-void	ft_open_path(t_cube **st, char *path, int type)
+void	ft_w_s_e_n_dup(t_cube **st, int type, int fd, char *path)
 {
-	int	fd;
-
-	fd = open(path, O_RDONLY);
-	if (fd == -1 && type == 1)
-		(*st)->north = ft_strdup("x");
-	if (fd == -1 && type == 2)
-		(*st)->south = ft_strdup("x");
-	if (fd == -1 && type == 3)
-		(*st)->west = ft_strdup("x");
-	if (fd == -1 && type == 4)
-		(*st)->east = ft_strdup("x");
 	if (type == 1 && fd != -1)
 	{
 		if ((*st)->north)
@@ -49,6 +38,22 @@ void	ft_open_path(t_cube **st, char *path, int type)
 			free((*st)->east);
 		(*st)->east = ft_strdup(path);
 	}
+}
+
+void	ft_open_path(t_cube **st, char *path, int type)
+{
+	int	fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd == -1 && type == 1)
+		(*st)->north = ft_strdup("x");
+	if (fd == -1 && type == 2)
+		(*st)->south = ft_strdup("x");
+	if (fd == -1 && type == 3)
+		(*st)->west = ft_strdup("x");
+	if (fd == -1 && type == 4)
+		(*st)->east = ft_strdup("x");
+	ft_w_s_e_n_dup(st, type, fd, path);
 }
 
 void	ft_crate_path_value(t_cube **st, char **arr)

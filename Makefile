@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS =  -g3 -Wall -Wextra -Werror   -Iget_next_line -ILibft 
+CFLAGS =  -Wall -Wextra -Werror   -Iget_next_line -ILibft 
 MLXFLAGS = -Lminilibx-linux -lmlx -lXext -lX11 -lm -lbsd
 MLX_DIR = minilibx-linux
 MLX_LIB = $(MLX_DIR)/libmlx.a

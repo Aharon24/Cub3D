@@ -12,15 +12,28 @@
 
 #include "../include/cub3D.h"
 
+int	ft_exit_count_line(void)
+{
+	printf("Error\n");
+	printf("Wrong map game map must not split\n");
+	return (-1);
+}
 
-void ft_distroy(t_game *g)
+int	ft_exit_main(void)
+{
+	printf("Error\n");
+	printf("Problem with argument we need file\n");
+	return (1);
+}
+
+void	ft_distroy(t_game *g)
 {
 	if (g->img_s.img)
 		mlx_destroy_image(g->mlx, g->img_s.img);
 	if (g->img_w.img)
-		mlx_destroy_image(g->mlx,g->img_w.img);
+		mlx_destroy_image(g->mlx, g->img_w.img);
 	if (g->img_e.img)
-		mlx_destroy_image(g->mlx,g->img_e.img);
+		mlx_destroy_image(g->mlx, g->img_e.img);
 	if (g->img_n.img)
 		mlx_destroy_image(g->mlx, g->img_n.img);
 	if (g->win)
@@ -41,7 +54,6 @@ int	ft_handle_key(int keycode, t_cube **st)
 	{
 		ft_distroy((*st)->g);
 		ft_free_st(st);
-		printf("ESC\n");
 		exit(0);
 	}
 	return (0);
@@ -51,7 +63,6 @@ int	ft_handle_destroy(t_cube	**st)
 {
 	ft_distroy((*st)->g);
 	ft_free_st(st);
-	printf("X\n");
 	exit(0);
 	return (0);
 }

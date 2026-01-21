@@ -12,15 +12,13 @@
 
 #include "../include/cub3D.h"
 
-t_cube	*ft_start_work(char *str)
+t_cube	*ft_start_work(char *str, int fd)
 {
-	int		fd;
 	char	*line;
 	t_cube	*st;
 
 	line = NULL;
 	st = NULL;
-	fd = 0;
 	fd = open(str, O_RDONLY);
 	if (ft_chek_file(fd) == -1)
 		return (NULL);
@@ -35,8 +33,10 @@ t_cube	*ft_start_work(char *str)
 		return (ft_st_null(fd));
 	close(fd);
 	if (ft_parsing_map(st->c_map, &st) == NULL)
+	{
+		ft_free_st(&st);
 		return (NULL);
-	//ft_free_st(&st); ????  
+	}
 	return (st);
 }
 

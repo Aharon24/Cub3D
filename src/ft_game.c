@@ -58,10 +58,9 @@ void	ft_init_game(t_game *g)
 	g->player.delta_dist_x = 0;
 	g->player.delta_dist_y = 0;
 	g->player.map_x = 0;
-	g->player.map_y = 0; 
-	g->player.ray_dir_x = 0; 
-	g->player.ray_dir_y = 0; 
-
+	g->player.map_y = 0;
+	g->player.ray_dir_x = 0;
+	g->player.ray_dir_y = 0;
 }
 
 void	ft_draw_walls_one_time(t_game *game)

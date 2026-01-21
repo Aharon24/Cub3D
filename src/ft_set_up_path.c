@@ -123,6 +123,5 @@ void	ft_init_xpm(t_cube **st)
 	(*st)->cub_s = NULL;
 	(*st)->cub_e = NULL;
 	(*st)->cub_n = NULL;
-	//(*st)->c_map = NULL;
 	ft_init_xpm_one(st);
 }

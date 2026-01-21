@@ -106,7 +106,6 @@ int	key_press(int keycode, t_game *game)
 		game->player.right_rotate = true;
 	else if (keycode == 65307)
 	{
-		printf("esc\n");
 		exit(0);
 	}
 	return (0);

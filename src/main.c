@@ -15,24 +15,23 @@
 int	main(int ac, char *argv[])
 {
 	t_cube	*stt;
+	int		fd;
 
+	fd = 0;
 	stt = NULL;
 	if (ac != 2)
-	{
-		printf("Error\n");
-		printf("Problem with argument we need file\n");
-		return (1);
-	}
+		return (ft_exit_main());
 	else
 	{
 		if (ft_validation(argv[1]) != 0)
-		{
 			return (1);
-		}
 	}
-	stt = ft_start_work(argv[1]);
+	stt = ft_start_work(argv[1], fd);
 	if (stt == NULL)
+	{
+		ft_free_st(&stt);
 		return (1);
+	}
 	if (stt)
 		ft_game(&stt);
 	ft_free_st(&stt);

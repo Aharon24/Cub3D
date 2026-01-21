@@ -12,6 +12,15 @@
 
 #include "../include/cub3D.h"
 
+int	ft_empty_second(t_cube **st, char *map_i, int i)
+{
+	if (ft_empty(map_i) == 1 && (*st)->c == 1)
+		return (ft_exit_count_line());
+	if (ft_empty(map_i) == 1 && (*st)->c == 0)
+		i++;
+	return (0);
+}
+
 void	ft_move_3(t_game *g, float cos_angle, float sin_angle, float s)
 {
 	float	new_x;
