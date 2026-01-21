@@ -54,6 +54,7 @@ void	ft_open_path(t_cube **st, char *path, int type)
 	if (fd == -1 && type == 4)
 		(*st)->east = ft_strdup("x");
 	ft_w_s_e_n_dup(st, type, fd, path);
+	close(fd);
 }
 
 void	ft_crate_path_value(t_cube **st, char **arr)
