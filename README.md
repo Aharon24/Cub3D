@@ -68,4 +68,4 @@ C 225,30,0
 - The project is written according to the 42 Norm.
 - All memory allocations are freed properly; no leaks or segfaults are allowed.
 - For any misconfiguration in the `.cub` file, the program prints `Error` and exits.
-- Screenshots and further examples can be added for demonstration.
+
