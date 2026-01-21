@@ -43,3 +43,28 @@ The project is implemented in C using miniLibX for graphics.
    - Textures: `NO`, `SO`, `WE`, `EA` followed by path.
 
 ### Example Minimal Map File
+
+NO ./path_to_the_north_texture
+SO ./path_to_the_south_texture
+WE ./path_to_the_west_texture
+EA ./path_to_the_east_texture
+F 220,100,0
+C 225,30,0
+111111
+100101
+101001
+1100N1
+111111
+
+
+## Resources
+- Wolfenstein 3D official page: [http://users.atw.hu/wolf3d/](http://users.atw.hu/wolf3d/)
+- miniLibX documentation: [https://harm-smits.github.io/42docs/libs/minilibx/](https://harm-smits.github.io/42docs/libs/minilibx/)
+- Raycasting tutorials and articles.
+- AI (ChatGPT) was used for planning map parsing, debugging memory leaks, and generating algorithm ideas.
+
+## Notes
+- The project is written according to the 42 Norm.
+- All memory allocations are freed properly; no leaks or segfaults are allowed.
+- For any misconfiguration in the `.cub` file, the program prints `Error` and exits.
+- Screenshots and further examples can be added for demonstration.
