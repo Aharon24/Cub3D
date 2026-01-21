@@ -56,7 +56,7 @@ C 225,30,0
 101001
 1100N1
 111111
-
+```
 
 ## Resources
 - Wolfenstein 3D official page: [http://users.atw.hu/wolf3d/](http://users.atw.hu/wolf3d/)
