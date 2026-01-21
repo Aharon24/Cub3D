@@ -22,7 +22,7 @@ int	ft_error(int subject, int i)
 	else if (subject == 2)
 	{
 		printf("Error\n");
-		printf("wrong map only(0,1,N,W,S,E or n,w,s,e and' ')\nline -> %d", i);
+		printf("wrong map only(0,1,N,W,S,E or n,w,s,e and' ')line -> %d", i);
 	}
 	return (-1);
 }

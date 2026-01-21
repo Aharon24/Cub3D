@@ -55,6 +55,13 @@ void	ft_init_game(t_game *g)
 	g->win = mlx_new_window(g->mlx, WIDTH, HEIGHT, "cub3D");
 	g->img = mlx_new_image(g->mlx, WIDTH, HEIGHT);
 	g->data = mlx_get_data_addr(g->img, &g->bpp, &g->s_l, &g->e_d);
+	g->player.delta_dist_x = 0;
+	g->player.delta_dist_y = 0;
+	g->player.map_x = 0;
+	g->player.map_y = 0; 
+	g->player.ray_dir_x = 0; 
+	g->player.ray_dir_y = 0; 
+
 }
 
 void	ft_draw_walls_one_time(t_game *game)

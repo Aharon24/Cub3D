@@ -178,6 +178,7 @@ typedef struct cub3D
 void	ft_free_st(t_cube **st);
 void	ft_free_two_dimensional_array(char **map);
 void	ft_free_arr_map(t_cube **st);
+void	ft_free_wnes(t_cube **st);
 
 /// ft_error.c
 int		ft_error(int subject, int i);
@@ -293,6 +294,7 @@ void	ft_move_3(t_game *g, float cos_angle, float sin_angle, float s);
 // ft_exit_Ecs_x.c
 int		ft_handle_key(int keycode, t_cube **st);
 int		ft_handle_destroy(t_cube **st);
+void	ft_distroy(t_game *g);
 
 // ft_get_picture
 t_tex	*ft_get_wall_tex(t_game *g, float angle);

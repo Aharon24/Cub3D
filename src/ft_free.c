@@ -12,6 +12,18 @@
 
 #include "../include/cub3D.h"
 
+void	ft_free_wnes(t_cube **st)
+{
+	if ((*st)->cub_w)
+		free((*st)->cub_w);
+	if ((*st)->cub_s)
+		free((*st)->cub_s);
+	if ((*st)->cub_n)
+		free((*st)->cub_n);
+	if ((*st)->cub_e)
+		free((*st)->cub_e);
+}
+
 void	ft_free_two_dimensional_array(char **map)
 {
 	int	i;
@@ -54,6 +66,7 @@ void	ft_free_arr_map(t_cube **st)
 
 void	ft_free_st(t_cube **st)
 {
+	ft_free_wnes(st);
 	ft_free_arr_map(st);
 	if ((*st)->south)
 	{

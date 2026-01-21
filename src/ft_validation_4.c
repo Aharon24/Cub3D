@@ -26,13 +26,29 @@ void	ft_open_path(t_cube **st, char *path, int type)
 	if (fd == -1 && type == 4)
 		(*st)->east = ft_strdup("x");
 	if (type == 1 && fd != -1)
+	{
+		if ((*st)->north)
+			free((*st)->north);
 		(*st)->north = ft_strdup(path);
+	}
 	if (type == 2 && fd != -1)
+	{
+		if ((*st)->south)
+			free((*st)->south);
 		(*st)->south = ft_strdup(path);
+	}
 	if (type == 3 && fd != -1)
+	{
+		if ((*st)->west)
+			free((*st)->west);
 		(*st)->west = ft_strdup(path);
+	}
 	if (type == 4 && fd != -1)
+	{
+		if ((*st)->east)
+			free((*st)->east);
 		(*st)->east = ft_strdup(path);
+	}
 }
 
 void	ft_crate_path_value(t_cube **st, char **arr)
